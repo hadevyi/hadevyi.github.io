@@ -1,28 +1,33 @@
-{% if site.footer_scripts %}
-  {% for script in site.footer_scripts %}
-    <script src="{{ script | relative_url }}"></script>
-  {% endfor %}
-{% else %}
-  <script src="{{ '/assets/js/main.min.js' | relative_url }}"></script>
-{% endif %}
+{% unless page.redirect %}
+  {% if site.google_analytics %}
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      {% if site.hydejack.cookies_banner %}
+        if (navigator.CookiesOK) {
+          ga('create', '{{ site.google_analytics }}', 'auto');
+        } else if (localStorage && localStorage.getItem('hy:cookiesOK')) {
+          ga('create', '{{ site.google_analytics }}', {
+            'storage': 'none',
+            'clientId': localStorage.getItem('ga:clientId')
+          });
+        } else {
+          ga('create', '{{ site.google_analytics }}', {
+            'storage': 'none'
+          });
+          ga('set', 'forceSSL', true);
+          ga('set', 'anonymizeIp', true);
+        }
+      {% else %}
+        ga('create', '{{ site.google_analytics }}', 'auto');
+      {% endif %}
+      ga('send', 'pageview');
+      loadJSDeferred('https://www.google-analytics.com/analytics.js');
+    </script>
+  {% endif %}
 
-{% if site.search == true or page.layout == "search" %}
-  {%- assign search_provider = site.search_provider | default: "lunr" -%}
-  {%- case search_provider -%}
-    {%- when "lunr" -%}
-      {% include_cached search/lunr-search-scripts.html %}
-    {%- when "google" -%}
-      {% include_cached search/google-search-scripts.html %}
-    {%- when "algolia" -%}
-      {% include_cached search/algolia-search-scripts.html %}
-  {%- endcase -%}
-{% endif %}
-
-{% include analytics.html %}
-{% include /comments-providers/scripts.html %}
-
-{% if site.after_footer_scripts %}
-  {% for script in site.after_footer_scripts %}
-    <script src="{{ script | relative_url }}"></script>
-  {% endfor %}
-{% endif %}
+  <!--[if gt IE 9]><!---->
+  {% capture js_url %}{% link assets/js/hydejack-7.5.2.js %}{% endcapture %}
+  <script>loadJSDeferred('{{ js_url | relative_url }}');</script>
+  {% include my-scripts.html %}
+  <!--<![endif]-->
+{% endunless %}
