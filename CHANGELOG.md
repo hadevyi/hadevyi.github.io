@@ -1,14 +1,316 @@
 ---
 layout: page
-title: CHANGELOG
 ---
 
-## v7.5.2
-Jul 10 2018
+# CHANGELOG
+{:.no_toc}
+
+* this list will be replaced by the toc
+{:toc .large-only}
+
+## v9.0.0
+July 3 2020
 {:.heading.post-date}
 
-* Fixed an issue that caused the `list` layout to be empty after upgrading Jekyll
+### Major
+*   Added Built-In Search Functionality
+
+    Hydejack now has its own built-in search solution, that integrates well with the existing page style and the new navbar. 
+   
+    The solution is entirely browser-based which means it even works while offline and doesn't depend on an 3rd party. 
+    This works, because Hydejack is designed for personal sites that generally have less than 1000 pages. 
+    In my testing, Jekyll build times have been a problem long before search query times.
+   
+    The results of the search are surprisingly good, but have only been tested in English and (somewhat) German. 
+    For better language support, I might build an integration with Algolia at some point, which has the best results, 
+    but requires stable internet connection and an API key. 
+    I'd be interested to hear about problems with search in other languages to determine if this is necessary.
+
+*   Added Table of Contents that is prettier, sticky, and dynamic.
+
+    Adding a table of contents is part of kramdown and can be done in all versions of Hydejack. 
+    However, v9 adds a dynamic version that will stick to the 3rd column on large screens and highlight the current section. 
+   
+    Note that this will reduce the amount of space freed up by the `no_break_layout: false` setting (otherwise the ToC would overlap with code blocks, math blocks, etc).
+
+*   Added a scroll-linked navbar that disappears when scrolling down and re-appears when scrolling up.
+
+*   Math support has been revamped because the old solution stopped working with Jekyll 4. Hydejack now supports both KaTeX and MathJax. 
+
+    The MathJax implementation is more similar to the old solution. It comes with a client-side runtime (MathJax in this case)
+    and works on GitHub Pages. It is the more heavy-weight of the two and doesn't work without JavaScript enabled. 
+    Due to the size of the complete MathJax package, it only works partially with offline support enabled.
+
+    The KaTeX implementation has been changed to pre-render the KaTeX output during site building.
+    It _does not_ ship a client-side runtime, which is more lightweight and works _without_ JavaScript.
+    In my opinion, it is the more elegant solution, but it requires a JavaScript runtime on the machine that builds the site.
+    This means that this solution doesn't work on GitHub Pages.
+
+    You can switch between the two implementations by changing the `kramdown.math_engine` key to either `katex` or `mathjax` in your config file.
+    The KaTeX implementation also requires the `kramdown-math-katex` gem in your `Gemfile`.
+
+*   Drastically improved build times through the use of `jekyll-include-cache`. 
+    Most of the previous tips on [improving page build speed](hydejack/_posts/2019-02-18-improving-site-build-speed.md) should now be obsolete.
+
+*   Added `grid` layout in PRO version that mirrors the `projects` layout, but for posts. 
+    If you've set `image`s for your posts, it will give your blog a more modern look.
+
+### Minor
+* CSS variables are now configurable via `_data/variables.yml`. While there are other ways to change them, this has the broadest reach across HTML (`img[sizes]` attribute!), CSS and JS.
+* Many JS content features (such as `#` heading links) now work even when `hydejack.no_push_state` is enabled.
+* Linking to posts in the `home` and `post` layout now accept either paths or URLs. [Read more](docs/basics.md#adding-related-posts-to-a-post).
+* The star icons in the resume layout can now be disabled via `no_skill_icons` and `no_language_icons`.
+* Resume layout now supports the following keys: `born`, `citizenship`, and `maritalStatus`.
+* PRO only: Added `hide_dates` option to disable showing blog post dates.
+* The `blog` layout now works without pagination, simply showing all posts on a single page when the `jekyll-pagination` plugin is not found.
+* The `projects`, `resume`, and `grid` layout now make better use of large screens, by letting content expand to the right of the screen. Restore the previous , set `no_break_columns` in front matter.
+* Removed smooth scroll polyfill for Safari/Webkit as it has caused problems with sticky content.
+* Figure captions can now be added to code blocks, math blocks, and tables in addition to just images using the `.figcaption` CSS class.
+* The order of the comment section relative to the about and related posts sections can now be customized via the `hydejack.post_addons` and `hydejack.project_addons` keys. See the example `_config.yml` for more.
+* Clicking the image in the `blog` layout will now navigate to the blog post. In the PRO version it will do so with the classic "move image in place" animation.
+* Grouping projects by year can now be disabled. Use `no_groups: true` in the front matter. This also applies to the new `grid` layout and the old `list` layout.
+* hy-img has been removed and replaced with browser's native `loading=lazy` attribute
+* Now serving separate JavaScript files for old and new browsers, allowing it to take advantage of many new language features.
+* JavaScript files are now chunked, so that only what is needed is loaded on demand.
+* hy-drawer and hy-push-state have been rewritten in TypeScript and LitHTML, fixing many bugs in the process.
+* Updated to Jekyll 4.1
+* Hydejack now has a dedicated offline page that will be shown when the client is offline and tries to open a page that hasn't been cached. 
+  The content of the page can be customized by creating `offline.md` file in the root with `layout: offline`, similar to `404.md`.
+* The code font can now be customized in the config file via the `font_code` key.
+
+### Design
+* Many layouts (`projects`, `resume`, `home`) will now use more space on large screens (disable via `hydejack.no_third_column`)
+* Headings now appear "oversized" on larger screens and extend to the right end of the screen (disable via `hydejack.no_large_headings`)
+* The base font size is now smaller across screen sizes (can be configured in `_sass/_variables.scss`)
+* The content width is now larger across screen sizes (can be configured in `_sass/_variables.scss`)
+* The link style has been changed to make picking accent colors easier for dark mode. It's also possible to link images now without worrying about underlines.
+* The amount of whitespace has been reduced. Previously it had been increased but it felt too much.
+* Added a [`note` class](docs/writing.md#adding-notes) that succeeds the `message` for adding auxillary content. The `message` class still exists.
+* The navbar buttons made to look more like buttons
+* Dark mode colors have been toned down a bit
+* Improved dark mode text rendering on macOS
+* The permalink style has been changed to use "#" instead of an icon.
+* Definition list now have a double colon after the definition term.
+* Changed the style of footnote links on small screens to make them easier to click.
+
+### Fixes
+* Horizontal scrolling on a code block, math black, or table can no longer accidentally open the drawer.
+* The client-side scripts are now more robust to missing HTML elements. This should ease theme customization.
+* Setting `sitemap: false` will now also add a `noindex` meta tag to prevent accidental search engine indexation.
+* Fixed back button not showing when opening in standalone mode for the first time.
+* The menu icon is now hidden when the drawer is disabled.
+* Using `no_drawer: true` is now working properly on cover pages when `no_push_state: false` is set.
+* Reduced the amount of pixels cached by the `will-change` optimization and fixed the corresponding warning in Firefox.
+
+
+## v8.5.2
+August 31 2019
+{:.heading.post-date}
+
+* Fixed breaking builds due to name collision when upgrading to 8.5
+  This is caused when using both `_plugins/jekyll-replace-imgs` and the new `jekyll-replace-img` ruby gem.
+  I recommend deleting `_plugins/jekyll-replace-imgs` when using the `jekyll-replace-img` gem.
+  Note that this is an optional plugin.
+* Fixed `nomodule` script loading for Safari 10.1
+* Fixed [#176](https://github.com/hydecorp/hydejack/issues/176)
+
+## v8.5.1
+Aug 1 2019
+{:.heading.post-date}
+
+* Fixed minification bug
+
+## v8.5.0
+Aug 1 2019
+{:.heading.post-date}
+
+### Changed
+* [PRO] The theme now matches the operating system's dark mode.
+* Scrolling down on a page with an open drawer will now close the drawer
+* Reloading a cover page after the drawer has been closed will now open the page with the drawer closed
+* Removed JavaScript-based web font swapping in favor of using `font-display: swap`
+* Darkened font color in dark mode to reduce contrast
+* Updated KaTeX to the latest version
+* Increased the durations of various animations slightly
+* Now using [`jekyll-replace-img`](https://github.com/qwtel/jekyll-replace-img) instead of custom code in `_plugins` folder
+* Added a separate, smaller JavaScript bundle for modern browsers
+
+### Added
+* Added support for figure captions on code blocks
+* Added `keybase` to social media icons
+* [PRO] There's now a forward button when using the theme as a PWA
+
+### Fixed
+* Fixed print layout when dark mode is enabled
+* Using `CSSTransformValue` correctly
+* Fixed a minor style bug for dates
+* Fixed a bug where light mode would flash when loading a page in dark mode
+* Minimal support for IE11
+
+## v8.4.0
+Mar 9 2019
+{:.heading.post-date}
+
+* Added support for `noindex` property in the front matter
+* Fixed ordering of selected projects/post in welcome layout
 * Updated dependencies
+
+## v8.3.0
+Feb 18 2019
+{:.heading.post-date}
+
+This version adds new options to increase production build speed. Read [this post](hydejack/_posts/2019-02-18-improving-site-build-speed.md) for details.
+
+### Added
+* Added `no_page_style` config option to increase site build speed.
+* Added `menu` config option to increase site build speed.
+* Copying math will now add the LaTeX source to the clipboard.
+
+### Changed
+* Upgraded KaTeX to version 0.10.0.
+
+## v8.2.0
+Feb 1 2019
+{:.heading.post-date}
+
+* Added support for custom `related_posts` 
+* Removed footer from print layout
+* Increased photo size in print resume 
+* Improved `welcome` layout generation performance
+* Fixed a bug that prevented scrolling to headlines with non-ascii characters (Thanks [@ForelaxX](https://github.com/ForelaxX))
+
+
+## v8.1.1
+Sep 1 2018
+{:.heading.post-date}
+
+### Fixes
+* Fixed an issue that prevented the drawer from working on iOS 10.
+* Changing the page via push state will now also update the `link[rel=canonical]` tag.
+* Changing the page via push state will now also update the `meta[name=description]` tag.
+* Fixed an issue that prevented the JS from building on Netlify.
+
+## v8.1.0
+Aug 18 2018
+{:.heading.post-date}
+
+This release adds Dark Mode for Hydejack PRO customers.
+
+### Breaking
+* Removed cookie banner from free version
+* Removed offline support from free version
+
+In an attempt to make the PRO offering more appealing, I'm removing features that arguably should have never been included in the free version.
+As software licenses go, nobody is stopping you from using the old code, but updates will no longer be included.
+
+### Changed
+* The cookies banners is now showing at the bottom of the page and its background color is no longer transparent to increase visibility
+* Changed the default syntax theme from "GitHub" to "Atom One Light"
+* Adapted `figure` CSS class to accommodate different children, not just `img`s
+* `video` tags now have a `max-width` of 100%
+* Increased margin before headings to `5rem`, up from 4
+* Increased margin of `hr` elements.
+* Cookies banner can now be enabled without using Google Analytics
+* Clicking the cookie banner "Okay" button will now fire a `hy--cookies-ok` event on `document`, so that custom analytics solutions can plug in.
+* All Google Analytics code has been removed from Hydejack's core and moved to `_includes/body/analytics.js`.
+* All Disqus code has been removed from Hydejack's core and moved to `_includes/comments.html` and `_includes/my-comments.html`.
+* Using CSS Custom Properties instead of SASS variables for certain properties to enable style customization using only CSS.
+* Added shadow to sidebar
+* Navbar is longer positioned `fixed`
+
+### Added
+* [PRO] Added Dark Mode
+* `border` CSS class
+
+
+## v8.0.0
+Jul 16 2018
+{:.heading.post-date}
+
+So far Hydejack has been a decent Jekyll theme, but with v8 it really starts stand out among the competition: Beautiful and unique landing pages, lazy-loading images, and experimental offline support are just the most prominent new features.
+
+### Breaking
+* The expected format for sidebar images has changed.
+  A sidebar image should now be a full-screen ~16:10 image.
+
+  Comment: The sidebar can now be fully extended on desktop, which generally requires a large landscape image to fill the entire window.
+  To save bandwidth, you can blur the image on the left and right edges and save it as JPG.
+
+* The `about` and `welcome` layout no longer prepend the content with the author information.
+  Instead, the author info can be shown by adding the `<!--author-->` marker to the top of the file. You can also place it anywhere else.
+
+  Comment: Showing the author description on the top of the `welcome` and `about` layouts felt like an imposition and was a left-over from when I was developing Hydejack primarily for myself.
+
+* [PRO] The `welcome` layout no longer adds recent posts and projects to the bottom of the page. Instead, they have to be explicitly set using the `<!--posts-->` and `<!--projects-->` markers. The `content_separator` front matter opton is now ignored.
+
+  Comment: The old behavior felt arbitrary, and `<!--more-->` wasn't a good name to be replaced with recent projects ands posts.
+
+* Setting the accent color and sidebar image for an entire category/tag/author is no longer possible.
+  To achieve a similar effect, use [Front Matter defaults][ffd] instead.
+
+  E.g. to set the accent color and image for every post in the `hydejack` folder, use:
+
+  ~~~yml
+  defaults:
+    - scope:
+        path:         hydejack
+      values:
+        accent_color: rgb(38,139,210)
+        accent_image: /assets/img/hydejack-bg.jpg
+  ~~~
+
+  Comment: The code to find the color for a given page was complicated and slow (potentially iterating all categories/tags to find the right one).
+
+### Changed
+
+* The drawer now responds to mouse inputs.
+* The default heading font is now less bold. To restore the old behavior, edit (create if it's missing) `_sass/my-variables.scss` and add `$font-weight-heading: 700;`.
+* Hydejack now uses lazy-loading hy-img tags instead of regular `img` tags.
+  To revert to using regular images, set `hydejack.no_img` in the config file to `true`.
+* Cookie consent is now stored as a cookie (instead of `LocalStorage`) and expires after 1 year.
+* Scrolling to a fragment link is now smooth.
+* Font loading now works differently, and will be cancelled on slow connections.
+* The sidebar content is now centered.
+* The sidebar will now show the site's logo, which can be set in the config file under the `logo` key.
+* [PRO] Updated embedded Bootstrap to v4.
+* [PRO] Project cards now throw a shadow instead of having a border.
+
+### Added
+* Pages can now have the `cover` key in the front matter.
+  When set to `true`, the sidebar will be opened when visiting the page directly.
+  E.g. <https://hydejack.com/>{:.no-push-state}
+
+* Added a `_plugin` that automatically replaces `<img>` tags with lazy-loading `<hy-img>` tags. If you don't want images to load lazily, delete or rename the `_plugins` folder.
+  Note that this plugin will never run when building the site on GitHub Pages.
+
+  To get the most out of this plugin, it is recommended to provide the width and height of the image, e.g.
+
+  ~~~md
+  ![Some image](assets/img/some-img.png){:width="800" height="600"}
+  ~~~
+
+  This will cause hy-img to render a placeholder of 800 by 600 `px`, preventing the document height from changing after the image has finished loading.
+
+* Added experimental offline support via Service Workers. Use with care!
+  For details, [read the docs](docs/advanced.md#enabling-offline-support).
+
+* Added the `figure` CSS class, which allows images to have nicer-looking captions. E.g.
+
+  ~~~md
+  ![An image with a caption](https://placehold.it/800x50){:.lead}
+  A caption to an image.
+  {:.figure}
+  ~~~
+
+* Clicking on a footnote will give its corresponding text a subtle highlight.
+
+* [PRO] Projects can now have an optional `end_date` field in the front matter.
+  The `date` is treated as the start date in this case.
+
+### Fixes
+* The back button now works in combination with fragment links.
+
+[ffd]: https://jekyllrb.com/docs/configuration/#front-matter-defaults
 
 ## v7.5.1
 Apr 2 2018
@@ -28,7 +330,7 @@ Dec 18 2017
 * Added secondary `legal` nav in footer:
 
   ```yml
-  # file: _config.yml
+  # file: `_config.yml`
   legal:
     - title: Cookies Policy
       href:  /cookies-policy/
@@ -39,7 +341,7 @@ Dec 18 2017
 * The "heading permalink" can now be configured via `strings.yml`:
 
   ```yml
-  # file: _data/strings.yml
+  # file: `_data/strings.yml`
   permalink:      Permalink
   permalink_icon: icon-link
   ```
@@ -47,7 +349,7 @@ Dec 18 2017
 * Sections on resume layout can now be rearranged, e.g.:
 
   ```yml
-  # file: resume.md
+  # file: `resume.md`
   left_column:
     - work
     - volunteer
@@ -63,11 +365,11 @@ Dec 18 2017
 
 
 ### Fixed
-* Fixed a bug that caused `<sup>` tags to render as regular text ([#52](https://github.com/qwtel/hydejack/pull/52))
-* Fixed a bug that caused Disqus to load the same thread on all pages ([#53](https://github.com/qwtel/hydejack/pull/52))
+* Fixed a bug that caused `<sup>` tags to render as regular text ([#52](https://github.com/hydecorp/hydejack/pull/52))
+* Fixed a bug that caused Disqus to load the same thread on all pages ([#53](https://github.com/hydecorp/hydejack/pull/52))
 * Fixed a bug that prevented Disqus comments to be loaded on sites that didn't cause scroll events
 * Fixed a bug that caused Disqus to be loaded over HTTP instead of HTTPS.
-* Fixed a bug that caused an extra space in URLs ([#55](https://github.com/qwtel/hydejack/pull/55)).
+* Fixed a bug that caused an extra space in URLs ([#55](https://github.com/hydecorp/hydejack/pull/55)).
 * Comments no longer show up in the print version of the page.
 
 ### Other
@@ -111,7 +413,7 @@ Nov 25 2017
 * Added `cookies_banner` setting:
 
   ~~~yml
-  # file: _config.yml
+  # file: `_config.yml`
   hydejack:
     cookies_banner: true
   ~~~
@@ -121,7 +423,7 @@ Nov 25 2017
   with the `cookies_banner.text` and `cookies_banner.okay` keys:
 
   ~~~yml
-  # file: _data/strings.yml
+  # file: `_data/strings.yml`
   cookies_banner:
     text: This site uses cookies.
     okay: Okay
@@ -199,7 +501,7 @@ Nov 2 2017
 * Upgraded `jekyll-relative-links` to v5.0.1
 
 ### Fixes
-* `font` and `font_heading` are now properly set when using the `no_inline_css` option [#47](https://github.com/qwtel/hydejack/issues/47).
+* `font` and `font_heading` are now properly set when using the `no_inline_css` option [#47](https://github.com/hydecorp/hydejack/issues/47).
 * Fixed default values for `image` and `logo` that were referring to non-existing images.
 * Added missing JS dev dependencies.
 
@@ -212,14 +514,14 @@ Oct 27 2017
 {:.heading.post-date}
 
 ### Fixes
-* Removed readme files from `assets` that would show up as pages when building on GitHub Pages [#42](https://github.com/qwtel/hydejack/issues/42).
+* Removed readme files from `assets` that would show up as pages when building on GitHub Pages [#42](https://github.com/hydecorp/hydejack/issues/42).
 * Disabled push state on Firefox for iOS
 * Changed some default settings in `_config.yml`
 
 ### Content
 * Updated documentation
 
-## Removed
+### Removed
 * Removed outdated example script in `my-scripts.html`
 
 ## v7.0.0
@@ -229,8 +531,8 @@ Oct 24 2017
 ### License Change
 The *free version* of Hydejack is now [GPL-3.0] licensed, which is a more restrictive license than MIT (but still *Open Source*).
 This was necessary because the two major components that make up Hydejack,
-[hy-push-state](https://qwtel.com/hy-push-state/){:.external} and
-[hy-drawer](https://qwtel.com/hy-drawer/){:.external},
+[hy-push-state](https://hydecorp.github.io/hy-push-state/){:.external} and
+[hy-drawer](https://hydecorp.github.io/hy-drawer/){:.external},
 are now GPL licensed in turn.
 
 How will this affect you?
@@ -265,7 +567,7 @@ That being said, you should be aware of these (small) breaking changes:
 * Event names described in the scripting chapter have changed from `y-push-state-*` to `hy-push-state-*`,
   except `y-push-state-animationend`, which has been removed. See the [docs][pstate] for more.
 
-[pstate]: docs/7.5.2/scripts.md#registering-push-state-event-listeners
+[pstate]: docs/scripts.md#registering-push-state-event-listeners
 
 ### Changes
 * `image` has been renamed to `accent_image`, but `image` continues to work unless you add the `jekyll-seo-tag` plugin.
@@ -464,7 +766,7 @@ That being said, you should be aware of these (small) breaking changes:
 * Reduced building time during development.
   Roughly 50% of the time was spent rebuilding the inline CSS, which is now built once and included via `link` tag.
   Production builds still inlines CSS, so the building speed remains unchanged.
-  For more on how to improve building speeds, [see here](docs/7.5.2/writing.md#a-word-on-building-speeds).
+  For more on how to improve building speeds, [see here](docs/writing.md#a-word-on-building-speeds).
 
 ### Design
 * The default background image is no longer anti-selling the theme...
@@ -580,9 +882,9 @@ This maintenance release includes various quality-of-life improvements when usin
   ~~~yml
   author:
     social:
-      github: https://github.com/qwtel/hydejack
+      github: https://github.com/hydecorp/hydejack
       npm: https://www.npmjs.com/package/hydejack
-      download: https://github.com/qwtel/hydejack/archive/v6.5.0.zip
+      download: https://github.com/hydecorp/hydejack/archive/v6.5.0.zip
 
   data_social:
     github:
@@ -902,9 +1204,9 @@ Oct 15 2013
 {:.heading.post-date}
 
 [tag]: http://www.minddust.com/post/tags-and-categories-on-github-pages/
-[migration]: docs/7.5.2/migration.md
-[writing]: docs/7.5.2/writing.md
-[scripts]: docs/7.5.2/scripts.md
+[migration]: docs/upgrade.md
+[writing]: docs/writing.md
+[scripts]: docs/scripts.md
 
 [buy]: https://app.simplegoods.co/i/AQTTVBOE
 [PRO-license]: licenses/PRO.md

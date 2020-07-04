@@ -11,7 +11,7 @@ author1:
     Lorem ipsum dolor sit amet, consectetur adipiscing elit,
     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
+    
     Open `_data/authors.yml` to edit this text.
 
   # This photo will be used in the about section
@@ -28,7 +28,7 @@ author1:
   social:
     twitter:         <username>
     github:          <username>
-    # email:           mailto:<mail@domain.tld>
+    # email:           <mail@domain.tld>
     # rss:             https://<url>/feed.xml
     # facebook:        <username>
     # google:          <number>
@@ -63,7 +63,8 @@ author1:
     # delicious:       <username>
     # stumbleupon:     <username>
     # paypal:          <username>
-    # download:        https://github.com/qwtel/hydejack-starter-kit/archive/v7.5.0.zip
+    # download:        <url>
+    # keybase          <username>
 
 # Another author (optional)
 author2:
@@ -75,10 +76,7 @@ author2:
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
     Open `_data/authors.yml` to edit this text.
+
   picture:           https://placehold.it/128x128
   twitter:           <username>
   github:            <username>
-  accent_color:      '#268bd2'
-  accent_image:
-    background:      '#202020'
-    overlay:         false
