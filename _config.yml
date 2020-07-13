@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Dang Hyeona"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/profile.JPG"
   bio              : "매일 꾸준히, 열심히"
   location         : "South Korea, Gimhea"
   email            :
