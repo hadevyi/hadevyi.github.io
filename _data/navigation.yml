@@ -2,7 +2,7 @@
 main:
   - title: "About Me"
   #  url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  - title: "Categori"
+  - title: "Category"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   #- title: "Sample Posts"
   #   url: /year-archive/
