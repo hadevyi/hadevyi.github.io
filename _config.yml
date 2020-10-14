@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "default", "air", "aqua", "contrast", "da
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "Devlopment Blog"
+title                    : "정리가 재밌는 개발자 Blog"
 title_separator          : "-"
 subtitle                 : "version 0.0" # site tagline that appears below site title in masthead
 name                     : "당현아(Dang Hyeona)"
