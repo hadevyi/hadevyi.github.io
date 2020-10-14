@@ -97,11 +97,11 @@ author:
   avatar           : "image/profile/2020me.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "기록이 자산!! <br>매일 공부하도록 노력하고 있습니다."
   location         : "Republic of Korea"
-  email            : "eona1301@gmail.com"
+  email            : #"eona1301@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      #url: mailto:eona1301@email.com
+      url: mailto:eona1301@email.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
