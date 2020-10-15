@@ -118,6 +118,7 @@ author:
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
 
+
 # Site Footer
 footer:
   links:
@@ -142,6 +143,7 @@ footer:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/danghyeona/"
+
 
 
 # Reading Files
