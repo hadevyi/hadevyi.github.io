@@ -144,6 +144,24 @@ footer:
 <br>
 <br>
 
+# 첫 화면 게시물 개수
+
+- 수정 파일 : github.io 폴더 > _config.yml
+<br>
+<br>
+
+```yml
+# Outputting
+permalink: /:categories/:title/
+paginate: 15                                    # Defaults : 5
+paginate_path: /page:num/
+timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+```
+코드 상 두번째 줄에 위치한 값 painate의 속성이 보여질 개수입니다.<br>
+이걸 원하는 개수대로 고쳐주시면 되겠습니다.<br>
+<br>
+
+
 # Defaults 설정
 
 - 수정 파일 : github.io 폴더 > _config.yml
