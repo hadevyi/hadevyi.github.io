@@ -3,8 +3,8 @@ title: "[Error] Gitbush - LF will be replaced by CRLF in ..."
 categories:
   - Error
 tags:
-  - Gitbash
-  - Error
+  - gitbash
+  - error
 ---
 
 📌<br>
