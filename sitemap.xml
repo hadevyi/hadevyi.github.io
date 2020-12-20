@@ -1,72 +1,32 @@
+---
+layout: null
+---
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
+        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for post in site.posts %}
+    <url>
+        <loc>{{ site.url }}{{ post.url }}.html</loc>
+        {% if post.lastmod == null %}
+        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+        {% else %}
+        <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
+        {% endif %}
 
+        {% if post.sitemap.changefreq == null %}
+        <changefreq>weekly</changefreq>
+        {% else %}
+        <changefreq>{{ post.sitemap.changefreq }}</changefreq>
+        {% endif %}
 
-<url>
-  <loc>https://eona1301.github.io/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/about/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/categories/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/tags/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-Comment/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-Posting/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-Favicon/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-Content-Width/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-Category/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-config/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/github_blog/GithubBlog-Start/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://eona1301.github.io/error/GitBash-LF-whill-be-replaced/</loc>
-  <lastmod>2020-12-17T14:05:20+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+        {% if post.sitemap.priority == null %}
+        <priority>0.5</priority>
+        {% else %}
+        <priority>{{ post.sitemap.priority }}</priority>
+        {% endif %}
 
-
+    </url>
+    {% endfor %}
 </urlset>
