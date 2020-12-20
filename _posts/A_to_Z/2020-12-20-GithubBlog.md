@@ -698,6 +698,35 @@ defaults:
 또, git push를 해주셔도 반영되는데에 딜레이가 걸리기 때문에 코드 수정 후 5~10분 정도 기다려주세요.<br>
 <br>
 <br>
+<br>
+
+# [08] 방문자 통계 보기
+
+[Google Analytics](https://analytics.google.com/analytics/web/) 에 접속하시면 무료로 시작할 수 있습니다. 또 본인의 Github Blog를 등록하신 후 tracking_id를 찾아주세요.
+
+- 수정 파일 : github.io 폴더 > _config.yml
+<br>
+
+```yml
+# Analytics
+analytics:
+  provider               : "google-gtag" 
+                          # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-5HQPK7RHNC"
+    anonymize_ip         : # true, false (default)
+```
+이를 git push해주세요. 댓글 기능보다는 더 빠르게 바로 반영됩니다.<br><br>
+
+![04](https://user-images.githubusercontent.com/45550607/102707509-f7a6aa80-42de-11eb-9fd5-691b59ff143b.PNG){: .align-center}
+<br>
+
+이제 Google Analytics에서 방문자 수가 카운딩됩니다.<br>
+tracking_id를 연결한 후부터 카운딩하기 때문에, 첫 화면은 다를 수 있다는 점 유의해주세요.<br>
+<br>
+<br>
+<br>
+
 
 🔔 **포스팅 공지** <br><br>
 현재 작성한 포스팅은 **깃 블로그 지킬 minimal mistakes**과 관련된 종합 내용입니다.<br>
