@@ -4,8 +4,9 @@ categories:
   - Github_Blog
 tags:
   - minimal mistakes
-  - jkeyll
+  - jekyll
   - blog
+  - google analytics
 toc: true
 toc_sticky: true
 toc_label: "ANALYTICS"

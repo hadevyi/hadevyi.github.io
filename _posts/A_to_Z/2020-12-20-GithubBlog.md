@@ -4,9 +4,11 @@ categories:
   - A_to_Z
 tags:
   - minimal mistakes
-  - jkeyll
+  - jekyll
   - blog
   - favicon
+  - disqus
+  - google analytics
 toc: true
 toc_sticky: true
 toc_label: "GITHUB BLOG JEKYLL"
@@ -25,7 +27,8 @@ toc_label: "GITHUB BLOG JEKYLL"
 4. [본문 영역 조절](https://eona1301.github.io/github_blog/GithubBlog-Content-Width/) : 본문 영역 넓히기, 사이드바 좁히기, 글자 조정하기, 하이퍼링크 밑줄 제거하기
 5. [파비콘 세팅](https://eona1301.github.io/github_blog/GithubBlog-Favicon/) : 웹사이트 아이콘 선택, icon만들기, 깃헙 블로그 적용하기(custom.html 수정하기)
 6. [블로그 포스팅해보기](https://eona1301.github.io/github_blog/GithubBlog-Posting/) : minimal-mistakes 포스팅 양식 확인하기, 자주 사용하는 포스터 내용 문법 확인하기
-7. []() : 
+7. [댓글 기능 추가하기](https://eona1301.github.io/github_blog/GithubBlog-Comment/) : DISQUS 가입하기, Shortname 찾기, _config 반영하기, 시범 댓글 확인
+8. [방문자 통계하기](https://eona1301.github.io/github_blog/GithubBlog-Analytics/) : Google Analytics 가입하기, tranking ID 찾기, _config 반영하기, 결과 확인하기
 <br>
 
 # [01] 기본 세팅

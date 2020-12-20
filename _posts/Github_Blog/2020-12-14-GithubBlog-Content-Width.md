@@ -4,7 +4,7 @@ categories:
   - Github_Blog
 tags:
   - minimal mistakes
-  - jkeyll
+  - jekyll
   - blog
 toc: true
 toc_sticky: true

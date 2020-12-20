@@ -4,8 +4,9 @@ categories:
   - Github_Blog
 tags:
   - minimal mistakes
-  - jkeyll
+  - jekyll
   - blog
+  - disqus
 toc: true
 toc_sticky: true
 toc_label: "COMMENT"
