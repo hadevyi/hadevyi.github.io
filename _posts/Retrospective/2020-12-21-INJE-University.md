@@ -2,6 +2,8 @@
 title: "2020 컴퓨터공학부 16학번 졸업 회고록"
 categories:
   - Retrospective
+tags:
+  - retrospective
 toc: true
 toc_sticky: true
 toc_label: "GRADUATING IN '16"
