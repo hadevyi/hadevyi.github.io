@@ -9,6 +9,7 @@ tags:
 toc: true
 toc_sticky: true
 toc_label: "2019 ETRI INTERN"
+toc_icon: "building"
 ---
 
 💡 **2019년 한국전자통신연구소(ETRI) 하계 인턴 후기**입니다.<br>

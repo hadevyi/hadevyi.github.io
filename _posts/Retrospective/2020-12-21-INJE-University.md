@@ -7,6 +7,7 @@ tags:
 toc: true
 toc_sticky: true
 toc_label: "GRADUATING IN '16"
+toc_icon: "university"
 ---
 
 💡 **졸업생의 학부생활 회고록**입니다.<br>

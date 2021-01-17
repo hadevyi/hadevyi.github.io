@@ -12,6 +12,7 @@ tags:
 toc: true
 toc_sticky: true
 toc_label: "GITHUB BLOG JEKYLL"
+toc_icon: "bookmark"
 ---
 
 💡 **A to Z**는 개별적으로 작성한 게시글을 한 번에 볼 수 있게 정리하였습니다.<br>
