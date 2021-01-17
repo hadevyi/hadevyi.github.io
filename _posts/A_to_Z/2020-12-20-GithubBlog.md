@@ -706,7 +706,8 @@ defaults:
 
 # [08] 방문자 통계 보기
 
-[Google Analytics](https://analytics.google.com/analytics/web/) 에 접속하시면 무료로 시작할 수 있습니다. 또 본인의 Github Blog를 등록하신 후 tracking_id를 찾아주세요.
+[Google Analytics](https://analytics.google.com/analytics/web/) 에 접속하시면 무료로 시작할 수 있습니다. <br>
+또 본인의 Github Blog를 등록하신 후 tracking_id를 찾아주세요.<br>
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
