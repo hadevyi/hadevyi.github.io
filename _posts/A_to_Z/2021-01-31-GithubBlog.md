@@ -30,6 +30,7 @@ toc_icon: "bookmark"
 6. [블로그 포스팅해보기](https://eona1301.github.io/github_blog/GithubBlog-Posting/) : minimal-mistakes 포스팅 양식 확인하기, 자주 사용하는 포스터 내용 문법 확인하기
 7. [댓글 기능 추가하기](https://eona1301.github.io/github_blog/GithubBlog-Comment/) : DISQUS 가입하기, Shortname 찾기, _config 반영하기, 시범 댓글 확인
 8. [방문자 통계하기](https://eona1301.github.io/github_blog/GithubBlog-Analytics/) : Google Analytics 가입하기, tranking ID 찾기, _config 반영하기, 결과 확인하기
+9. [Google 검색 노출하기](https://eona1301.github.io/github_blog/GithubBlog-Search/) : Google Search Console, sitemap, robots, 적용하기
 <br>
 
 # [01] 기본 세팅
@@ -444,7 +445,7 @@ base 파일의 중반부(127번줄)에 있습니다.<br>
 <br>
 <br>
 
-# [05] 파비콘(웹 아이콘) 설정하기
+# [05] 파비콘(웹 아이콘) 설정
 
 [realfavicongenerator](https://realfavicongenerator.net/)에 접속해서 원하는 사진을 넣어주세요.
 
@@ -730,6 +731,112 @@ analytics:
 tracking_id를 연결한 후부터 카운딩하기 때문에, 첫 화면은 다를 수 있다는 점 유의해주세요.<br>
 <br>
 <br>
+<br>
+
+# [09] 구글 검색 노출시키기
+
+[Google search Console](https://search.google.com/search-console/about)은 말그대로 google에서 검색을 하였을 때,<br>
+나의 사이트가 보여질 수 있도록 등록하는 Google의 서비스입니다. 당연히 Google 계정이 필요하겠죠?<br>
+
+![image](https://user-images.githubusercontent.com/45550607/106382936-319ebc80-6406-11eb-962e-cb3b7f110da5.png){: .align-center}
+
+이전의 댓글 기능처럼 코드 상으로 추가하실 건 없습니다!<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/45550607/106383074-09fc2400-6407-11eb-8b2e-7be1507bef2f.png){: .align-center}
+
+유효한 URL인지 확인이 되면 소유권을 확인하기 위해서 다음과 같은 화면이 뜹니다.<br>
+
+- **HTML 파일 : 웹사이트에 HTML 파일 업로드 (권장)**
+- HTML 태그 : 사이트 홈페이지에 메타태그 추가
+- Google 애널리틱스 : Google 애널리틱스 계정 사용
+- Google 태그 관리자 : Google 태그 관리자 계정 사용
+- 도메일 이름 공급업체 ; DNS 레코드와 Google 연결
+
+이렇게 엄청나게 다양한 방법이 존재하지만, 전 HTML 파일을 진행할 예정입니다.<br>
+우선 현재 HTML 파일을 다운받아줍시다.<br>
+<br>
+<br>
+
+## HTML 파일 세팅
+
+![image](https://user-images.githubusercontent.com/45550607/106383234-25b3fa00-6408-11eb-948a-6fad99018610.png){: .align-center}
+
+<br>
+이렇게 다운받은 HTML 파일은 `_config.xml`과 동일한 위치(Root 위치)에 넣어주시면 됩니다.<br>
+commit을 하기 전에 `http://127.0.0.1:4000/google_HTML_파일명.HTML` 으로 Local Test를 해주세요.<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/45550607/106383381-e508b080-6408-11eb-905a-640a1e56f819.png){: .align-center}
+
+이렇게 파일의 명과 함께 정상적으로 보여진다면, 정확하게 등록을 하신겁니다.<br>
+아직 이는 현재의 사이트가 내 소유이다를 알려주는 것뿐, 검색의 url 정보를 크롤링은 할 수가 없습니다.<br>
+따라서 이러한 작업을 할 수 있도록, 추가적인 내용을 추가해줍시다!<br>
+<br>
+
+## sitemap.xml 만들기
+
+![image](https://user-images.githubusercontent.com/45550607/106384331-9d385800-640d-11eb-9285-d3fcdf4533e9.png)(▲ sitemap.xml 코드){: .text-center}
+
+현재 보이시는 sitemap.xml의 코드를 google HTML 파일과 동일한 위치(Root 위치)에 만들어주시면 됩니다.<br>
+아직 markdown이 익숙하지 않은지 코드 박스가 코드가 아닌 크롤링 결과가 보여져서<br>
+추후 이미지를 코드 박스로 변경하겠습니다!<br>
+<br>
+우선은 코드가 필요하신 분을 [제 Github의 Sitemap.xml](https://github.com/eona1301/eona1301.github.io/blob/master/sitemap.xml)을 방문해주시면 보실 수 있습니다.<br>
+최대한 빠른 시일내의 수정해보겠습니다!<br>
+<br>
+<br>
+현재의 sitemap.xml을 이용해 Google 크롤러가 주기적으로 저의 url을 체크할 수 있게 되었습니다.<br>
+<br>
+
+![image](https://user-images.githubusercontent.com/45550607/106384507-9b22c900-640e-11eb-8a57-68bd4e6ac560.png){: .align-center}
+
+실제로 [http://127.0.0.1:4000/sitemap.xml](http://127.0.0.1:4000/sitemap.xml)로 접속하셔서 위와 같은 결과가 잘 보여지는지 확인해주세요. <br>
+<br>
+<br>
+
+
+## robots.txt 만들기
+
+```
+User-agent: *
+Allow: /
+
+Sitemap: https://eona1301.github.io/sitemap.xml
+```
+
+이제 접근하는 크롤러는 robots.txt를 보고 접근하고자 하는 sitemap의 위치를 확인하고,<br>
+제한을 확인하여 본래의 웹사이트로 가져가게 됩니다.<br>
+Allow에 본인이 원하시는 정보만 입력하거나 제한을 두고싶으신 내용을 입력하시면 크롤러가 확인해서 진행해줍니다.<br>
+<br>
+<br>
+
+
+## 최종 Sitemap.xml 등록
+
+![image](https://user-images.githubusercontent.com/45550607/106384572-e210be80-640e-11eb-9461-f784198136a3.png){: .align-center}
+
+google search console에서 sitemaps 페이지에서 본인의 sitemap.xml을 등록해줍니다.<br>
+처음 등록할 때는 바로 성공이라고 뜨지않고, 알수없음/실패 등의 다양한 내용으로 보여지게 됩니다.<br>
+코드에 문제가 있는게 아니니 걱정마시고! 이제 기다림의 미학입니다! 😪<br>
+<br>
+<br>
+
+## 등록 결과 확인
+
+![image](https://user-images.githubusercontent.com/45550607/106384617-27cd8700-640f-11eb-8b24-49124ff2c65d.png){: .align-center}
+
+2020년 12월 2n쯤 등록해서, 2021년 1월 2n쯤 노출이 되기 시작했습니다.<br>
+빠르신 분들은 3~5일로도 나온다고 하는데, 전 자그마치 1달이 걸렸네요 ㅠㅠ <br>
+초반에 sitemap의 코드가 잘못되었기도 하고, 가장 오래걸린 내용이였습니다.<br>
+이제 노출이 되기 시작했으니 더욱 열심히 해보겠습니다! ㅎㅎ<br>
+<br>
+<br>
+
+드디어 기나긴 세팅과 준비가 끝났습니다.<br>
+이렇게 첫 A to Z 시리즈의 블로그 세팅글을 마치도록 하겠습니다.<br>
+모두 따라오시느라 수고많으셨습니다!<br>
+궁금하신 사항은 댓글 부탁드려요 :) <br>
 <br>
 
 
