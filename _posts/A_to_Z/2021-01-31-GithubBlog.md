@@ -23,7 +23,7 @@ toc_icon: "bookmark"
 # [00] Github Blog A to Z
 
 1. [기본 세팅](https://eona1301.github.io/github_blog/GithubBlog-Start/) : Ruby, Jekyll, minimal-mistakes 테마 적용, github repo 생성, 로컬 서버로 블로그 실행
-2. [기본 데이터 입력](https://eona1301.github.io/github_blog/GithubBlog-config/) : 블로그 기본 정보(_config.yml), 좌측/하단 프로필, 출력 게시물 개수 조정, Default post/page 설정
+2. [기본 데이터 입력](https://eona1301.github.io/github_blog/GithubBlog-config/) : 블로그 기본 정보(_config.yml), 프로필 설정, 출력 게시물 개수 조정, Default post/page 설정
 3. [카테고리 설정](https://eona1301.github.io/github_blog/GithubBlog-Category/) : 카테고리(navigation.yml) 수정, 원하는 페이지 양식 찾는 방법, toc 여부, 고정방법, 이름 변경
 4. [본문 영역 조절](https://eona1301.github.io/github_blog/GithubBlog-Content-Width/) : 본문 영역 넓히기, 사이드바 좁히기, 글자 조정하기, 하이퍼링크 밑줄 제거하기
 5. [파비콘 세팅](https://eona1301.github.io/github_blog/GithubBlog-Favicon/) : 웹사이트 아이콘 선택, icon만들기, 깃헙 블로그 적용하기(custom.html 수정하기)
@@ -132,25 +132,8 @@ bundle exec jekyll serve
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
 
-```yml
-minimal_mistakes_skin    : "default"  # 전체적인 블로그의 색감을 정하는 값입니다.
-                           # "default" "air", "aqua", "contrast", "dark"
-                           # "dirt", "neon", "mint", "plum", "sunrise"
+<script src="https://gist.github.com/eona1301/29e2f42d13e94559e5a0d63c51b8fce5.js"></script>
 
-# Site Settings
-locale                   : "ko-KR"    # 블로그의 주요 언어입니다. 한국어로 보려고 ko-KR로 설정했습니다.
-title                    : "정리가 재밌는 개발자 Blog"  # 사이트 탭에서 보이는 이름입니다.
-title_separator          : "-"
-subtitle                 : "version 1.0"              # 화면 title 하단에 있는 소제목입니다.
-name                     : "당현아(Dang Hyeona)"      # 화면 하단 영역의 이름입니다.
-description              : "매일 반복하는 공부 습관"   # 설명란입니다. (어디 적용되는지 모르겠네요...) 
-url                      : "https://eona1301.github.io" # 현재의 블로그 url 입니다.
-baseurl                  : # 폴백(예기치 못한 오류)일 때 연결되는 url입니다.
-repository               : "https://github.com/eona1301/eona1301.github.io" # Github Repo url입니다.
-teaser                   : # 폴백일 때 보일 이미지입니다. "assets/images/"로 연결됩니다.
-logo                     : # 화면에 보여지는 logo 이미지입니다. "assets/images"로 세팅합니다.
-masthead_title           : "정리가 재밌는 개발자"     # 화면 title 입니다.
-```
 <br>
 블로그 전반의 기본 사항들입니다. 순서와는 무관하게 설명을 잘 참고해주세요!<br>
 모두 다 수정하실 필요는 없습니다. 상세한 내용은 위의 코드를 확인해주세요.<br>
@@ -165,30 +148,8 @@ masthead_title           : "정리가 재밌는 개발자"     # 화면 title �
 <br>
 <br>
 
-```yml
-# Site Author
-author:
-  name             : "Dang Hyeona"                  # 이름 영역입니다.
-  avatar           : "image/profile/2020me.jpg"     # 프로필 사진 경로입니다.
-  bio              : "**기록이 자산!!**<br>매일 공부하고 있습니다.<br>소통을 좋아합니다."
-                     # biography의 약칭으로, 자기소개를 적으시면 됩니다.
-                     # 줄바꿈은 <br>로 굵은 글씨는 **글씨** 로 표기해주세요. 
-  location         : "Republic of Korea"            # 지역 입니다. 
-  email            : # 이메일 주소입니다. (links에서 작성할 수 있기 때문에 생략하였습니다.)
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:eona1301@email.com
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/eona1301"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/eona1301"
-    - label: "Instagram"                            # 표시되는 이름입니다.
-      icon: "fab fa-fw fa-instagram"                # fab fa-fw fa-{SNS NAME} 으로 해주세요.
-      url: "https://www.instagram.com/danghyeona/"  # 개인 SNS 계정 링크를 기재하면 됩니다.
-```
+<script src="https://gist.github.com/eona1301/2164e69b3615da9804e51f5e3c3b3146.js"></script>
+
 <br>
 블로그 좌측에서 보여지는 프로필의 영역입니다.<br>
 바로 보여지다보니, 아무래도 많은 분들이 제일 먼저 신경쓰는 영역이 될 것 같습니다.<br>
@@ -202,34 +163,9 @@ author:
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
-<br>
 
-```yml
-# Site Footer
-footer:
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:eona1301@email.com
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:                                        # 이런식으로 url을 주석처리하면 노출되지 않습니다.
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/eona1301"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/eona1301"
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/danghyeona/"
-```
+<script src="https://gist.github.com/eona1301/2853e7022b37493053f98037ebae7505.js"></script>
+
 <br>
 프로필의 맨 하단에 있는 footer의 기재사항입니다.<br>
 좌측 프로필 영역과 동일한 데이터라 Ctrl C + Ctrl V만 하면 금방 만들어지는 영역입니다.<br>
@@ -241,46 +177,18 @@ footer:
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
-<br>
 
-```yml
-# Outputting
-permalink: /:categories/:title/
-paginate: 15                                    # Defaults : 5
-paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-```
+<script src="https://gist.github.com/eona1301/d189862ece5d5f954360c63a99e4469b.js"></script>
+
 코드 상 두번째 줄에 위치한 값 painate의 속성이 보여질 개수입니다.<br>
 이걸 원하는 개수대로 고쳐주시면 되겠습니다.<br>
 <br>
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
-<br>
 
-```yml
-# Defaults
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: # true
-      share: true
-      related: true
-  
-  # _pages                      : 해당 하단 영역이 새로 추가되었습니다.
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-```
+<script src="https://gist.github.com/eona1301/ce49543bed1499284c74e6457c813a66.js"></script>
+
 <br>
 앞서 참고하고자 하였던, Docs 폴더의 _config.yml를 모방했습니다!<br>
 포스터 글을 업데이트하는데, 폴더화를 시켜서 파일 정리하는게 좋을 것같아 확인했습니다.<br>
@@ -293,18 +201,8 @@ defaults:
 - 수정 파일 : github.io 폴더 > _data 폴더 > navigation.yml
 <br>
 
-```yml
-# main links
-main:
-  #- title: "Home"
-  #  url: "/"
-  - title: "Introduce"
-    url: /about/
-  - title: "Category"
-    url: "/categories/"
-  - title: "Tags"
-    url: /tags/
-```
+<script src="https://gist.github.com/eona1301/760067e1c637892536fa9512fb11bbee.js"></script>
+
 title은 화면에 보여지는 영역입니다. 여기에 기재하는 텍스트값대로 보여집니다.<br>
 url은 _pages내에 정해져있는 양식 혹은 특정 링크로 연결해줍니다.<br>
 <br>
@@ -320,19 +218,7 @@ minimal mistakes의 대다수는 `/page name/` 으로 해소됩니다.<br>
 - 수정 파일 : github.io 폴더 > _pages 폴더 > 원하는 md 파일 (해당 예시는 about.md 입니다.)
 <br>
 
-```md
----
-permalink: /about/
-title: "About"
-toc: true
-toc_sticky: true
-toc_label: "MYSELF"
----
-
-![icon](/assets/logo.ico/apple-icon-120x120.png)
-
-원하는 자기소개 상세 내용
-```
+<script src="https://gist.github.com/eona1301/99003302c105278c33a0f30fabe8712d.js"></script>
 
 ### permalink 찾기
 
@@ -363,15 +249,8 @@ toc는 Table of Contents의 약칭으로 모든 포스터의 우측에 적힐 �
 
 - 수정 파일 : github.io 폴더 > _sass 폴더 > _minimal-mistakes 폴더 > _variables.scss
 
-```scss
-/*
-   Grid
-   ========================================================================== */
+<script src="https://gist.github.com/eona1301/493a1a671316ae45c6ddc5831f802388.js"></script>
 
-$right-sidebar-width-narrow: 100px !default;    // default 200px
-$right-sidebar-width: 200px !default;           // default 300px
-$right-sidebar-width-wide: 250px !default;      // default 400px
-```
 현재의 코드는 _variables.scss 중에서도 거의 최하단에 있습니다.<br>
 찾으실 때 무수한 코드를 다 내리지마시고, 제일 아래의 스크롤로 내리세요.<br>
 본문에 너비를 직접적으로 넓히는게 아니라, 양쪽에 sidebar를 조절하는 방식입니다.<br>
@@ -387,29 +266,8 @@ $right-sidebar-width-wide: 250px !default;      // default 400px
 - 수정 파일 : github.io 폴더 > _sass 폴더 > _minimal-mistakes 폴더 > _reset.scss
 <br>
 
-```scss
-html {
-  /* apply a natural box layout model to all elements */
-  box-sizing: border-box;
-  background-color: $background-color;
-  font-size: 16px;                    // Default 16px;
+<script src="https://gist.github.com/eona1301/891391423d765b7169ba87b15fbfd298.js"></script>
 
-  @include breakpoint($medium) {
-    font-size: 16px;                  // Default 18px;
-  }
-
-  @include breakpoint($large) {
-    font-size: 16px;                  // Default 20px;
-  }
-
-  @include breakpoint($x-large) {
-    font-size: 16px;                  // Default 22px;
-  }
-
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-```
 원 코드의 상단부(7번줄)에 있는 코드이기에 금방 찾으실 수 있으실 껍니다.<br>
 전체적인 폰트의 기준은 없습니다!<br>
 로컬 서버에서 직접 등록해보시면서, 원하시는 크키로 조정하시면 됩니다.<br>
@@ -421,24 +279,8 @@ html {
 - 수정 파일 : github.io 폴더 > _sass 폴더 > _minimal-mistakes 폴더 > _base.scss
 <br>
 
-```scss
-a {
-  text-decoration: none;                // 추가된 코드입니다.
+<script src="https://gist.github.com/eona1301/e7b36fcee4cfea32a7f3413b3cebef4f.js"></script>
 
-  &:focus {
-    @extend %tab-focus;
-  }
-
-  &:visited {
-    color: $link-color-visited;
-  }
-
-  &:hover {
-    color: $link-color-hover;
-    outline: 0;
-  }
-}
-```
 base 파일의 중반부(127번줄)에 있습니다.<br>
 찾기 힘드실 때는 Ctrl + F를 통해 `a{` 를 검색하셔서 확인해보세요! <br>
 이후 하이퍼링크 처리와 관련된 decoration을 해지해야하니 이를 전체에 적용될 수 있도록 추가해주시면 되겠습니다!<br>
@@ -458,19 +300,8 @@ base 파일의 중반부(127번줄)에 있습니다.<br>
 
 - 수정 파일 : github.io 폴더 > _includes 폴더 > _head 폴더 > custom.html
 
-```html
-<!-- start custom head snippets -->
+<script src="https://gist.github.com/eona1301/1503f596d7330d3d4600fcb1df8bde16.js"></script>
 
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-<link rel="apple-touch-icon" sizes="180x180" href="{{site.baseurl}}/assets/logo.ico/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="{{site.baseurl}}/assets/logo.ico/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/logo.ico/favicon-16x16.png">
-<link rel="mask-icon" href="{{site.baseurl}}/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
-<!-- end custom head snippets -->
-```
 최종적으로 업데이트 된 코드는 이와 같습니다.<br>
 처음 받은 코드와 다른 내용은 href의 영역 즉 상세 링크입니다.<br>
 파일 이름 앞에 {{site.baseurl}}/assets/logo.ico 를 추가해주시면 됩니다.<br>
@@ -661,42 +492,9 @@ Markdown 문법도 다시 한번 정리할 것이지만, 블로그 포스팅을 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
 
-```yml
-# _config.yml, 32line 코드
-comments:
-  provider    : "disqus"                                # comment 처리 사이트 명칭 기재
-              # false (default), "disqus", "discourse", "facebook"
-              # "staticman", "staticman_v2", "utterances", "custom"
-  disqus:
-    shortname : "eona1301-github-io"                    # disqus의 shortname 기재
-              # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-```
+<script src="https://gist.github.com/eona1301/97484af7daac622ce9c905f6d521a2de.js"></script>
 
-```yml
-# _config.yml, 270line 코드
-
-# Defaults
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true                                    # comment 를 주석 해지 후 true로 수정하기
-      share: true
-      related: true
-  
-  # _pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-```
+<script src="https://gist.github.com/eona1301/126daa1811b8e0e9599221aba9b6708a.js"></script>
 
 위의 코드를 모두 작성한 후 git push 해주세요!<br>
 여기서 중요한 점은 로컬 서버에서는 comment 처리부분이 보여지지 않습니다.<br>
@@ -776,15 +574,9 @@ commit을 하기 전에 `http://127.0.0.1:4000/google_HTML_파일명.HTML` 으�
 
 ## sitemap.xml 만들기
 
-![image](https://user-images.githubusercontent.com/45550607/106384331-9d385800-640d-11eb-9285-d3fcdf4533e9.png)(▲ sitemap.xml 코드){: .text-center}
+<script src="https://gist.github.com/eona1301/0917f0d1fc12314ef3f73fd5fc3b50f9.js"></script>
 
 현재 보이시는 sitemap.xml의 코드를 google HTML 파일과 동일한 위치(Root 위치)에 만들어주시면 됩니다.<br>
-아직 markdown이 익숙하지 않은지 코드 박스가 코드가 아닌 크롤링 결과가 보여져서<br>
-추후 이미지를 코드 박스로 변경하겠습니다!<br>
-<br>
-우선은 코드가 필요하신 분을 [제 Github의 Sitemap.xml](https://github.com/eona1301/eona1301.github.io/blob/master/sitemap.xml)을 방문해주시면 보실 수 있습니다.<br>
-최대한 빠른 시일내의 수정해보겠습니다!<br>
-<br>
 <br>
 현재의 sitemap.xml을 이용해 Google 크롤러가 주기적으로 저의 url을 체크할 수 있게 되었습니다.<br>
 <br>
@@ -798,12 +590,7 @@ commit을 하기 전에 `http://127.0.0.1:4000/google_HTML_파일명.HTML` 으�
 
 ## robots.txt 만들기
 
-```
-User-agent: *
-Allow: /
-
-Sitemap: https://eona1301.github.io/sitemap.xml
-```
+<script src="https://gist.github.com/eona1301/c16bac3dde50d87d39c34754043cf93b.js"></script>
 
 이제 접근하는 크롤러는 robots.txt를 보고 접근하고자 하는 sitemap의 위치를 확인하고,<br>
 제한을 확인하여 본래의 웹사이트로 가져가게 됩니다.<br>
