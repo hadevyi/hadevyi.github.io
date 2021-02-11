@@ -68,42 +68,9 @@ toc_icon: "blog"
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
 
-```yml
-# _config.yml, 32line 코드
-comments:
-  provider    : "disqus"                                # comment 처리 사이트 명칭 기재
-              # false (default), "disqus", "discourse", "facebook"
-              # "staticman", "staticman_v2", "utterances", "custom"
-  disqus:
-    shortname : "eona1301-github-io"                    # disqus의 shortname 기재
-              # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
-```
+<script src="https://gist.github.com/eona1301/97484af7daac622ce9c905f6d521a2de.js"></script>
 
-```yml
-# _config.yml, 270line 코드
-
-# Defaults
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true                                    # comment 를 주석 해지 후 true로 수정하기
-      share: true
-      related: true
-  
-  # _pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-```
+<script src="https://gist.github.com/eona1301/126daa1811b8e0e9599221aba9b6708a.js"></script>
 
 위의 코드를 모두 작성한 후 git push 해주세요!<br>
 여기서 중요한 점은 로컬 서버에서는 comment 처리부분이 보여지지 않습니다.<br>

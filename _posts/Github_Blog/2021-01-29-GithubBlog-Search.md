@@ -84,15 +84,9 @@ commit을 하기 전에 `http://127.0.0.1:4000/google_HTML_파일명.HTML` 으�
 
 # sitemap.xml 만들기
 
-![image](https://user-images.githubusercontent.com/45550607/106384331-9d385800-640d-11eb-9285-d3fcdf4533e9.png)(▲ sitemap.xml 코드){: .text-center}
+<script src="https://gist.github.com/eona1301/0917f0d1fc12314ef3f73fd5fc3b50f9.js"></script>
 
 현재 보이시는 sitemap.xml의 코드를 google HTML 파일과 동일한 위치(Root 위치)에 만들어주시면 됩니다.<br>
-아직 markdown이 익숙하지 않은지 코드 박스가 코드가 아닌 크롤링 결과가 보여져서<br>
-추후 이미지를 코드 박스로 변경하겠습니다!<br>
-<br>
-우선은 코드가 필요하신 분을 [제 Github의 Sitemap.xml](https://github.com/eona1301/eona1301.github.io/blob/master/sitemap.xml)을 방문해주시면 보실 수 있습니다.<br>
-최대한 빠른 시일내의 수정해보겠습니다!<br>
-<br>
 <br>
 현재의 sitemap.xml을 이용해 Google 크롤러가 주기적으로 저의 url을 체크할 수 있게 되었습니다.<br>
 <br>
@@ -106,12 +100,7 @@ commit을 하기 전에 `http://127.0.0.1:4000/google_HTML_파일명.HTML` 으�
 
 # robots.txt 만들기
 
-```
-User-agent: *
-Allow: /
-
-Sitemap: https://eona1301.github.io/sitemap.xml
-```
+<script src="https://gist.github.com/eona1301/c16bac3dde50d87d39c34754043cf93b.js"></script>
 
 이제 접근하는 크롤러는 robots.txt를 보고 접근하고자 하는 sitemap의 위치를 확인하고,<br>
 제한을 확인하여 본래의 웹사이트로 가져가게 됩니다.<br>

@@ -79,15 +79,7 @@ google analytics에서는 `tracking_id` 라고 하는데, 꼭꼭 숨겨져 있�
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
 
-```yml
-# Analytics
-analytics:
-  provider               : "google-gtag" 
-                          # false (default), "google", "google-universal", "google-gtag", "custom"
-  google:
-    tracking_id          : "G-5HQPK7RHNC"
-    anonymize_ip         : # true, false (default)
-```
+<script src="https://gist.github.com/eona1301/d74af4c66ef378f3c2286973476b48db.js"></script>
 
 위의 코드를 모두 작성한 후 git push해주세요.<br>
 댓글 기능보다는 빠르게 반영이 됩니다.<br>

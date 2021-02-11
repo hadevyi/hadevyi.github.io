@@ -32,18 +32,8 @@ toc_icon: "blog"
 - 수정 파일 : github.io 폴더 > _data 폴더 > navigation.yml
 <br>
 
-```yml
-# main links
-main:
-  #- title: "Home"
-  #  url: "/"
-  - title: "Introduce"
-    url: /about/
-  - title: "Category"
-    url: "/categories/"
-  - title: "Tags"
-    url: /tags/
-```
+<script src="https://gist.github.com/eona1301/760067e1c637892536fa9512fb11bbee.js"></script>
+
 title은 화면에 보여지는 영역입니다. 여기에 기재하는 텍스트값대로 보여집니다.<br>
 url은 _pages내에 정해져있는 양식 혹은 특정 링크로 연결해줍니다.<br>
 <br>
@@ -59,19 +49,7 @@ minimal mistakes의 대다수는 `/page name/` 으로 해소됩니다.<br>
 - 수정 파일 : github.io 폴더 > _pages 폴더 > 원하는 md 파일 (해당 예시는 about.md 입니다.)
 <br>
 
-```md
----
-permalink: /about/
-title: "About"
-toc: true
-toc_sticky: true
-toc_label: "MYSELF"
----
-
-![icon](/assets/logo.ico/apple-icon-120x120.png)
-
-원하는 자기소개 상세 내용
-```
+<script src="https://gist.github.com/eona1301/99003302c105278c33a0f30fabe8712d.js"></script>
 
 ## permalink 찾기
 

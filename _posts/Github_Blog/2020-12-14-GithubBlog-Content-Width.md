@@ -38,15 +38,8 @@ minimal mistakes 자체에서 wide page를 지원해줍니다.<br>
 
 - 수정 파일 : github.io 폴더 > _sass 폴더 > _minimal-mistakes 폴더 > _variables.scss
 
-```scss
-/*
-   Grid
-   ========================================================================== */
+<script src="https://gist.github.com/eona1301/493a1a671316ae45c6ddc5831f802388.js"></script>
 
-$right-sidebar-width-narrow: 100px !default;    // default 200px
-$right-sidebar-width: 200px !default;           // default 300px
-$right-sidebar-width-wide: 250px !default;      // default 400px
-```
 현재의 코드는 _variables.scss 중에서도 거의 최하단에 있습니다.<br>
 찾으실 때 무수한 코드를 다 내리지마시고, 제일 아래의 스크롤로 내리세요.<br>
 본문에 너비를 직접적으로 넓히는게 아니라, 양쪽에 sidebar를 조절하는 방식입니다.<br>
@@ -64,29 +57,8 @@ $right-sidebar-width-wide: 250px !default;      // default 400px
 - 수정 파일 : github.io 폴더 > _sass 폴더 > _minimal-mistakes 폴더 > _reset.scss
 <br>
 
-```scss
-html {
-  /* apply a natural box layout model to all elements */
-  box-sizing: border-box;
-  background-color: $background-color;
-  font-size: 16px;                    // Default 16px;
+<script src="https://gist.github.com/eona1301/891391423d765b7169ba87b15fbfd298.js"></script>
 
-  @include breakpoint($medium) {
-    font-size: 16px;                  // Default 18px;
-  }
-
-  @include breakpoint($large) {
-    font-size: 16px;                  // Default 20px;
-  }
-
-  @include breakpoint($x-large) {
-    font-size: 16px;                  // Default 22px;
-  }
-
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-```
 원 코드의 상단부(7번줄)에 있는 코드이기에 금방 찾으실 수 있으실 껍니다.<br>
 전체적인 폰트의 기준은 없습니다!<br>
 로컬 서버에서 직접 등록해보시면서, 원하시는 크키로 조정하시면 됩니다.<br>
@@ -106,24 +78,8 @@ html {
 - 수정 파일 : github.io 폴더 > _sass 폴더 > _minimal-mistakes 폴더 > _base.scss
 <br>
 
-```scss
-a {
-  text-decoration: none;                // 추가된 코드입니다.
+<script src="https://gist.github.com/eona1301/e7b36fcee4cfea32a7f3413b3cebef4f.js"></script>
 
-  &:focus {
-    @extend %tab-focus;
-  }
-
-  &:visited {
-    color: $link-color-visited;
-  }
-
-  &:hover {
-    color: $link-color-hover;
-    outline: 0;
-  }
-}
-```
 base 파일의 중반부(127번줄)에 있습니다.<br>
 찾기 힘드실 때는 Ctrl + F를 통해 `a{` 를 검색하셔서 확인해보세요! <br>
 이후 하이퍼링크 처리와 관련된 decoration을 해지해야하니 이를 전체에 적용될 수 있도록 추가해주시면 되겠습니다!<br>

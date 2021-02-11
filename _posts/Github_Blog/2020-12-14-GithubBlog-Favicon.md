@@ -88,19 +88,8 @@ toc_icon: "blog"
 
 - 수정 파일 : github.io 폴더 > _includes 폴더 > _head 폴더 > custom.html
 
-```html
-<!-- start custom head snippets -->
+<script src="https://gist.github.com/eona1301/1503f596d7330d3d4600fcb1df8bde16.js"></script>
 
-<!-- insert favicons. use https://realfavicongenerator.net/ -->
-<link rel="apple-touch-icon" sizes="180x180" href="{{site.baseurl}}/assets/logo.ico/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="{{site.baseurl}}/assets/logo.ico/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="{{site.baseurl}}/assets/logo.ico/favicon-16x16.png">
-<link rel="mask-icon" href="{{site.baseurl}}/assets/logo.ico/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
-
-<!-- end custom head snippets -->
-```
 최종적으로 업데이트 된 코드는 이와 같습니다.<br>
 처음 받은 코드와 다른 내용은 href의 영역 즉 상세 링크입니다.<br>
 파일 이름 앞에 {{site.baseurl}}/assets/logo.ico 를 추가해주시면 됩니다.<br>

@@ -93,7 +93,7 @@ docs 내부의 _pages 폴더는 추후 상단의 카테고리를 선택할 수 �
 <br>
 <br>
 
-# Github-Blog Repository 만들기
+# Github-Blog Repo 만들기
 
 github에서 repository를 만드는 것은 지금까지 한 것보다 더 간단하겠죠! ㅎㅎ<br>
 본인의 github 프로필을 확인해주시면, 이렇게 보이실꺼에요.

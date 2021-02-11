@@ -34,25 +34,8 @@ toc_icon: "blog"
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
 
-```yml
-minimal_mistakes_skin    : "default"  # 전체적인 블로그의 색감을 정하는 값입니다.
-                           # "default" "air", "aqua", "contrast", "dark"
-                           # "dirt", "neon", "mint", "plum", "sunrise"
+<script src="https://gist.github.com/eona1301/29e2f42d13e94559e5a0d63c51b8fce5.js"></script>
 
-# Site Settings
-locale                   : "ko-KR"    # 블로그의 주요 언어입니다. 한국어로 보려고 ko-KR로 설정했습니다.
-title                    : "정리가 재밌는 개발자 Blog"  # 사이트 탭에서 보이는 이름입니다.
-title_separator          : "-"
-subtitle                 : "version 1.0"              # 화면 title 하단에 있는 소제목입니다.
-name                     : "당현아(Dang Hyeona)"      # 화면 하단 영역의 이름입니다.
-description              : "매일 반복하는 공부 습관"   # 설명란입니다. (어디 적용되는지 모르겠네요...) 
-url                      : "https://eona1301.github.io" # 현재의 블로그 url 입니다.
-baseurl                  : # 폴백(예기치 못한 오류)일 때 연결되는 url입니다.
-repository               : "https://github.com/eona1301/eona1301.github.io" # Github Repo url입니다.
-teaser                   : # 폴백일 때 보일 이미지입니다. "assets/images/"로 연결됩니다.
-logo                     : # 화면에 보여지는 logo 이미지입니다. "assets/images"로 세팅합니다.
-masthead_title           : "정리가 재밌는 개발자"     # 화면 title 입니다.
-```
 <br>
 블로그 전반의 기본 사항들입니다. 순서와는 무관하게 설명을 잘 참고해주세요!<br>
 모두 다 수정하실 필요는 없습니다. 상세한 내용은 위의 코드를 확인해주세요.<br>
@@ -69,30 +52,8 @@ masthead_title           : "정리가 재밌는 개발자"     # 화면 title �
 <br>
 <br>
 
-```yml
-# Site Author
-author:
-  name             : "Dang Hyeona"                  # 이름 영역입니다.
-  avatar           : "image/profile/2020me.jpg"     # 프로필 사진 경로입니다.
-  bio              : "**기록이 자산!!**<br>매일 공부하고 있습니다.<br>소통을 좋아합니다."
-                     # biography의 약칭으로, 자기소개를 적으시면 됩니다.
-                     # 줄바꿈은 <br>로 굵은 글씨는 **글씨** 로 표기해주세요. 
-  location         : "Republic of Korea"            # 지역 입니다. 
-  email            : # 이메일 주소입니다. (links에서 작성할 수 있기 때문에 생략하였습니다.)
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:eona1301@email.com
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/eona1301"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/eona1301"
-    - label: "Instagram"                            # 표시되는 이름입니다.
-      icon: "fab fa-fw fa-instagram"                # fab fa-fw fa-{SNS NAME} 으로 해주세요.
-      url: "https://www.instagram.com/danghyeona/"  # 개인 SNS 계정 링크를 기재하면 됩니다.
-```
+<script src="https://gist.github.com/eona1301/2164e69b3615da9804e51f5e3c3b3146.js"></script>
+
 <br>
 블로그 좌측에서 보여지는 프로필의 영역입니다.<br>
 바로 보여지다보니, 아무래도 많은 분들이 제일 먼저 신경쓰는 영역이 될 것 같습니다.<br>
@@ -108,34 +69,9 @@ author:
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
-<br>
 
-```yml
-# Site Footer
-footer:
-  links:
-    - label: "Email"
-      icon: "fas fa-fw fa-envelope-square"
-      url: mailto:eona1301@email.com
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      # url:                                        # 이런식으로 url을 주석처리하면 노출되지 않습니다.
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      url: "https://www.facebook.com/eona1301"
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/eona1301"
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/danghyeona/"
-```
+<script src="https://gist.github.com/eona1301/2853e7022b37493053f98037ebae7505.js"></script>
+
 <br>
 프로필의 맨 하단에 있는 footer의 기재사항입니다.<br>
 좌측 프로필 영역과 동일한 데이터라 Ctrl C + Ctrl V만 하면 금방 만들어지는 영역입니다.<br>
@@ -149,15 +85,9 @@ footer:
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
-<br>
 
-```yml
-# Outputting
-permalink: /:categories/:title/
-paginate: 15                                    # Defaults : 5
-paginate_path: /page:num/
-timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-```
+<script src="https://gist.github.com/eona1301/d189862ece5d5f954360c63a99e4469b.js"></script>
+
 코드 상 두번째 줄에 위치한 값 painate의 속성이 보여질 개수입니다.<br>
 이걸 원하는 개수대로 고쳐주시면 되겠습니다.<br>
 <br>
@@ -167,31 +97,9 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 - 수정 파일 : github.io 폴더 > _config.yml
 <br>
-<br>
 
-```yml
-# Defaults
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: # true
-      share: true
-      related: true
-  
-  # _pages                      : 해당 하단 영역이 새로 추가되었습니다.
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-```
+<script src="https://gist.github.com/eona1301/ce49543bed1499284c74e6457c813a66.js"></script>
+
 <br>
 앞서 참고하고자 하였던, Docs 폴더의 _config.yml를 모방했습니다!<br>
 포스터 글을 업데이트하는데, 폴더화를 시켜서 파일 정리하는게 좋을 것같아 확인했습니다.<br>
