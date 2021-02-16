@@ -124,7 +124,7 @@ toc_icon: "file-code"
 | 2438  |           별찍기 1           | BronzeⅢ |       |   O   |       |                                                   |
 | 2439  |           별찍기 2           | BronzeⅢ |       |   O   |       |                                                   |
 | 2446  |           별찍기 9           | BronzeⅢ |       |   O   |       |                                                   |
-| 2475  |            검증수            | BronzeⅤ |       |       |   O   |                                                   |
+| 2475  |            검증수            | BronzeⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2475/) |
 | 2493  |              탑              |  GoldⅤ  |       |       |   O   |                                                   |
 | 2523  |          별찍기 13           | BronzeⅢ |       |   O   |       |                                                   |
 | 2557  |         Hello World          | BronzeⅤ |       |   O   |       |                                                   |
