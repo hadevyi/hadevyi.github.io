@@ -109,7 +109,9 @@ toc_icon: "file-code"
 | 1000  |             A+B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1000/) |
 | 1001  |             A-B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1001/) |
 | 1008  |             A/B              | BronzeⅣ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1008/) |
+| 1074  |              Z               | SilverⅠ |       |       |   O   |                                                   |
 | 1110  |        더하기 사이클         | BronzeⅠ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1110/) |
+| 1011  | Fly me to the Alpha Centauri |         |       |       |   O   |                                                   |
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
 | 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
 | 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
@@ -119,6 +121,8 @@ toc_icon: "file-code"
 | 1550  |            16진수            | BronzeⅤ |       |       |   O   |                                                   |
 | 1712  |          손익분기점          | BronzeⅣ |       |       |   O   |                                                   |
 | 1918  |         후기 표기식          |  GoldⅣ  |       |       |   O   |                                                   |
+| 1987  |            알파벳            |  GoldⅣ  |       |       |   O   |                                                   |
+|       |                              |         |       |       |       |                                                   |
 | 2292  |             벌집             | BronzeⅡ |       |       |   O   |                                                   |
 | 2420  |          사파리월드          | BronzeⅣ |       |       |   O   |                                                   |
 | 2438  |           별찍기 1           | BronzeⅢ |       |   O   |       |                                                   |
@@ -129,6 +133,11 @@ toc_icon: "file-code"
 | 2523  |          별찍기 13           | BronzeⅢ |       |   O   |       |                                                   |
 | 2557  |         Hello World          | BronzeⅤ |       |   O   |       |                                                   |
 | 2558  |           A+B - 2            | BronzeⅤ |       |       |   O   |                                                   |
+|       |                              |         |       |       |       |                                                   |
+|       |                              |         |       |       |       |                                                   |
+|       |                              |         |       |       |       |                                                   |
+|       |                              |         |       |       |       |                                                   |
+|       |                              |         |       |       |       |                                                   |
 | 2588  |             곱셈             | BronzeⅣ |       |   O   |       |                                                   |
 | 2675  |         문자열 반복          | BronzeⅡ |       |       |   O   |                                                   |
 | 2739  |            구구단            | BronzeⅢ |       |   O   |       |                                                   |
@@ -147,6 +156,7 @@ toc_icon: "file-code"
 | 3040  |   백설 공주와 일곱 난쟁이    | BronzeⅡ |       |       |   O   |                                                   |
 | 3046  |              R2              | BronzeⅤ |       |       |   O   |                                                   |
 | 3052  |            나머지            | BronzeⅡ |       |   O   |       |                                                   |
+|       |                              |         |       |       |       |                                                   |
 | 3985  |          롤 케이크           | BronzeⅠ |       |       |   O   |                                                   |
 | 4344  |        평균은 넘겠지         | BronzeⅠ |       |       |   O   |                                                   |
 | 4673  |          셀프 넘버           | BronzeⅠ |       |       |   O   |                                                   |
