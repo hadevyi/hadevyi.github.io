@@ -111,7 +111,7 @@ toc_icon: "file-code"
 | 1008  |             A/B              | BronzeⅣ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1008/) |
 | 1074  |              Z               | SilverⅠ |       |       |   O   |                                                   |
 | 1110  |        더하기 사이클         | BronzeⅠ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1110/) |
-| 1011  | Fly me to the Alpha Centauri |         |       |       |   O   |                                                   |
+| 1011  | Fly me to the Alpha Centauri | SilverⅠ |       |       |   O   |                                                   |
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
 | 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
 | 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
@@ -122,7 +122,7 @@ toc_icon: "file-code"
 | 1712  |          손익분기점          | BronzeⅣ |       |       |   O   |                                                   |
 | 1918  |         후기 표기식          |  GoldⅣ  |       |       |   O   |                                                   |
 | 1987  |            알파벳            |  GoldⅣ  |       |       |   O   |                                                   |
-|       |                              |         |       |       |       |                                                   |
+| 1992  |           쿼드트리           | SilverⅠ |       |       |   O   |                                                   |
 | 2292  |             벌집             | BronzeⅡ |       |       |   O   |                                                   |
 | 2420  |          사파리월드          | BronzeⅣ |       |       |   O   |                                                   |
 | 2438  |           별찍기 1           | BronzeⅢ |       |   O   |       |                                                   |
@@ -133,11 +133,11 @@ toc_icon: "file-code"
 | 2523  |          별찍기 13           | BronzeⅢ |       |   O   |       |                                                   |
 | 2557  |         Hello World          | BronzeⅤ |       |   O   |       |                                                   |
 | 2558  |           A+B - 2            | BronzeⅤ |       |       |   O   |                                                   |
-|       |                              |         |       |       |       |                                                   |
-|       |                              |         |       |       |       |                                                   |
-|       |                              |         |       |       |       |                                                   |
-|       |                              |         |       |       |       |                                                   |
-|       |                              |         |       |       |       |                                                   |
+| 2562  |            최대값            | BronzeⅡ |       |       |   O   |                                                   |
+| 2563  |            색종이            | SilverⅤ |       |       |   O   |                                                   |
+| 2564  |            경비원            | SilverⅠ |       |       |   O   |                                                   |
+| 2577  |         숫자의 개수          | BronzeⅢ |       |       |   O   |                                                   |
+| 2578  |             빙고             | SilverⅤ |       |       |   O   |                                                   |
 | 2588  |             곱셈             | BronzeⅣ |       |   O   |       |                                                   |
 | 2675  |         문자열 반복          | BronzeⅡ |       |       |   O   |                                                   |
 | 2739  |            구구단            | BronzeⅢ |       |   O   |       |                                                   |
@@ -152,11 +152,11 @@ toc_icon: "file-code"
 | 2914  |            저작권            | BronzeⅤ |       |       |   O   |                                                   |
 | 2941  |      크로아티아 알파벳       | SilverⅤ |       |       |   O   |                                                   |
 | 2961  |  도영이가 만든 맛있는 음식   | SilverⅠ |       |       |   O   |                                                   |
-| 3033  | 킹, 퀸, 룩, 비숍, 나이트, 폰 | BronzeⅤ |       |       |   O   |                                                   |
+| 3003  | 킹, 퀸, 룩, 비숍, 나이트, 폰 | BronzeⅤ |       |       |   O   |                                                   |
 | 3040  |   백설 공주와 일곱 난쟁이    | BronzeⅡ |       |       |   O   |                                                   |
 | 3046  |              R2              | BronzeⅤ |       |       |   O   |                                                   |
 | 3052  |            나머지            | BronzeⅡ |       |   O   |       |                                                   |
-|       |                              |         |       |       |       |                                                   |
+| 3109  |             빵집             |  GoldⅡ  |       |       |   O   |                                                   |
 | 3985  |          롤 케이크           | BronzeⅠ |       |       |   O   |                                                   |
 | 4344  |        평균은 넘겠지         | BronzeⅠ |       |       |   O   |                                                   |
 | 4673  |          셀프 넘버           | BronzeⅠ |       |       |   O   |                                                   |
@@ -181,6 +181,8 @@ toc_icon: "file-code"
 |  &nbsp; &nbsp; &nbsp; &nbsp;문제 번호&nbsp; &nbsp; &nbsp; &nbsp; |  &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 문제 이름&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;    | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;문제 레벨&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; Python&nbsp; &nbsp; &nbsp;  |  &nbsp; &nbsp; &nbsp; C++&nbsp; &nbsp; &nbsp;   | &nbsp; &nbsp; &nbsp; Java&nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; 풀이링크&nbsp; &nbsp; &nbsp; |
 | :---: | :-----------------: | :-----: | :---: | :---: | :---: | :---: |
 | 10039 |      평균 점수      | BronzeⅣ |       |   O   |       |       |
+| 10158 |        개미         | SilverⅤ |       |       |   O   |       |
+| 10163 |       색종이        | BronzeⅠ |       |       |   O   |       |
 | 10170 |  NFC West vs North  | BronzeⅤ |       |       |   O   |       |
 | 10171 |       고양이        | BronzeⅤ |       |   O   |       |       |
 | 10172 |         개          | BronzeⅤ |       |   O   |       |       |
@@ -192,7 +194,9 @@ toc_icon: "file-code"
 | 10817 |        세 수        | BronzeⅢ |       |   O   |       |       |
 | 10818 |     최소, 최대      | BronzeⅢ |       |   O   |       |       |
 | 10869 |      사칙연산       | BronzeⅤ |       |   O   |       |       |
+| 10870 |    피보나치 수 5    | BronzeⅡ |       |       |   O   |       |
 | 10871 |    X보다 작은 수    | BronzeⅢ |       |   O   |       |       |
+| 10872 |      팩토리얼       | BronzeⅢ |       |       |   O   |       |
 | 10926 |         ??!         | BronzeⅤ |       |       |   O   |       |
 | 10950 |       A+B - 3       | BronzeⅢ |       |   O   |       |       |
 | 10951 |       A+B - 4       | BronzeⅢ |       |   O   |       |       |
@@ -203,7 +207,9 @@ toc_icon: "file-code"
 | 11022 |       A+B - 8       | BronzeⅢ |       |   O   |       |       |
 | 11654 |     아스키 코드     | BronzeⅤ |       |       |   O   |       |
 | 11720 |      숫자의 합      | BronzeⅡ |       |       |   O   |       |
+| 11729 | 하노이 탑 이동 순서 | SilverⅡ |       |       |   O   |       |
 | 11942 | 고려대는 사랑입니다 | BronzeⅤ |       |       |   O   |       |
+| 13300 |       방 배정       | BronzeⅡ |       |       |   O   |       |
 | 14503 |     로봇 청소기     |  GoldⅤ  |       |       |   O   |       |
 | 14645 |  와이버스 부릉부릉  | BronzeⅤ |       |       |   O   |       |
 | 14681 |    사분면 고르기    | BronzeⅣ |       |   O   |       |       |
@@ -217,9 +223,11 @@ toc_icon: "file-code"
 | :---: | :----------------: | :-----: | :---: | :---: | :---: | :---: |
 | 15552 |      빠른 A+B      | BronzeⅡ |       |   O   |       |       |
 | 15596 |   정수 N개의 합    | BronzeⅡ |       |       |   O   |       |
+| 15686 |     치킨 배달      |  GoldⅤ  |       |       |   O   |       |
 | 16926 |   배열 돌리기 1    | SilverⅣ |       |       |   O   |       |
 | 16927 |   배열 돌리기 2    | SilverⅠ |       |       |   O   |       |
 | 16935 |   배열 돌리기 3    | SilverⅢ |       |       |   O   |       |
+| 17135 |    캐슬 디펜스     |  GoldⅣ  |       |       |   O   |       |
 | 17478 | 재귀함수가 뭔가요? | SilverⅤ |       |       |   O   |       |
 | 20299 |      3대 측정      | BronzeⅡ |       |       |   O   |       |
 
