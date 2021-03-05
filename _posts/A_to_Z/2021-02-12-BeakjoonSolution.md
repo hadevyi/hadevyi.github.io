@@ -123,6 +123,7 @@ toc_icon: "file-code"
 | 1918  |         후기 표기식          |  GoldⅣ  |       |       |   O   |                                                   |
 | 1987  |            알파벳            |  GoldⅣ  |       |       |   O   |                                                   |
 | 1992  |           쿼드트리           | SilverⅠ |       |       |   O   |                                                   |
+| 2161  |            카드1             | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2161/) |
 | 2292  |             벌집             | BronzeⅡ |       |       |   O   |                                                   |
 | 2420  |          사파리월드          | BronzeⅣ |       |       |   O   |                                                   |
 | 2438  |           별찍기 1           | BronzeⅢ |       |   O   |       |                                                   |
