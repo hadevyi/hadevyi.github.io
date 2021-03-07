@@ -109,7 +109,7 @@ toc_icon: "file-code"
 | 1000  |             A+B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1000/) |
 | 1001  |             A-B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1001/) |
 | 1008  |             A/B              | BronzeⅣ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1008/) |
-| 1074  |              Z               | SilverⅠ |       |       |   O   |                                                   |
+| 1074  |              Z               | SilverⅠ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1074/) |
 | 1110  |        더하기 사이클         | BronzeⅠ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1110/) |
 | 1011  | Fly me to the Alpha Centauri | SilverⅠ |       |       |   O   |                                                   |
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
