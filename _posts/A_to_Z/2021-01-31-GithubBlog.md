@@ -31,6 +31,7 @@ toc_icon: "bookmark"
 7. [댓글 기능 추가하기](https://eona1301.github.io/github_blog/GithubBlog-Comment/) : DISQUS 가입하기, Shortname 찾기, _config 반영하기, 시범 댓글 확인
 8. [방문자 통계하기](https://eona1301.github.io/github_blog/GithubBlog-Analytics/) : Google Analytics 가입하기, tranking ID 찾기, _config 반영하기, 결과 확인하기
 9. [Google 검색 노출하기](https://eona1301.github.io/github_blog/GithubBlog-Search/) : Google Search Console, sitemap, robots, 적용하기
+10. [깔끔한 코드블럭 작성하기](https://eona1301.github.io/github_blog/GithubBlog-Code/) : MarkDown Code Block, Gist 사용방법
 <br>
 
 # [01] 기본 세팅
@@ -620,7 +621,15 @@ google search console에서 sitemaps 페이지에서 본인의 sitemap.xml을 �
 <br>
 <br>
 
-드디어 기나긴 세팅과 준비가 끝났습니다.<br>
+# [10] 깔끔한 코드블럭 작성하기
+
+![image](https://user-images.githubusercontent.com/45550607/110230979-2cc6ae80-7f58-11eb-97d5-6936e04df6d9.png){: .image-center}
+
+[Github Gist](https://gist.github.com/)에 접속하면 위와 같은 화면을 보실 수 있습니다.<br>
+이렇게 작성을 완료하면, 제가 빨간 사각형을 한 영역에서 해당 코드의 Embed 코드를 얻을 수 있습니다.<br>
+이 코드를 우측 버튼으로 Copy하여 원하는 posting 위치에 넣으면 됩니다.<br>
+
+
 이렇게 첫 A to Z 시리즈의 블로그 세팅글을 마치도록 하겠습니다.<br>
 모두 따라오시느라 수고많으셨습니다!<br>
 궁금하신 사항은 댓글 부탁드려요 :) <br>
