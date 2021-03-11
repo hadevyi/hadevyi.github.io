@@ -1,5 +1,5 @@
 ---
-title: "2019 한국전자통신연구소(ETRI) 하계인턴 후기"
+title: "한국전자통신연구소(ETRI) 하계인턴 후기 - 2019년 하계"
 categories:
   - Retrospective
 tags:

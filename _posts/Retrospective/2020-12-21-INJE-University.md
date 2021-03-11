@@ -1,5 +1,5 @@
 ---
-title: "2020 컴퓨터공학부 16학번 졸업 회고록"
+title: "컴퓨터공학부 16학번 졸업 회고록 - 2020"
 categories:
   - Retrospective
 tags:
