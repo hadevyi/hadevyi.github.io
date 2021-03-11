@@ -1,5 +1,5 @@
 ---
-title: "온라인 프로그래밍 교육 1인 사업 회고록 - 202"
+title: "온라인 프로그래밍 교육 1인 사업 회고록 - 2020년"
 categories:
   - Retrospective
 toc: true
