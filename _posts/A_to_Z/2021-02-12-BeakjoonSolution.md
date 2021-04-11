@@ -110,16 +110,17 @@ toc_icon: "file-code"
 | 1001  |             A-B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1001/) |
 | 1003  |        피보나치 함수         | SilverⅢ |       |       |   O   |                                                   |
 | 1008  |             A/B              | BronzeⅣ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1008/) |
+| 1011  | Fly me to the Alpha Centauri | SilverⅠ |       |       |   O   |                                                   |
 | 1074  |              Z               | SilverⅠ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1074/) |
 | 1110  |        더하기 사이클         | BronzeⅠ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1110/) |
-| 1011  | Fly me to the Alpha Centauri | SilverⅠ |       |       |   O   |                                                   |
+| 1149  |           RGB 거리           | SilverⅠ |       |   O   |       |                                                   |
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
 | 1181  |          단어 정렬           | SilverⅤ |       |       |   O   |                                                   |
 | 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
 | 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
 | 1271  |         엄청난 부자2         | BronzeⅤ |       |       |   O   |                                                   |
 | 1330  |        두 수 비교하기        | BronzeⅣ |       |   O   |       |                                                   |
-| 1149  |           RGB 거리           | SilverⅠ |       |   O   |       |                                                   |
+| 1463  |           1로 만들기           | SilverⅢ |       |   O   |       |                                                   |
 | 1546  |             평균             | BronzeⅠ |       |   O   |       |                                                   |
 | 1550  |            16진수            | BronzeⅤ |       |       |   O   |                                                   |
 | 1712  |          손익분기점          | BronzeⅣ |       |       |   O   |                                                   |
