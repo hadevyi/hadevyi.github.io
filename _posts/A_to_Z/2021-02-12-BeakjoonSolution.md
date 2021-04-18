@@ -105,6 +105,7 @@ toc_icon: "file-code"
 ## 1000번 ~
 
 |  &nbsp; &nbsp; &nbsp; &nbsp;문제 번호&nbsp; &nbsp; &nbsp; &nbsp; |  &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 문제 이름&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;    | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;문제 레벨&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; Python&nbsp; &nbsp; &nbsp;  |  &nbsp; &nbsp; &nbsp; C++&nbsp; &nbsp; &nbsp;   | &nbsp; &nbsp; &nbsp; Java&nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; 풀이링크&nbsp; &nbsp; &nbsp; |
+
 | :---: | :--------------------------: | :-----: | :---: | :---: | :---: | :-----------------------------------------------: |
 | 1000  |             A+B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1000/) |
 | 1001  |             A-B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1001/) |
@@ -117,12 +118,14 @@ toc_icon: "file-code"
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
 | 1181  |          단어 정렬           | SilverⅤ |       |       |   O   |                                                   |
 | 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
+| 1242  |             소풍             |  GoldⅡ  |       |       |   O   |                                                   |
 | 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
 | 1271  |         엄청난 부자2         | BronzeⅤ |       |       |   O   |                                                   |
 | 1330  |        두 수 비교하기        | BronzeⅣ |       |   O   |       |                                                   |
-| 1463  |           1로 만들기           | SilverⅢ |       |   O   |       |                                                   |
+| 1463  |          1로 만들기          | SilverⅢ |       |   O   |       |                                                   |
 | 1546  |             평균             | BronzeⅠ |       |   O   |       |                                                   |
 | 1550  |            16진수            | BronzeⅤ |       |       |   O   |                                                   |
+| 1592  |       영식이와 친구들        | BronzeⅡ |       |       |   O   |                                                   |
 | 1712  |          손익분기점          | BronzeⅣ |       |       |   O   |                                                   |
 | 1759  |         암호 만들기          |  GoldⅤ  |       |       |   O   |                                                   |
 | 1918  |         후기 표기식          |  GoldⅣ  |       |       |   O   |                                                   |
