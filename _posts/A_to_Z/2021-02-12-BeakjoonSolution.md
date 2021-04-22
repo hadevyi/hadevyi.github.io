@@ -117,6 +117,7 @@ toc_icon: "file-code"
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
 | 1181  |          단어 정렬           | SilverⅤ |       |       |   O   |                                                   |
 | 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
+| 1194  |             달이 차오른다 가자             |  GoldⅠ  |       |       |   O   |                                                   |
 | 1242  |             소풍             |  GoldⅡ  |       |       |   O   |                                                   |
 | 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
 | 1271  |         엄청난 부자2         | BronzeⅤ |       |       |   O   |                                                   |
