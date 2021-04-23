@@ -117,7 +117,7 @@ toc_icon: "file-code"
 | 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
 | 1181  |          단어 정렬           | SilverⅤ |       |       |   O   |                                                   |
 | 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
-| 1194  |             달이 차오른다 가자             |  GoldⅠ  |       |       |   O   |                                                   |
+| 1194  |      달이 차오른다 가자      |  GoldⅠ  |       |       |   O   |                                                   |
 | 1242  |             소풍             |  GoldⅡ  |       |       |   O   |                                                   |
 | 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
 | 1271  |         엄청난 부자2         | BronzeⅤ |       |       |   O   |                                                   |
@@ -130,6 +130,7 @@ toc_icon: "file-code"
 | 1712  |          손익분기점          | BronzeⅣ |       |       |   O   |                                                   |
 | 1759  |         암호 만들기          |  GoldⅤ  |       |       |   O   |                                                   |
 | 1918  |         후기 표기식          |  GoldⅣ  |       |       |   O   |                                                   |
+| 1922  |         네트워크 연결          |  GoldⅣ  |       |       |   O   |                                                   |
 | 1987  |            알파벳            |  GoldⅣ  |       |       |   O   |                                                   |
 | 1992  |           쿼드트리           | SilverⅠ |       |       |   O   |                                                   |
 | 2161  |            카드1             | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2161/) |
