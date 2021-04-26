@@ -134,6 +134,7 @@ toc_icon: "file-code"
 | 1922  |         네트워크 연결          |  GoldⅣ  |       |       |   O   |                                                   |
 | 1987  |            알파벳            |  GoldⅣ  |       |       |   O   |                                                   |
 | 1992  |           쿼드트리           | SilverⅠ |       |       |   O   |                                                   |
+| 2206  |           벽 부수고 이동하기           | GoldⅣ |       |       |   O   |                                                   |
 | 2161  |            카드1             | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2161/) |
 | 2292  |             벌집             | BronzeⅡ |       |       |   O   |                                                   |
 | 2420  |          사파리월드          | BronzeⅣ |       |       |   O   |                                                   |
