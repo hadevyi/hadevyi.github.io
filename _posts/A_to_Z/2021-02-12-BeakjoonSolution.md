@@ -137,6 +137,7 @@ toc_icon: "file-code"
 | 2206  |           벽 부수고 이동하기           | GoldⅣ |       |       |   O   |                                                   |
 | 2161  |            카드1             | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2161/) |
 | 2292  |             벌집             | BronzeⅡ |       |       |   O   |                                                   |
+| 2309  |         일곱 난쟁이          |  BronzeⅡ  |       |       |   O   |                                                   |
 | 2420  |          사파리월드          | BronzeⅣ |       |       |   O   |                                                   |
 | 2438  |           별찍기 1           | BronzeⅢ |       |   O   |       |                                                   |
 | 2439  |           별찍기 2           | BronzeⅢ |       |   O   |       |                                                   |
