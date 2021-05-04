@@ -154,6 +154,7 @@ toc_icon: "file-code"
 | 2578  |             빙고             | SilverⅤ |       |       |   O   |                                                   |
 | 2580  |             tmehzn             | GoldⅣ |       |       |   O   |                                                   |
 | 2588  |             곱셈             | BronzeⅣ |       |   O   |       |                                                   |
+| 2669  |   직사각형 네개의 합집합의 면적 구하기             | BronzeⅡ |       |   O   |       |                                                   |
 | 2675  |         문자열 반복          | BronzeⅡ |       |       |   O   |                                                   |
 | 2739  |            구구단            | BronzeⅢ |       |   O   |       |                                                   |
 | 2741  |            N 찍기            | BronzeⅢ |       |   O   |       |                                                   |
