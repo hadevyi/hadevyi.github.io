@@ -105,77 +105,78 @@ toc_icon: "file-code"
 ## 1000번 ~
 
 |  &nbsp; &nbsp; &nbsp; &nbsp;문제 번호&nbsp; &nbsp; &nbsp; &nbsp; |  &nbsp;  &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 문제 이름&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;    | &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;문제 레벨&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; Python&nbsp; &nbsp; &nbsp;  |  &nbsp; &nbsp; &nbsp; C++&nbsp; &nbsp; &nbsp;   | &nbsp; &nbsp; &nbsp; Java&nbsp; &nbsp; &nbsp; | &nbsp; &nbsp; &nbsp; 풀이링크&nbsp; &nbsp; &nbsp; |
-| :---: | :--------------------------: | :-----: | :---: | :---: | :---: | :-----------------------------------------------: |
-| 1000  |             A+B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1000/) |
-| 1001  |             A-B              | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1001/) |
-| 1003  |        피보나치 함수         | SilverⅢ |       |       |   O   |                                                   |
-| 1008  |             A/B              | BronzeⅣ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1008/) |
-| 1011  | Fly me to the Alpha Centauri | SilverⅠ |       |       |   O   |                                                   |
-| 1074  |              Z               | SilverⅠ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1074/) |
-| 1110  |        더하기 사이클         | BronzeⅠ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1110/) |
-| 1149  |           RGB 거리           | SilverⅠ |       |   O   |       |                                                   |
-| 1158  |        요세푸스 문제         | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
-| 1181  |          단어 정렬           | SilverⅤ |       |       |   O   |                                                   |
-| 1193  |           분수찾기           | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
-| 1194  |      달이 차오른다 가자      |  GoldⅠ  |       |       |   O   |                                                   |
-| 1242  |             소풍             |  GoldⅡ  |       |       |   O   |                                                   |
-| 1244  |       스위치 켜고 끄기       | SilverⅣ |       |       |   O   |                                                   |
-| 1271  |         엄청난 부자2         | BronzeⅤ |       |       |   O   |                                                   |
-| 1330  |        두 수 비교하기        | BronzeⅣ |       |   O   |       |                                                   |
-| 1463  |          1로 만들기          | SilverⅢ |       |   O   |       |                                                   |
-| 1546  |             평균             | BronzeⅠ |       |   O   |       |                                                   |
-| 1550  |            16진수            | BronzeⅤ |       |       |   O   |                                                   |
-| 1592  |       영식이와 친구들        | BronzeⅡ |       |       |   O   |                                                   |
-| 1600  |      말이 되고픈 원숭이      |  GoldⅤ  |       |       |   O   |                                                   |
-| 1712  |          손익분기점          | BronzeⅣ |       |       |   O   |                                                   |
-| 1712  |          숫자놀이          | SilverⅤ |       |       |   O   |                                                   |
-| 1759  |         암호 만들기          |  GoldⅤ  |       |       |   O   |                                                   |
-| 1918  |         후기 표기식          |  GoldⅣ  |       |       |   O   |                                                   |
-| 1922  |         네트워크 연결          |  GoldⅣ  |       |       |   O   |                                                   |
-| 1987  |            알파벳            |  GoldⅣ  |       |       |   O   |                                                   |
-| 1992  |           쿼드트리           | SilverⅠ |       |       |   O   |                                                   |
-| 2206  |           벽 부수고 이동하기           | GoldⅣ |       |       |   O   |                                                   |
-| 2161  |            카드1             | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2161/) |
-| 2292  |             벌집             | BronzeⅡ |       |       |   O   |                                                   |
-| 2309  |         일곱 난쟁이          |  BronzeⅡ  |       |       |   O   |                                                   |
-| 2420  |          사파리월드          | BronzeⅣ |       |       |   O   |                                                   |
-| 2438  |           별찍기 1           | BronzeⅢ |       |   O   |       |                                                   |
-| 2439  |           별찍기 2           | BronzeⅢ |       |   O   |       |                                                   |
-| 2446  |           별찍기 9           | BronzeⅢ |       |   O   |       |                                                   |
-| 2475  |            검증수            | BronzeⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2475/) |
-| 2493  |              탑              |  GoldⅤ  |       |       |   O   |                                                   |
-| 2523  |          별찍기 13           | BronzeⅢ |       |   O   |       |                                                   |
-| 2557  |         Hello World          | BronzeⅤ |       |   O   |       |                                                   |
-| 2558  |           A+B - 2            | BronzeⅤ |       |       |   O   |                                                   |
-| 2562  |            최대값            | BronzeⅡ |       |       |   O   |                                                   |
-| 2563  |            색종이            | SilverⅤ |       |       |   O   |                                                   |
-| 2564  |            경비원            | SilverⅠ |       |       |   O   |                                                   |
-| 2577  |         숫자의 개수          | BronzeⅢ |       |       |   O   |                                                   |
-| 2578  |             빙고             | SilverⅤ |       |       |   O   |                                                   |
-| 2580  |             tmehzn             | GoldⅣ |       |       |   O   |                                                   |
-| 2588  |             곱셈             | BronzeⅣ |       |   O   |       |                                                   |
-| 2669  |   직사각형 네개의 합집합의 면적 구하기             | BronzeⅡ |       |   O   |       |                                                   |
-| 2675  |         문자열 반복          | BronzeⅡ |       |       |   O   |                                                   |
-| 2739  |            구구단            | BronzeⅢ |       |   O   |       |                                                   |
-| 2741  |            N 찍기            | BronzeⅢ |       |   O   |       |                                                   |
-| 2742  |            기찍 N            | BronzeⅢ |       |   O   |       |                                                   |
-| 2753  |             윤년             | BronzeⅣ |       |   O   |       |                                                   |
-| 2775  |      부녀회장이 될테야       | BronzeⅡ |       |       |   O   |                                                   |
-| 2839  |          설탕 배달           | BronzeⅠ |       |       |   O   |                                                   |
-| 2845  |     파티가 끝나고 난 뒤      | BronzeⅤ |       |       |   O   |                                                   |
-| 2869  |    달팽이는 올라가고 싶다    | BronzeⅠ |       |       |   O   |                                                   |
-| 2884  |          알람 시계           | BronzeⅢ |       |   O   |       |                                                   |
-| 2914  |            저작권            | BronzeⅤ |       |       |   O   |                                                   |
-| 2941  |      크로아티아 알파벳       | SilverⅤ |       |       |   O   |                                                   |
-| 2961  |  도영이가 만든 맛있는 음식   | SilverⅠ |       |       |   O   |                                                   |
-| 3003  | 킹, 퀸, 룩, 비숍, 나이트, 폰 | BronzeⅤ |       |       |   O   |                                                   |
-| 3040  |   백설 공주와 일곱 난쟁이    | BronzeⅡ |       |       |   O   |                                                   |
-| 3046  |              R2              | BronzeⅤ |       |       |   O   |                                                   |
-| 3052  |            나머지            | BronzeⅡ |       |   O   |       |                                                   |
-| 3109  |             빵집             |  GoldⅡ  |       |       |   O   |                                                   |
-| 3985  |          롤 케이크           | BronzeⅠ |       |       |   O   |                                                   |
-| 4344  |        평균은 넘겠지         | BronzeⅠ |       |       |   O   |                                                   |
-| 4673  |          셀프 넘버           | BronzeⅠ |       |       |   O   |                                                   |
+| :---: | :----------------------------------: | :-----: | :---: | :---: | :---: | :-----------------------------------------------: |
+| 1000  |                 A+B                  | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1000/) |
+| 1001  |                 A-B                  | BronzeⅤ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1001/) |
+| 1003  |            피보나치 함수             | SilverⅢ |       |       |   O   |                                                   |
+| 1008  |                 A/B                  | BronzeⅣ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1008/) |
+| 1011  |     Fly me to the Alpha Centauri     | SilverⅠ |       |       |   O   |                                                   |
+| 1074  |                  Z                   | SilverⅠ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1074/) |
+| 1110  |            더하기 사이클             | BronzeⅠ |   O   |   O   |   O   | [풀이](https://eona1301.github.io/beakjoon/1110/) |
+| 1149  |               RGB 거리               | SilverⅠ |       |   O   |       |                                                   |
+| 1158  |            요세푸스 문제             | SilverⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1158/) |
+| 1181  |              단어 정렬               | SilverⅤ |       |       |   O   |                                                   |
+| 1193  |               분수찾기               | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/1193/) |
+| 1194  |          달이 차오른다 가자          |  GoldⅠ  |       |       |   O   |                                                   |
+| 1242  |                 소풍                 |  GoldⅡ  |       |       |   O   |                                                   |
+| 1244  |           스위치 켜고 끄기           | SilverⅣ |       |       |   O   |                                                   |
+| 1271  |             엄청난 부자2             | BronzeⅤ |       |       |   O   |                                                   |
+| 1330  |            두 수 비교하기            | BronzeⅣ |       |   O   |       |                                                   |
+| 1463  |              1로 만들기              | SilverⅢ |       |   O   |       |                                                   |
+| 1546  |                 평균                 | BronzeⅠ |       |   O   |       |                                                   |
+| 1550  |                16진수                | BronzeⅤ |       |       |   O   |                                                   |
+| 1592  |           영식이와 친구들            | BronzeⅡ |       |       |   O   |                                                   |
+| 1600  |          말이 되고픈 원숭이          |  GoldⅤ  |       |       |   O   |                                                   |
+| 1712  |              손익분기점              | BronzeⅣ |       |       |   O   |                                                   |
+| 1712  |               숫자놀이               | SilverⅤ |       |       |   O   |                                                   |
+| 1759  |             암호 만들기              |  GoldⅤ  |       |       |   O   |                                                   |
+| 1918  |             후기 표기식              |  GoldⅣ  |       |       |   O   |                                                   |
+| 1922  |            네트워크 연결             |  GoldⅣ  |       |       |   O   |                                                   |
+| 1987  |                알파벳                |  GoldⅣ  |       |       |   O   |                                                   |
+| 1992  |               쿼드트리               | SilverⅠ |       |       |   O   |                                                   |
+| 2206  |          벽 부수고 이동하기          |  GoldⅣ  |       |       |   O   |                                                   |
+| 2161  |                카드1                 | BronzeⅡ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2161/) |
+| 2292  |                 벌집                 | BronzeⅡ |       |       |   O   |                                                   |
+| 2309  |             일곱 난쟁이              | BronzeⅡ |       |       |   O   |                                                   |
+| 2420  |              사파리월드              | BronzeⅣ |       |       |   O   |                                                   |
+| 2438  |               별찍기 1               | BronzeⅢ |       |   O   |       |                                                   |
+| 2439  |               별찍기 2               | BronzeⅢ |       |   O   |       |                                                   |
+| 2446  |               별찍기 9               | BronzeⅢ |       |   O   |       |                                                   |
+| 2475  |                검증수                | BronzeⅤ |       |       |   O   | [풀이](https://eona1301.github.io/beakjoon/2475/) |
+| 2493  |                  탑                  |  GoldⅤ  |       |       |   O   |                                                   |
+| 2523  |              별찍기 13               | BronzeⅢ |       |   O   |       |                                                   |
+| 2557  |             Hello World              | BronzeⅤ |       |   O   |       |                                                   |
+| 2558  |               A+B - 2                | BronzeⅤ |       |       |   O   |                                                   |
+| 2562  |                최대값                | BronzeⅡ |       |       |   O   |                                                   |
+| 2563  |                색종이                | SilverⅤ |       |       |   O   |                                                   |
+| 2564  |                경비원                | SilverⅠ |       |       |   O   |                                                   |
+| 2577  |             숫자의 개수              | BronzeⅢ |       |       |   O   |                                                   |
+| 2578  |                 빙고                 | SilverⅤ |       |       |   O   |                                                   |
+| 2580  |                tmehzn                |  GoldⅣ  |       |       |   O   |                                                   |
+| 2588  |                 곱셈                 | BronzeⅣ |       |   O   |       |                                                   |
+| 2669  | 직사각형 네개의 합집합의 면적 구하기 | BronzeⅡ |       |   O   |       |                                                   |
+| 2675  |             문자열 반복              | BronzeⅡ |       |       |   O   |                                                   |
+| 2739  |                구구단                | BronzeⅢ |       |   O   |       |                                                   |
+| 2741  |                N 찍기                | BronzeⅢ |       |   O   |       |                                                   |
+| 2742  |                기찍 N                | BronzeⅢ |       |   O   |       |                                                   |
+| 2753  |                 윤년                 | BronzeⅣ |       |   O   |       |                                                   |
+| 2775  |          부녀회장이 될테야           | BronzeⅡ |       |       |   O   |                                                   |
+| 2798  |          블랙잭           | BronzeⅡ |       |       |   O   |                                                   |
+| 2839  |              설탕 배달               | BronzeⅠ |       |       |   O   |                                                   |
+| 2845  |         파티가 끝나고 난 뒤          | BronzeⅤ |       |       |   O   |                                                   |
+| 2869  |        달팽이는 올라가고 싶다        | BronzeⅠ |       |       |   O   |                                                   |
+| 2884  |              알람 시계               | BronzeⅢ |       |   O   |       |                                                   |
+| 2914  |                저작권                | BronzeⅤ |       |       |   O   |                                                   |
+| 2941  |          크로아티아 알파벳           | SilverⅤ |       |       |   O   |                                                   |
+| 2961  |      도영이가 만든 맛있는 음식       | SilverⅠ |       |       |   O   |                                                   |
+| 3003  |     킹, 퀸, 룩, 비숍, 나이트, 폰     | BronzeⅤ |       |       |   O   |                                                   |
+| 3040  |       백설 공주와 일곱 난쟁이        | BronzeⅡ |       |       |   O   |                                                   |
+| 3046  |                  R2                  | BronzeⅤ |       |       |   O   |                                                   |
+| 3052  |                나머지                | BronzeⅡ |       |   O   |       |                                                   |
+| 3109  |                 빵집                 |  GoldⅡ  |       |       |   O   |                                                   |
+| 3985  |              롤 케이크               | BronzeⅠ |       |       |   O   |                                                   |
+| 4344  |            평균은 넘겠지             | BronzeⅠ |       |       |   O   |                                                   |
+| 4673  |              셀프 넘버               | BronzeⅠ |       |       |   O   |                                                   |
 
 ## 5000번 ~
 
