@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Dang Hyeona"
   avatar           : "image/profile/2020me.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "**기록이 자산!!**<br>매일 공부하고 있습니다.<br>소통을 좋아합니다.<br><br>정보를 한 번에 보시려면<br>**A to Z 카테고리**를<br>확인해 주세요."
+  bio              : "**0.0 ver Blog 종료!**<br>2020.07.01~2021.07.08<br><br>Velog로 이사했어요"
   location         : "Republic of Korea"
   email            : #"eona1301@gmail.com"
   links:
@@ -113,7 +113,7 @@ author:
       url: "https://www.instagram.com/danghyeona/"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
+      url: "https://velog.io/@eona1301"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
