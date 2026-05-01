@@ -1,0 +1,170 @@
+<div
+  class="fixed right-4 bottom-4 z-50 flex flex-col items-end gap-2.5 sm:right-6 sm:bottom-6 sm:gap-3 md:right-8 md:bottom-8"
+  data-floating-controls
+>
+  <div
+    class="pointer-events-none flex translate-y-3 scale-95 flex-col gap-2.5 opacity-0 transition-all duration-300 ease-out sm:gap-3"
+    data-floating-panel
+  >
+    <button
+      type="button"
+      class="floating-control-chip"
+      data-control="lang"
+      aria-label="언어 전환"
+      title="언어 전환"
+    >
+      <span data-control-lang-label>EN</span>
+    </button>
+
+    <button
+      type="button"
+      class="floating-control-chip"
+      data-control="theme"
+      aria-label="테마 전환"
+      title="테마 전환"
+    >
+      <span aria-hidden="true" class="type-body leading-none" data-theme-icon="light">☀</span>
+      <span aria-hidden="true" class="type-body hidden leading-none" data-theme-icon="dark">☾</span>
+    </button>
+  </div>
+
+  <button
+    type="button"
+    class="floating-control-primary"
+    data-control="toggle"
+    aria-label="플로팅 설정 열기"
+    aria-expanded="false"
+    title="설정"
+  >
+    <span aria-hidden="true" class="type-subsection-title leading-none" data-toggle-icon="closed">⚙</span>
+    <span aria-hidden="true" class="type-subsection-title hidden leading-none" data-toggle-icon="open">✕</span>
+  </button>
+</div>
+
+<script is:inline>
+  (() => {
+    const themeStorageKey = 'hadevyi-theme';
+    const langStorageKey = 'hadevyi-lang';
+    const root = document.documentElement;
+    const panel = document.querySelector('[data-floating-panel]');
+    const toggleButton = document.querySelector('[data-control="toggle"]');
+    const themeButton = document.querySelector('[data-control="theme"]');
+    const langButton = document.querySelector('[data-control="lang"]');
+    const langLabel = document.querySelector('[data-control-lang-label]');
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    if (!panel || !toggleButton || !themeButton || !langButton || !langLabel) {
+      return;
+    }
+
+    let isOpen = false;
+
+    const resolveTheme = () => {
+      const savedTheme = localStorage.getItem(themeStorageKey);
+
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        return savedTheme;
+      }
+
+      return mediaQuery.matches ? 'dark' : 'light';
+    };
+
+    const setPanelState = (nextOpen) => {
+      isOpen = nextOpen;
+      panel.classList.toggle('pointer-events-none', !nextOpen);
+      panel.classList.toggle('translate-y-3', !nextOpen);
+      panel.classList.toggle('scale-95', !nextOpen);
+      panel.classList.toggle('opacity-0', !nextOpen);
+      panel.classList.toggle('translate-y-0', nextOpen);
+      panel.classList.toggle('scale-100', nextOpen);
+      panel.classList.toggle('opacity-100', nextOpen);
+      toggleButton.setAttribute('aria-expanded', String(nextOpen));
+      toggleButton.setAttribute('aria-label', nextOpen ? '플로팅 설정 닫기' : '플로팅 설정 열기');
+      toggleButton.querySelector('[data-toggle-icon="closed"]')?.classList.toggle('hidden', nextOpen);
+      toggleButton.querySelector('[data-toggle-icon="open"]')?.classList.toggle('hidden', !nextOpen);
+    };
+
+    const applyTheme = (theme) => {
+      root.dataset.theme = theme;
+      root.style.colorScheme = theme;
+      themeButton.setAttribute('aria-label', theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
+      themeButton.setAttribute('title', theme === 'dark' ? '라이트 모드' : '다크 모드');
+      themeButton.querySelector('[data-theme-icon="light"]')?.classList.toggle('hidden', theme === 'dark');
+      themeButton.querySelector('[data-theme-icon="dark"]')?.classList.toggle('hidden', theme !== 'dark');
+
+      if (themeColorMeta) {
+        themeColorMeta.setAttribute('content', theme === 'dark' ? '#101014' : '#faf9fd');
+      }
+    };
+
+    const applyLanguage = (lang) => {
+      root.lang = lang;
+      langLabel.textContent = lang === 'ko' ? 'EN' : 'KO';
+      langButton.setAttribute('aria-label', lang === 'ko' ? '영문으로 전환' : '한국어로 전환');
+      langButton.setAttribute('title', lang === 'ko' ? 'English' : '한국어');
+
+      document.querySelectorAll('[data-i18n-ko][data-i18n-en]').forEach((element) => {
+        const nextText = lang === 'en' ? element.dataset.i18nEn : element.dataset.i18nKo;
+        const attrName = element.dataset.i18nAttr;
+
+        if (!nextText) {
+          return;
+        }
+
+        if (attrName) {
+          element.setAttribute(attrName, nextText);
+          return;
+        }
+
+        element.textContent = nextText;
+      });
+    };
+
+    const initialize = () => {
+      applyTheme(resolveTheme());
+      applyLanguage(localStorage.getItem(langStorageKey) || root.lang || 'ko');
+      setPanelState(false);
+    };
+
+    toggleButton.addEventListener('click', () => {
+      setPanelState(!isOpen);
+    });
+
+    themeButton.addEventListener('click', () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      localStorage.setItem(themeStorageKey, nextTheme);
+      applyTheme(nextTheme);
+    });
+
+    langButton.addEventListener('click', () => {
+      const nextLang = root.lang === 'en' ? 'ko' : 'en';
+      localStorage.setItem(langStorageKey, nextLang);
+      applyLanguage(nextLang);
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+
+      if (!(target instanceof HTMLElement)) {
+        return;
+      }
+
+      if (!target.closest('[data-floating-controls]')) {
+        setPanelState(false);
+      }
+    });
+
+    mediaQuery.addEventListener('change', (event) => {
+      const savedTheme = localStorage.getItem(themeStorageKey);
+
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        return;
+      }
+
+      applyTheme(event.matches ? 'dark' : 'light');
+    });
+
+    initialize();
+  })();
+</script>

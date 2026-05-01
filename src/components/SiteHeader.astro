@@ -1,0 +1,35 @@
+---
+import { mainNav, siteMeta } from '../data/site';
+
+const pathname = Astro.url.pathname;
+const isCurrentPath = (href: string, external?: boolean) => {
+  if (external) return false;
+  return href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(href);
+};
+---
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href={siteMeta.rootPath} class="site-title-link">
+      <span class="site-title">{siteMeta.brand}</span>
+      <span class="site-subtitle">{siteMeta.subtitle}</span>
+    </a>
+
+    <nav class="site-nav" aria-label="주요 이동">
+      {
+        mainNav.map((item) => {
+          const isCurrent = isCurrentPath(item.href, 'external' in item ? item.external : false);
+          return (
+            <a
+              href={item.href}
+              aria-current={isCurrent ? 'page' : undefined}
+              class:list={['site-nav-link', isCurrent && 'site-nav-link-current']}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+  </div>
+</header>

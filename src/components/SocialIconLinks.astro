@@ -1,0 +1,57 @@
+---
+interface SocialLink {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  links: readonly SocialLink[];
+  compact?: boolean;
+}
+
+const { links, compact = false } = Astro.props;
+
+const iconPaths: Record<string, string> = {
+  Email:
+    'M3.75 5.25h16.5c.828 0 1.5.672 1.5 1.5v10.5c0 .828-.672 1.5-1.5 1.5H3.75a1.5 1.5 0 0 1-1.5-1.5V6.75c0-.828.672-1.5 1.5-1.5Zm0 1.66v.18l8.25 5.665 8.25-5.665v-.18H3.75Zm16.5 10.34v-8.485L12.425 14.14a.75.75 0 0 1-.85 0L3.75 8.765v8.485h16.5Z',
+  GitHub:
+    'M12 1.5a10.5 10.5 0 0 0-3.322 20.46c.525.097.713-.227.713-.503 0-.248-.01-1.066-.014-1.934-2.902.631-3.514-1.23-3.514-1.23-.474-1.205-1.157-1.527-1.157-1.527-.946-.647.071-.634.071-.634 1.046.074 1.597 1.074 1.597 1.074.93 1.594 2.44 1.134 3.034.867.095-.674.364-1.134.661-1.394-2.317-.264-4.752-1.159-4.752-5.16 0-1.14.407-2.072 1.074-2.803-.108-.264-.465-1.328.102-2.768 0 0 .875-.28 2.868 1.07A9.954 9.954 0 0 1 12 6.544c.882.004 1.77.119 2.6.35 1.992-1.35 2.866-1.07 2.866-1.07.568 1.44.211 2.504.103 2.768.668.73 1.073 1.663 1.073 2.803 0 4.011-2.439 4.893-4.761 5.152.374.323.708.957.708 1.93 0 1.394-.012 2.516-.012 2.858 0 .279.187.605.719.502A10.5 10.5 0 0 0 12 1.5Z',
+  LinkedIn:
+    'M5.432 8.985H1.903V22.5h3.529V8.985ZM5.664 4.806c0-1.13-.85-2.056-2-2.056-1.15 0-2.004.926-2.004 2.056 0 1.127.85 2.053 1.982 2.053h.022c1.172 0 2-.926 2-2.053ZM22.5 14.27c0-4.086-2.18-5.986-5.086-5.986-2.345 0-3.394 1.288-3.98 2.194V8.985H9.907c.047.988 0 13.515 0 13.515h3.528v-7.55c0-.404.029-.807.148-1.095.323-.807 1.058-1.643 2.292-1.643 1.617 0 2.266 1.24 2.266 3.054V22.5H22.5v-8.23Z'
+};
+---
+
+<div
+  class:list={['social-icon-list', compact && 'social-icon-list-compact']}
+  aria-label="공식 외부 채널"
+>
+  {
+    links.map((link) => (
+      (() => {
+        const isEmail = link.href.startsWith('mailto:');
+        const actionLabel = isEmail ? '이메일 보내기' : `${link.label} 열기`;
+
+        return (
+      <a
+        href={link.href}
+        class:list={['social-icon-link', compact && 'social-icon-link-compact']}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={actionLabel}
+        title={link.label}
+      >
+        <svg
+          class:list={['social-icon-symbol', compact && 'social-icon-symbol-compact']}
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <path d={iconPaths[link.label] ?? ''}></path>
+        </svg>
+        <span class="sr-only">{link.label}</span>
+      </a>
+        );
+      })()
+    ))
+  }
+</div>

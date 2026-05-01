@@ -1,0 +1,514 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialIconLinks from '../components/SocialIconLinks.astro';
+import { socialLinks } from '../data/site';
+
+const profileImage = '/images/dang-hyeona-profile.png';
+
+const text = (ko: string, en: string) => ({ ko, en });
+const i18nText = (ko: string, en: string) => ({
+  'data-i18n-ko': ko,
+  'data-i18n-en': en
+});
+const i18nAttr = (attr: string, ko: string, en: string) => ({
+  'data-i18n-attr': attr,
+  'data-i18n-ko': ko,
+  'data-i18n-en': en
+});
+
+const hero = {
+  eyebrow: text('공유의 가치를 추구하는 개발자', 'Developer Who Pursues the Value of Sharing'),
+  title: text('당현아', 'Dang Hyeona'),
+  paragraphs: [
+    text(
+      '다양한 관점을 연결하며 팀의 흐름을 만듭니다.',
+      'I connect diverse perspectives and help create a smooth team flow.'
+    ),
+    text(
+      '기록과 공유로 스스로를 점검하고 함께 성장하는 분위기를 만듭니다.',
+      'Through recording and sharing, I reflect on my own process and help create a culture where the team grows together.'
+    )
+  ],
+  activities: [
+    { icon: 'code', label: text('개발', 'Development') },
+    { icon: 'book', label: text('개발교육', 'Developer Education') },
+    { icon: 'note', label: text('기록', 'Recording') },
+    { icon: 'nodes', label: text('공유', 'Sharing') },
+    { icon: 'heart', label: text('재능기부', 'Talent Donation') }
+  ]
+} as const;
+
+const brandingReasons = [
+  {
+    number: '01',
+    title: text('나를 더 잘 표현하기 위해', 'To Express Myself More Clearly'),
+    paragraphs: [
+      text(
+        '개발자로서의 저는 완성된 결과보다 그 과정에서 어떤 선택을 했는지에 더 잘 드러난다고 생각합니다.',
+        'I believe who I am as a developer is revealed not only in the final result, but in the choices I make throughout the process.'
+      ),
+      text(
+        '그래서 생각의 흐름과 판단의 기준을 기록하며, 저를 더 선명하게 설명할 수 있는 공간을 만들고 싶었습니다.',
+        'That is why I wanted to create a space where I can record my thinking process and decision standards more clearly.'
+      )
+    ]
+  },
+  {
+    number: '02',
+    title: text(
+      '나에게도 누군가에게도\n자신감과 자극이 되도록',
+      'So It Can Become Confidence\nand Momentum for Me and Others'
+    ),
+    paragraphs: [
+      text(
+        '기록은 나에게 다시 꺼내볼 수 있는 기준이 되고, 다음 선택을 위한 자신감이 됩니다.',
+        'Records become standards I can return to, and confidence for my next decisions.'
+      ),
+      text(
+        '동시에 누군가에게는 먼저 지나간 사람의 흔적으로 남아, 새로운 시도를 시작하는 작은 자극이 되기를 바랍니다.',
+        'At the same time, I hope they remain as traces from someone who went first and become a small spark for someone else to try something new.'
+      )
+    ]
+  }
+] as const;
+
+const decisionTraceLabels = [
+  text('맥락', 'Context'),
+  text('판단', 'Decision'),
+  text('근거', 'Rationale')
+] as const;
+
+const sharingTraceLabels = [
+  text('회고', 'Reflection'),
+  text('정리', 'Structure'),
+  text('공유', 'Sharing'),
+  text('확장', 'Expansion')
+] as const;
+
+const siteGroups = [
+  {
+    title: text('소개 문서를 먼저 확인하세요', 'Start with the Core Introduction Pages'),
+    countLabel: text('2개 항목', '2 items'),
+    items: [
+      {
+        href: '/resume/',
+        label: text('이력서', 'Resume'),
+        description: text(
+          '압축된 경력 요약과 현재 집중 영역을 빠르게 보여주는 독립 사이트',
+          'A standalone site that quickly shows my condensed career summary and current focus areas.'
+        ),
+        urlLabel: 'hadevyi.github.io/resume/'
+      },
+      {
+        href: '/portfolio/',
+        label: text('포트폴리오', 'Portfolio'),
+        description: text(
+          '프로젝트 배경, 설계 과정, 결과를 케이스 스터디로 정리하는 독립 사이트',
+          'A standalone site that organizes project background, design decisions, and outcomes as case studies.'
+        ),
+        urlLabel: 'hadevyi.github.io/portfolio/'
+      }
+    ]
+  },
+  {
+    title: text('성장과 기록을 이어서 확인하세요', 'Continue with Growth and Writing'),
+    countLabel: text('2개 항목', '2 items'),
+    items: [
+      {
+        href: '/experience/',
+        label: text('경험 정리', 'Experience'),
+        description: text(
+          '성장 흐름과 운영 기준을 시간 맥락에 맞춰 풀어내는 독립 사이트',
+          'A standalone site that explains my growth path and working principles in a clear time-based context.'
+        ),
+        urlLabel: 'hadevyi.github.io/experience/'
+      },
+      {
+        href: '/blog/',
+        label: text('블로그', 'Blog'),
+        description: text(
+          '긴 글과 기술 메모, 설계 기록을 남기는 독립 블로그 사이트',
+          'A standalone blog where I leave essays, technical notes, and design records.'
+        ),
+        urlLabel: 'hadevyi.github.io/blog/'
+      }
+    ]
+  }
+] as const;
+
+const ctaSection = {
+  body: text(
+    '새로운 글과 작업 기록은 블로그와 GitHub에 가장 먼저 남깁니다.',
+    'New writing and work logs are usually published first on my blog and GitHub.'
+  ),
+  title: text(
+    '지금의 당현아를 가장 빠르게 확인하는 방법',
+    'The Fastest Way to See What I Am Working on Right Now'
+  ),
+  primary: text('블로그 보기', 'Open Blog'),
+  secondary: text('GitHub 보기', 'Open GitHub')
+} as const;
+
+const socialSection = {
+  eyebrow: text('다른 채널', 'Other Channels'),
+  title: text(
+    '다른 채널에서도 당현아를 확인할 수 있습니다.',
+    'You can also find Dang Hyeona on other channels.'
+  )
+} as const;
+---
+
+<BaseLayout showHeader={false} mainClass="!max-w-none !px-0 !pb-0">
+  <div class="w-full">
+    <section class="flex min-h-[100svh] items-center">
+      <div class="mx-auto w-full max-w-6xl px-5 py-8 sm:px-10 sm:py-12 md:px-12 md:py-14 lg:px-20 xl:px-24">
+        <div class="grid items-end gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(13rem,0.72fr)] md:gap-10 lg:gap-14">
+          <div class="space-y-4 pb-1 sm:space-y-5 md:pb-8">
+            <p
+              class="type-body font-medium [color:var(--theme-accent)]"
+              {...i18nText(hero.eyebrow.ko, hero.eyebrow.en)}
+            >
+              {hero.eyebrow.ko}
+            </p>
+            <h1
+              class="type-display [color:var(--theme-ink)]"
+              {...i18nText(hero.title.ko, hero.title.en)}
+            >
+              {hero.title.ko}
+            </h1>
+            <div class="h-1 w-16 rounded-full [background-image:linear-gradient(90deg,var(--theme-brand-gradient-start),var(--theme-brand-gradient-mid),var(--theme-brand-gradient-end))]"></div>
+
+            <div class="type-body max-w-xl space-y-2 pt-1 [color:var(--theme-ink-muted)] sm:pt-2">
+              {
+                hero.paragraphs.map((paragraph) => (
+                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
+                ))
+              }
+            </div>
+          </div>
+
+          <div
+            class="relative mx-auto flex w-full max-w-[13.5rem] items-end justify-center sm:max-w-[16rem] md:mx-0 md:ml-auto md:max-w-[17.5rem] lg:max-w-[18.5rem]"
+          >
+            <div class="absolute inset-x-4 bottom-0 h-[68%] rounded-full [background:radial-gradient(circle,rgba(143,136,184,0.12),transparent_70%)] blur-2xl"></div>
+            <div class="absolute -right-3 bottom-10 hidden h-px w-20 [background-image:linear-gradient(90deg,transparent,var(--theme-brand-gradient-mid))] md:block"></div>
+            <img
+              src={profileImage}
+              alt="당현아 프로필 사진"
+              class="relative aspect-[5/7] h-auto max-h-[56svh] w-full object-contain drop-shadow-[0_26px_42px_rgba(21,18,34,0.16)]"
+              loading="eager"
+              {...i18nAttr('alt', '당현아 프로필 사진', 'Portrait of Dang Hyeona')}
+            />
+          </div>
+        </div>
+
+        <div class="mt-0 border-t pt-5 [border-color:var(--theme-border)] sm:pt-6">
+          <div class="grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-3">
+            {
+              hero.activities.map((activity) => (
+                <div class="group flex min-h-24 flex-col items-center justify-center gap-3 rounded-2xl border px-3 py-4 text-center [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)] sm:min-h-[7.25rem] sm:px-4 sm:py-5">
+                  <span class="flex size-10 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)] transition-colors duration-200 group-hover:[background-color:color-mix(in_srgb,var(--theme-accent)_14%,transparent)] sm:size-11">
+                    {
+                      activity.icon === 'code' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                          <path d="m10 8-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="m14 8 4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="m13 6-2 12" stroke-linecap="round" />
+                        </svg>
+                      )
+                    }
+                    {
+                      activity.icon === 'book' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                          <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3H19v15H8.5A3.5 3.5 0 0 0 5 21V6.5Z" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3" stroke-linecap="round" />
+                          <path d="M9 7h6" stroke-linecap="round" />
+                        </svg>
+                      )
+                    }
+                    {
+                      activity.icon === 'note' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                          <path d="M7 4h7l3 3v13H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M14 4v4h4" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M10 12h5" stroke-linecap="round" />
+                          <path d="M10 16h4" stroke-linecap="round" />
+                        </svg>
+                      )
+                    }
+                    {
+                      activity.icon === 'nodes' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                          <path d="M8.5 8.5 15.5 12l-7 3.5" stroke-linecap="round" stroke-linejoin="round" />
+                          <circle cx="6.5" cy="7.5" r="2.2" />
+                          <circle cx="17.5" cy="12" r="2.2" />
+                          <circle cx="6.5" cy="16.5" r="2.2" />
+                        </svg>
+                      )
+                    }
+                    {
+                      activity.icon === 'heart' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                          <path d="M12 19s-6.5-3.8-6.5-8.2A3.7 3.7 0 0 1 12 8.3a3.7 3.7 0 0 1 6.5 2.5C18.5 15.2 12 19 12 19Z" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      )
+                    }
+                  </span>
+                  <span
+                    class="type-small whitespace-nowrap font-medium [color:var(--theme-ink-soft)]"
+                    {...i18nText(activity.label.ko, activity.label.en)}
+                  >
+                    {activity.label.ko}
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-y py-16 [background-color:var(--theme-section-branding)] [border-color:var(--theme-border)] sm:py-20 lg:py-24">
+      <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+        <div class="mb-10 flex items-center gap-4 sm:mb-12">
+          <p class="type-label-wide uppercase [color:var(--theme-accent)]">
+            BRANDING WHY
+          </p>
+          <div class="h-px flex-1 [background-color:var(--theme-border)]"></div>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2 md:gap-5 lg:gap-6">
+          <article class="min-h-[19rem] rounded-[1.75rem] border p-6 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_72%,transparent)] sm:p-8 lg:p-9">
+            <p class="type-label-wide mb-8 [color:var(--theme-accent)]">
+              {brandingReasons[0].number}
+            </p>
+            <h2
+              class="type-section-title max-w-lg whitespace-pre-line [color:var(--theme-ink)]"
+              {...i18nText(brandingReasons[0].title.ko, brandingReasons[0].title.en)}
+            >
+              {brandingReasons[0].title.ko}
+            </h2>
+            <div class="type-body mt-7 space-y-3 [color:var(--theme-ink-muted)]">
+              {
+                brandingReasons[0].paragraphs.map((paragraph) => (
+                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
+                ))
+              }
+            </div>
+          </article>
+
+          <div class="relative min-h-[19rem] overflow-hidden rounded-[1.75rem] border p-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-accent)_5%,var(--theme-surface-strong))] sm:p-6 lg:p-7">
+            <div class="absolute right-7 top-7 h-20 w-20 rounded-full [background:radial-gradient(circle,rgba(143,136,184,0.18),transparent_68%)]"></div>
+            <div class="relative mx-auto flex h-full max-w-md flex-col justify-center">
+              <div class="rounded-[0.9rem] border p-6 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)]">
+                <div class="mb-6 flex items-center justify-between gap-4 border-b pb-4 [border-color:var(--theme-border)]">
+                  <p
+                    class="type-label [color:var(--theme-ink-faint)]"
+                    {...i18nText('판단의 기록', 'Decision Record')}
+                  >
+                    판단의 기록
+                  </p>
+                  <span class="h-px w-12 [background-color:var(--theme-accent)]"></span>
+                </div>
+                <div class="space-y-3.5">
+                  <div class="h-px w-9/12 [background-color:var(--theme-border-strong)]"></div>
+                  <div class="h-px w-11/12 [background-color:var(--theme-border)]"></div>
+                  <div class="h-px w-7/12 [background-color:var(--theme-border)]"></div>
+                </div>
+                <div class="mt-7 grid grid-cols-3 gap-px border-y [border-color:var(--theme-border)] [background-color:var(--theme-border)]">
+                  {decisionTraceLabels.map((label) => (
+                    <span
+                      class="type-micro px-2 py-3 text-center font-medium tracking-[0.06em] [background-color:var(--theme-surface-strong)] [color:var(--theme-ink-muted)]"
+                      {...i18nText(label.ko, label.en)}
+                    >
+                      {label.ko}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div class="ml-auto mt-5 w-8/12 border-t px-1 pt-4 [border-color:var(--theme-border)]">
+                <div class="h-px w-8/12 [background-color:var(--theme-border-strong)]"></div>
+                <div class="mt-3 h-px w-5/12 [background-color:var(--theme-border)]"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative min-h-[19rem] overflow-hidden rounded-[1.75rem] border p-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_82%,transparent)] sm:p-6 lg:p-7">
+            <div class="absolute inset-x-8 top-1/2 h-px [background-image:linear-gradient(90deg,transparent,var(--theme-brand-gradient-mid),transparent)]"></div>
+            <div class="relative flex h-full flex-col justify-center gap-4">
+              <div class="w-10/12 rounded-[0.9rem] border p-5 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)]">
+                <div class="flex items-center gap-3">
+                  <span class="flex size-8 items-center justify-center border [border-color:var(--theme-border)] [color:var(--theme-accent)]">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                      <path d="M8.5 8.5 15.5 12l-7 3.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <circle cx="6.5" cy="7.5" r="2.2" />
+                      <circle cx="17.5" cy="12" r="2.2" />
+                      <circle cx="6.5" cy="16.5" r="2.2" />
+                    </svg>
+                  </span>
+                  <div class="flex-1">
+                    <p
+                      class="type-caption font-semibold [color:var(--theme-ink-soft)]"
+                      {...i18nText('기록의 흐름', 'Record Flow')}
+                    >
+                      기록의 흐름
+                    </p>
+                    <div class="mt-3 h-px w-8/12 [background-color:var(--theme-border)]"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="ml-auto w-10/12 border p-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-accent)_5%,var(--theme-surface-strong))]">
+                <div class="grid grid-cols-2 gap-px [background-color:var(--theme-border)]">
+                  {sharingTraceLabels.map((label) => (
+                    <span
+                      class="type-micro px-3 py-4 text-center font-medium tracking-[0.06em] [background-color:var(--theme-surface-strong)] [color:var(--theme-ink-muted)]"
+                      {...i18nText(label.ko, label.en)}
+                    >
+                      {label.ko}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <article class="min-h-[19rem] rounded-[1.75rem] border p-6 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_72%,transparent)] sm:p-8 lg:p-9">
+            <p class="type-label-wide mb-8 [color:var(--theme-accent)]">
+              {brandingReasons[1].number}
+            </p>
+            <h2
+              class="type-section-title max-w-lg whitespace-pre-line [color:var(--theme-ink)]"
+              {...i18nText(brandingReasons[1].title.ko, brandingReasons[1].title.en)}
+            >
+              {brandingReasons[1].title.ko}
+            </h2>
+            <div class="type-body mt-7 space-y-3 [color:var(--theme-ink-muted)]">
+              {
+                brandingReasons[1].paragraphs.map((paragraph) => (
+                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
+                ))
+              }
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-14 [background-color:var(--theme-section-sites)] sm:py-18 md:py-20 lg:py-24">
+      <div class="mx-auto w-full max-w-5xl px-5 sm:px-10 md:px-12 lg:px-24">
+        <div class="space-y-10">
+          {
+            siteGroups.map((group) => (
+              <section class="space-y-5" aria-label={group.title.ko}>
+                <div class="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+                  <h2
+                    class="type-subsection-title [color:var(--theme-ink)]"
+                    {...i18nText(group.title.ko, group.title.en)}
+                  >
+                    {group.title.ko}
+                  </h2>
+                  <span
+                    class="type-micro uppercase tracking-[var(--type-label-tracking)] [color:var(--theme-ink-faint)]"
+                    {...i18nText(group.countLabel.ko, group.countLabel.en)}
+                  >
+                    {group.countLabel.ko}
+                  </span>
+                </div>
+
+                <div class="grid gap-4 md:grid-cols-2">
+                  {
+                    group.items.map((item) => (
+                      <a
+                        href={item.href}
+                        class="group rounded-[1.25rem] border p-4 no-underline transition-all duration-200 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] hover:-translate-y-[1px] hover:[border-color:var(--theme-border-strong)] hover:[background-color:var(--theme-chip-bg)] sm:rounded-[1.5rem] sm:p-5"
+                      >
+                        <div class="space-y-3">
+                          <div class="flex items-start justify-between gap-4">
+                            <h3
+                              class="type-card-title [color:var(--theme-ink)]"
+                              {...i18nText(item.label.ko, item.label.en)}
+                            >
+                              {item.label.ko}
+                            </h3>
+                            <span class="transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
+                              ↗
+                            </span>
+                          </div>
+                          <p
+                            class="type-small [color:var(--theme-ink-muted)]"
+                            {...i18nText(item.description.ko, item.description.en)}
+                          >
+                            {item.description.ko}
+                          </p>
+                          <p class="type-caption break-all uppercase tracking-[0.16em] [color:var(--theme-ink-faint)]">
+                            {item.urlLabel}
+                          </p>
+                        </div>
+                      </a>
+                    ))
+                  }
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 [background-color:var(--theme-section-cta)] sm:py-20 lg:py-24">
+      <div class="mx-auto w-full max-w-3xl px-5 text-center sm:px-10 md:px-12">
+        <div class="space-y-5 rounded-[1.5rem] border px-5 py-8 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:var(--theme-shadow)] sm:rounded-[2rem] sm:px-10 sm:py-10">
+          <p
+            class="type-small font-medium [color:var(--theme-ink-muted)]"
+            {...i18nText(ctaSection.body.ko, ctaSection.body.en)}
+          >
+            {ctaSection.body.ko}
+          </p>
+          <h2
+            class="type-section-title [color:var(--theme-ink)]"
+            {...i18nText(ctaSection.title.ko, ctaSection.title.en)}
+          >
+            {ctaSection.title.ko}
+          </h2>
+          <div class="flex flex-col justify-center gap-3 pt-2 sm:flex-row sm:flex-wrap">
+            <a href="/blog/" class="button-primary type-small px-5 py-3 transition-colors duration-200">
+              <span {...i18nText(ctaSection.primary.ko, ctaSection.primary.en)}>
+                {ctaSection.primary.ko}
+              </span>
+            </a>
+            <a
+              href="https://github.com/hadevyi"
+              target="_blank"
+              rel="noreferrer"
+              class="button-secondary type-small px-5 py-3 transition-colors duration-200"
+            >
+              <span {...i18nText(ctaSection.secondary.ko, ctaSection.secondary.en)}>
+                {ctaSection.secondary.ko}
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-16 sm:pb-20 lg:pb-24">
+      <div class="mx-auto w-full max-w-5xl px-5 sm:px-10 md:px-12 lg:px-24">
+        <div class="flex flex-col items-center gap-5 text-center">
+          <p
+            class="type-label uppercase [color:var(--theme-ink-faint)]"
+            {...i18nText(socialSection.eyebrow.ko, socialSection.eyebrow.en)}
+          >
+            {socialSection.eyebrow.ko}
+          </p>
+          <h2
+            class="type-subsection-title [color:var(--theme-ink)]"
+            {...i18nText(socialSection.title.ko, socialSection.title.en)}
+          >
+            {socialSection.title.ko}
+          </h2>
+          <SocialIconLinks links={socialLinks} />
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

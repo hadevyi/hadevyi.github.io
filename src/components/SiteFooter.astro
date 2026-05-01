@@ -1,0 +1,86 @@
+---
+import SocialIconLinks from './SocialIconLinks.astro';
+import { siteMeta, socialLinks } from '../data/site';
+
+const i18nText = (ko: string, en: string) => ({
+  'data-i18n-ko': ko,
+  'data-i18n-en': en
+});
+
+const ecosystemLinks = [
+  {
+    href: 'https://hadevyi.github.io/',
+    labelKo: '공식 홈페이지',
+    labelEn: 'Official Website'
+  },
+  {
+    href: 'https://hadevyi.github.io/resume/',
+    labelKo: '이력서',
+    labelEn: 'Resume'
+  },
+  {
+    href: 'https://hadevyi.github.io/portfolio/',
+    labelKo: '포트폴리오',
+    labelEn: 'Portfolio'
+  },
+  {
+    href: 'https://hadevyi.github.io/experience/',
+    labelKo: '경험 정리',
+    labelEn: 'Experience'
+  },
+  {
+    href: 'https://hadevyi.github.io/blog/',
+    labelKo: '블로그',
+    labelEn: 'Blog'
+  }
+] as const;
+
+const contactEmail = 'hadevyi@gmail.com';
+const contactLinks = [{ label: 'Email', href: `mailto:${contactEmail}` }, ...socialLinks] as const;
+const brandLabel = {
+  ko: '당현아 공식 홈페이지',
+  en: 'Dang Hyeona Official Website'
+} as const;
+const usageNotice = {
+  ko: '정상적인 검색 엔진의 공개 페이지 색인은 허용하지만, 별도 허가 없는 대량 크롤링, 무단 수집, 복제, 재배포, 재사용은 금합니다.',
+  en: 'Public indexing by standard search engines is allowed, but bulk crawling, unauthorized collection, duplication, redistribution, and reuse without permission are prohibited.'
+} as const;
+---
+
+<footer class="site-footer">
+  <div class="mx-auto flex w-full max-w-[62rem] flex-col gap-2 px-5 py-4 sm:px-8 lg:px-10">
+    <div class="flex flex-col gap-1.5 md:flex-row md:items-center md:justify-between">
+      <div class="type-caption flex flex-wrap items-center gap-x-3 gap-y-1.5 text-ink/55">
+        <p class="font-medium text-ink/78" {...i18nText(brandLabel.ko, brandLabel.en)}>
+          {brandLabel.ko}
+        </p>
+        <SocialIconLinks links={contactLinks} compact={true} />
+      </div>
+
+      <nav class="type-caption flex flex-wrap gap-x-4 gap-y-1" aria-label="Hadevyi 사이트 링크">
+        {
+          ecosystemLinks.map((item) => {
+            const isCurrent = item.href === siteMeta.siteUrl;
+
+            return (
+              <a
+                href={item.href}
+                aria-current={isCurrent ? 'page' : undefined}
+                class:list={[isCurrent ? 'footer-inline-link-current' : 'footer-inline-link']}
+              >
+                <span {...i18nText(item.labelKo, item.labelEn)}>{item.labelKo}</span>
+              </a>
+            );
+          })
+        }
+      </nav>
+    </div>
+
+    <p
+      class="type-micro border-t border-ink/10 pt-2 text-ink/36"
+      {...i18nText(usageNotice.ko, usageNotice.en)}
+    >
+      {usageNotice.ko}
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,130 @@
+---
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import FloatingControls from '../components/FloatingControls.astro';
+import { siteMeta } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: string;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  mainClass?: string;
+}
+
+const {
+  title,
+  description = siteMeta.description,
+  lang = 'ko',
+  showHeader = true,
+  showFooter = true,
+  mainClass = ''
+} = Astro.props;
+const pageTitle = title ? `${title} | ${siteMeta.title}` : siteMeta.title;
+const canonicalUrl = new URL(Astro.url.pathname, siteMeta.siteUrl).toString();
+const faviconSvg = `${siteMeta.rootPath}favicon.svg`;
+const faviconIco = `${siteMeta.rootPath}favicon.ico`;
+const gaId = import.meta.env.PUBLIC_GA_ID;
+const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap"
+    />
+    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+    <link rel="icon" href={faviconIco} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteMeta.title} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    {googleSiteVerification && (
+      <meta name="google-site-verification" content={googleSiteVerification} />
+    )}
+    {
+      gaId && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+          <script is:inline define:vars={{ gaId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', gaId);
+          </script>
+        </>
+      )
+    }
+    <script is:inline>
+      (() => {
+        const themeStorageKey = 'hadevyi-theme';
+        const langStorageKey = 'hadevyi-lang';
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem(themeStorageKey);
+        const savedLang = localStorage.getItem(langStorageKey);
+        const resolvedTheme =
+          savedTheme === 'light' || savedTheme === 'dark'
+            ? savedTheme
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+        root.dataset.theme = resolvedTheme;
+        root.style.colorScheme = resolvedTheme;
+
+        if (savedLang === 'ko' || savedLang === 'en') {
+          root.lang = savedLang;
+        }
+
+        if (themeColorMeta) {
+          themeColorMeta.setAttribute('content', resolvedTheme === 'dark' ? '#101014' : '#faf9fd');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="relative min-h-screen overflow-x-hidden">
+      {showHeader && <SiteHeader />}
+      <main
+        class:list={[
+          'mx-auto w-full max-w-[62rem] px-5 pb-24 sm:px-8 lg:px-10',
+          showHeader ? 'pt-4' : 'pt-0',
+          mainClass
+        ]}
+      >
+        <slot />
+      </main>
+      {showFooter && <SiteFooter />}
+      <FloatingControls />
+    </div>
+  </body>
+</html>
