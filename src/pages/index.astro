@@ -97,54 +97,59 @@ const sharingTraceLabels = [
   text('확장', 'Expansion')
 ] as const;
 
-const siteGroups = [
+const pathwaySection = {
+  eyebrow: 'EXPLORE',
+  title: text(
+    '필요한 맥락에 따라 나누어 정리했습니다',
+    'Organized by the Context You Need'
+  ),
+  titleLines: [
+    text('필요한 맥락에 따라', 'Organized by the Context'),
+    text('나누어 정리했습니다', 'You Need')
+  ],
+  description: text(
+    '필요한 맥락에 따라 이력서, 포트폴리오, 경험정리, 블로그를 살펴볼 수 있습니다.',
+    'Explore my resume, portfolio, experience archive, and blog depending on the context you need.'
+  ),
+  descriptionLines: [
+    text('필요한 맥락에 따라', 'Explore my resume, portfolio,'),
+    text('이력서, 포트폴리오, 경험정리, 블로그를', 'experience archive, and blog'),
+    text('살펴볼 수 있습니다.', 'depending on the context you need.')
+  ],
+  note: text(
+    '저의 경험과 기록은 서로 연결되어 있습니다. 관심 있는 주제부터 자유롭게 살펴보세요.',
+    'My experiences and records are connected. Feel free to start with the topic you are most interested in.'
+  )
+} as const;
+
+const pathwayItems = [
   {
-    title: text('소개 문서를 먼저 확인하세요', 'Start with the Core Introduction Pages'),
-    countLabel: text('2개 항목', '2 items'),
-    items: [
-      {
-        href: '/resume/',
-        label: text('이력서', 'Resume'),
-        description: text(
-          '압축된 경력 요약과 현재 집중 영역을 빠르게 보여주는 독립 사이트',
-          'A standalone site that quickly shows my condensed career summary and current focus areas.'
-        ),
-        urlLabel: 'hadevyi.github.io/resume/'
-      },
-      {
-        href: '/portfolio/',
-        label: text('포트폴리오', 'Portfolio'),
-        description: text(
-          '프로젝트 배경, 설계 과정, 결과를 케이스 스터디로 정리하는 독립 사이트',
-          'A standalone site that organizes project background, design decisions, and outcomes as case studies.'
-        ),
-        urlLabel: 'hadevyi.github.io/portfolio/'
-      }
-    ]
+    number: '01',
+    href: '/resume/',
+    icon: 'resume',
+    label: text('이력서', 'Resume'),
+    description: text('경력과 현재 집중 영역', 'Career summary and current focus')
   },
   {
-    title: text('성장과 기록을 이어서 확인하세요', 'Continue with Growth and Writing'),
-    countLabel: text('2개 항목', '2 items'),
-    items: [
-      {
-        href: '/experience/',
-        label: text('경험 정리', 'Experience'),
-        description: text(
-          '성장 흐름과 운영 기준을 시간 맥락에 맞춰 풀어내는 독립 사이트',
-          'A standalone site that explains my growth path and working principles in a clear time-based context.'
-        ),
-        urlLabel: 'hadevyi.github.io/experience/'
-      },
-      {
-        href: '/blog/',
-        label: text('블로그', 'Blog'),
-        description: text(
-          '긴 글과 기술 메모, 설계 기록을 남기는 독립 블로그 사이트',
-          'A standalone blog where I leave essays, technical notes, and design records.'
-        ),
-        urlLabel: 'hadevyi.github.io/blog/'
-      }
-    ]
+    number: '02',
+    href: '/portfolio/',
+    icon: 'portfolio',
+    label: text('포트폴리오', 'Portfolio'),
+    description: text('프로젝트와 선택의 과정', 'Projects and decision process')
+  },
+  {
+    number: '03',
+    href: '/experience/',
+    icon: 'experience',
+    label: text('경험정리', 'Experience'),
+    description: text('성장 흐름과 경험의 기록', 'Growth path and experience records')
+  },
+  {
+    number: '04',
+    href: '/blog/',
+    icon: 'blog',
+    label: text('블로그', 'Blog'),
+    description: text('생각과 기술 메모', 'Thoughts and technical notes')
   }
 ] as const;
 
@@ -421,66 +426,218 @@ const socialSection = {
       </div>
     </section>
 
-    <section class="py-14 [background-color:var(--theme-section-sites)] sm:py-18 md:py-20 lg:py-24">
-      <div class="mx-auto w-full max-w-5xl px-5 sm:px-10 md:px-12 lg:px-24">
-        <div class="space-y-10">
-          {
-            siteGroups.map((group) => (
-              <section class="space-y-5" aria-label={group.title.ko}>
-                <div class="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-                  <h2
-                    class="type-subsection-title [color:var(--theme-ink)]"
-                    {...i18nText(group.title.ko, group.title.en)}
+    <section class="py-16 [background-color:var(--theme-section-sites)] sm:py-20 lg:py-24">
+      <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+        <div class="rounded-[2rem] border px-5 py-12 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_82%,transparent)] [box-shadow:var(--theme-shadow)] sm:px-8 sm:py-14 md:rounded-[2.25rem] lg:px-12">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="type-label-wide uppercase [color:var(--theme-accent)]">
+              {pathwaySection.eyebrow}
+            </p>
+            <h2
+              class="type-section-title mt-5 [word-break:keep-all] [color:var(--theme-ink)]"
+            >
+              {
+                pathwaySection.titleLines.map((line, index) => (
+                  <>
+                    <span class="block sm:inline" {...i18nText(line.ko, line.en)}>
+                      {line.ko}
+                    </span>
+                    {index < pathwaySection.titleLines.length - 1 && (
+                      <span class="hidden sm:inline" aria-hidden="true">
+                        {' '}
+                      </span>
+                    )}
+                  </>
+                ))
+              }
+            </h2>
+            <p
+              class="type-small mx-auto mt-4 max-w-2xl [word-break:keep-all] [color:var(--theme-ink-muted)]"
+            >
+              {
+                pathwaySection.descriptionLines.map((line, index) => (
+                  <>
+                    <span class="block sm:inline" {...i18nText(line.ko, line.en)}>
+                      {line.ko}
+                    </span>
+                    {index < pathwaySection.descriptionLines.length - 1 && (
+                      <span class="hidden sm:inline" aria-hidden="true">
+                        {' '}
+                      </span>
+                    )}
+                  </>
+                ))
+              }
+            </p>
+          </div>
+
+          <div class="mt-12 hidden md:block">
+            <div class="relative mx-auto max-w-5xl pb-32">
+              <div class="absolute left-0 right-14 top-8 h-px [background-color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]"></div>
+              <div class="absolute left-0 top-[1.84rem] size-2 rounded-full [background-color:var(--theme-accent)]"></div>
+              <div class="absolute right-0 top-8 h-[9.5rem] w-14 rounded-tr-[2.4rem] border-r border-t [border-color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]"></div>
+
+              <div class="relative grid grid-cols-4 gap-8">
+                {
+                  pathwayItems.map((item) => (
+                    <a href={item.href} class="group relative flex flex-col items-center text-center no-underline">
+                      <span class="relative z-10 flex size-16 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_10px_30px_rgba(49,43,72,0.08),0_0_0_8px_var(--theme-surface-strong)] [color:var(--theme-accent)] transition-transform duration-200 group-hover:-translate-y-1">
+                        {
+                          item.icon === 'resume' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
+                              <path d="M7 4h7l3 3v13H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M14 4v4h4" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M10 12h4" stroke-linecap="round" />
+                              <path d="M10 16h5" stroke-linecap="round" />
+                            </svg>
+                          )
+                        }
+                        {
+                          item.icon === 'portfolio' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
+                              <path d="M6 8h12v11H6V8Z" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8" stroke-linecap="round" />
+                              <path d="M9 13h6" stroke-linecap="round" />
+                            </svg>
+                          )
+                        }
+                        {
+                          item.icon === 'experience' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
+                              <path d="M7 4h10v16l-5-3-5 3V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                          )
+                        }
+                        {
+                          item.icon === 'blog' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
+                              <path d="M15.5 5.5 18.5 8.5 10 17l-4 1 1-4 8.5-8.5Z" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="m14 7 3 3" stroke-linecap="round" />
+                            </svg>
+                          )
+                        }
+                      </span>
+                      <span class="mt-7 space-y-2">
+                        <span
+                          class="type-card-title block [color:var(--theme-ink)]"
+                          {...i18nText(item.label.ko, item.label.en)}
+                        >
+                          {item.label.ko}
+                        </span>
+                        <span
+                          class="type-small block [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                          {...i18nText(item.description.ko, item.description.en)}
+                        >
+                          {item.description.ko}
+                        </span>
+                      </span>
+                    </a>
+                  ))
+                }
+              </div>
+
+              <div class="absolute bottom-0 left-12 right-12 rounded-[1.25rem] border px-8 py-6 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)]">
+                <div class="flex items-center gap-5">
+                  <span class="font-display text-4xl leading-none [color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]">
+                    “
+                  </span>
+                  <p
+                    class="type-small flex-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                    {...i18nText(pathwaySection.note.ko, pathwaySection.note.en)}
                   >
-                    {group.title.ko}
-                  </h2>
-                  <span
-                    class="type-micro uppercase tracking-[var(--type-label-tracking)] [color:var(--theme-ink-faint)]"
-                    {...i18nText(group.countLabel.ko, group.countLabel.en)}
-                  >
-                    {group.countLabel.ko}
+                    {pathwaySection.note.ko}
+                  </p>
+                  <span class="text-2xl [color:var(--theme-accent)]" aria-hidden="true">
+                    ✦
                   </span>
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <div class="grid gap-4 md:grid-cols-2">
-                  {
-                    group.items.map((item) => (
-                      <a
-                        href={item.href}
-                        class="group rounded-[1.25rem] border p-4 no-underline transition-all duration-200 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] hover:-translate-y-[1px] hover:[border-color:var(--theme-border-strong)] hover:[background-color:var(--theme-chip-bg)] sm:rounded-[1.5rem] sm:p-5"
-                      >
-                        <div class="space-y-3">
-                          <div class="flex items-start justify-between gap-4">
-                            <h3
-                              class="type-card-title [color:var(--theme-ink)]"
-                              {...i18nText(item.label.ko, item.label.en)}
-                            >
-                              {item.label.ko}
-                            </h3>
-                            <span class="transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
-                              ↗
-                            </span>
-                          </div>
-                          <p
-                            class="type-small [color:var(--theme-ink-muted)]"
-                            {...i18nText(item.description.ko, item.description.en)}
-                          >
-                            {item.description.ko}
-                          </p>
-                          <p class="type-caption break-all uppercase tracking-[0.16em] [color:var(--theme-ink-faint)]">
-                            {item.urlLabel}
-                          </p>
-                        </div>
-                      </a>
-                    ))
-                  }
-                </div>
-              </section>
-            ))
-          }
+          <div class="relative mt-10 space-y-7 md:hidden">
+            <div class="absolute bottom-24 left-7 top-7 w-px [background-color:color-mix(in_srgb,var(--theme-accent)_42%,transparent)]"></div>
+            {
+              pathwayItems.map((item) => (
+                <a href={item.href} class="group relative flex items-center gap-5 no-underline">
+                  <span class="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_0_0_7px_var(--theme-surface-strong)] [color:var(--theme-accent)]">
+                    {
+                      item.icon === 'resume' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                          <path d="M7 4h7l3 3v13H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M14 4v4h4" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M10 12h4" stroke-linecap="round" />
+                          <path d="M10 16h5" stroke-linecap="round" />
+                        </svg>
+                      )
+                    }
+                    {
+                      item.icon === 'portfolio' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                          <path d="M6 8h12v11H6V8Z" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8" stroke-linecap="round" />
+                          <path d="M9 13h6" stroke-linecap="round" />
+                        </svg>
+                      )
+                    }
+                    {
+                      item.icon === 'experience' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                          <path d="M7 4h10v16l-5-3-5 3V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      )
+                    }
+                    {
+                      item.icon === 'blog' && (
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                          <path d="M15.5 5.5 18.5 8.5 10 17l-4 1 1-4 8.5-8.5Z" stroke-linecap="round" stroke-linejoin="round" />
+                          <path d="m14 7 3 3" stroke-linecap="round" />
+                        </svg>
+                      )
+                    }
+                  </span>
+                  <span class="flex-1 border-b pb-5 [border-color:var(--theme-border)]">
+                    <span class="flex items-start justify-between gap-4">
+                      <span>
+                        <span
+                          class="type-card-title block [color:var(--theme-ink)]"
+                          {...i18nText(item.label.ko, item.label.en)}
+                        >
+                          {item.label.ko}
+                        </span>
+                        <span
+                          class="type-small mt-1 block [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                          {...i18nText(item.description.ko, item.description.en)}
+                        >
+                          {item.description.ko}
+                        </span>
+                      </span>
+                      <span class="text-lg transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
+                        ↗
+                      </span>
+                    </span>
+                  </span>
+                </a>
+              ))
+            }
+            <div class="rounded-[1.15rem] border px-5 py-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)]">
+              <div class="flex gap-4">
+                <span class="font-display text-3xl leading-none [color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]">
+                  “
+                </span>
+                <p
+                  class="type-small flex-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                  {...i18nText(pathwaySection.note.ko, pathwaySection.note.en)}
+                >
+                  {pathwaySection.note.ko}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
 
     <section class="py-16 [background-color:var(--theme-section-cta)] sm:py-20 lg:py-24">
       <div class="mx-auto w-full max-w-3xl px-5 text-center sm:px-10 md:px-12">
