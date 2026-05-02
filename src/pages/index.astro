@@ -20,21 +20,33 @@ const hero = {
   eyebrow: text('공유의 가치를 추구하는 개발자', 'Developer Who Pursues the Value of Sharing'),
   title: text('당현아', 'Dang Hyeona'),
   paragraphs: [
-    text(
-      '다양한 관점을 연결하며 팀의 흐름을 만듭니다.',
-      'I connect diverse perspectives and help create a smooth team flow.'
-    ),
-    text(
-      '기록과 공유로 스스로를 점검하고 함께 성장하는 분위기를 만듭니다.',
-      'Through recording and sharing, I reflect on my own process and help create a culture where the team grows together.'
-    )
+    {
+      lines: [
+        text(
+          '다양한 관점을 연결하며 팀의 흐름을 만듭니다.',
+          'I connect diverse perspectives and help create a smooth team flow.'
+        )
+      ]
+    },
+    {
+      lines: [
+        text(
+          '기록과 공유로 스스로를 점검하고',
+          'Through recording and sharing, I reflect on my own process'
+        ),
+        text(
+          '함께 성장하는 분위기를 만듭니다.',
+          'and help create a culture where the team grows together.'
+        )
+      ]
+    }
   ],
   activities: [
     { icon: 'code', label: text('개발', 'Development') },
-    { icon: 'book', label: text('개발교육', 'Developer Education') },
-    { icon: 'note', label: text('기록', 'Recording') },
-    { icon: 'nodes', label: text('공유', 'Sharing') },
-    { icon: 'heart', label: text('재능기부', 'Talent Donation') }
+    { icon: 'book', label: text('개발교육', 'Education') },
+    { icon: 'note', label: text('기록', 'Record') },
+    { icon: 'nodes', label: text('공유', 'Share') },
+    { icon: 'heart', label: text('재능기부', 'Volunteer') }
   ]
 } as const;
 
@@ -178,10 +190,25 @@ const socialSection = {
             </h1>
             <div class="h-1 w-16 rounded-full [background-image:linear-gradient(90deg,var(--theme-brand-gradient-start),var(--theme-brand-gradient-mid),var(--theme-brand-gradient-end))]"></div>
 
-            <div class="type-body max-w-xl space-y-2 pt-1 [color:var(--theme-ink-muted)] sm:pt-2">
+            <div class="type-body max-w-xl space-y-2 pt-1 [word-break:keep-all] [color:var(--theme-ink-muted)] sm:pt-2">
               {
                 hero.paragraphs.map((paragraph) => (
-                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
+                  <p>
+                    {
+                      paragraph.lines.map((line, index) => (
+                        <>
+                          <span class="block sm:inline" {...i18nText(line.ko, line.en)}>
+                            {line.ko}
+                          </span>
+                          {index < paragraph.lines.length - 1 && (
+                            <span class="hidden sm:inline" aria-hidden="true">
+                              {' '}
+                            </span>
+                          )}
+                        </>
+                      ))
+                    }
+                  </p>
                 ))
               }
             </div>
@@ -202,12 +229,12 @@ const socialSection = {
           </div>
         </div>
 
-        <div class="mt-0 border-t pt-5 [border-color:var(--theme-border)] sm:pt-6">
-          <div class="grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-3">
+        <div class="mt-0 border-t pt-4 [border-color:var(--theme-border)] sm:pt-6">
+          <div class="grid grid-cols-5 gap-1.5 sm:gap-3">
             {
               hero.activities.map((activity) => (
-                <div class="group flex min-h-24 flex-col items-center justify-center gap-3 rounded-2xl border px-3 py-4 text-center [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)] sm:min-h-[7.25rem] sm:px-4 sm:py-5">
-                  <span class="flex size-10 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)] transition-colors duration-200 group-hover:[background-color:color-mix(in_srgb,var(--theme-accent)_14%,transparent)] sm:size-11">
+                <div class="group flex min-h-[4.75rem] flex-col items-center justify-center gap-1.5 rounded-2xl border px-1 py-2.5 text-center [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)] sm:min-h-[7.25rem] sm:gap-3 sm:px-4 sm:py-5">
+                  <span class="flex size-8 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)] transition-colors duration-200 group-hover:[background-color:color-mix(in_srgb,var(--theme-accent)_14%,transparent)] sm:size-11">
                     {
                       activity.icon === 'code' && (
                         <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
@@ -255,7 +282,7 @@ const socialSection = {
                     }
                   </span>
                   <span
-                    class="type-small whitespace-nowrap font-medium [color:var(--theme-ink-soft)]"
+                    class="text-[0.68rem] leading-tight tracking-[-0.02em] [word-break:keep-all] font-medium [color:var(--theme-ink-soft)] sm:type-small sm:whitespace-nowrap sm:tracking-normal"
                     {...i18nText(activity.label.ko, activity.label.en)}
                   >
                     {activity.label.ko}
