@@ -158,7 +158,7 @@ const contactSection = {
       '궁금한 점이나',
       'If you have a question'
     ),
-    text('이어가고 싶은 이야기가 있다면', 'or a story you would like to continue,'),
+    text('이어가고 싶은 이야기가 있다면', "or something you'd like to talk about,"),
     text('편히 연락주세요.', 'feel free to reach out.')
   ],
   email: 'hadevyi@gmail.com',
@@ -180,7 +180,7 @@ const contactLinks = [
     external: false,
     icon: 'email',
     label: text('Email', 'Email'),
-    description: text('메일로 연락', 'Contact by email')
+    description: text('메일로 연락', 'Fastest way to reach me')
   },
   {
     href: 'https://github.com/hadevyi',
@@ -679,16 +679,11 @@ const contactLinks = [
               </p>
               <h2 class="type-section-title max-w-2xl [word-break:keep-all] [color:var(--theme-ink)]">
                 {
-                  contactSection.titleLines.map((line, index) => (
+                  contactSection.titleLines.map((line) => (
                     <>
-                      <span class="block lg:inline" {...i18nText(line.ko, line.en)}>
+                      <span class="block" {...i18nText(line.ko, line.en)}>
                         {line.ko}
                       </span>
-                      {index < contactSection.titleLines.length - 1 && (
-                        <span class="hidden lg:inline" aria-hidden="true">
-                          {' '}
-                        </span>
-                      )}
                     </>
                   ))
                 }
@@ -709,14 +704,18 @@ const contactLinks = [
               <p class="type-caption mb-3 uppercase tracking-[var(--type-label-tracking)] [color:var(--theme-ink-faint)]">
                 CHANNELS
               </p>
-              <div class="divide-y [--tw-divide-color:var(--theme-border)]">
+              <div>
                 {
-                  contactLinks.map((link) => (
+                  contactLinks.map((link, index) => (
                     <a
                       href={link.href}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noreferrer' : undefined}
-                      class="group flex items-center gap-4 py-4 no-underline"
+                      class:list={[
+                        'group flex items-center gap-4 py-4 no-underline',
+                        index > 0 && 'border-t'
+                      ]}
+                      style={index > 0 ? 'border-color: color-mix(in srgb, var(--theme-accent) 10%, transparent);' : undefined}
                     >
                       <span class="flex size-10 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)]">
                         {
