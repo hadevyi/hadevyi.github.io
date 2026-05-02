@@ -1,7 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SocialIconLinks from '../components/SocialIconLinks.astro';
-import { socialLinks } from '../data/site';
 
 const profileImage = '/images/dang-hyeona-profile.png';
 
@@ -153,26 +151,59 @@ const pathwayItems = [
   }
 ] as const;
 
-const ctaSection = {
-  body: text(
-    '새로운 글과 작업 기록은 블로그와 GitHub에 가장 먼저 남깁니다.',
-    'New writing and work logs are usually published first on my blog and GitHub.'
-  ),
-  title: text(
-    '지금의 당현아를 가장 빠르게 확인하는 방법',
-    'The Fastest Way to See What I Am Working on Right Now'
-  ),
-  primary: text('블로그 보기', 'Open Blog'),
-  secondary: text('GitHub 보기', 'Open GitHub')
+const contactSection = {
+  eyebrow: 'CONTACT',
+  titleLines: [
+    text(
+      '궁금한 점이나',
+      'If you have a question'
+    ),
+    text('이어가고 싶은 이야기가 있다면', 'or a story you would like to continue,'),
+    text('편히 연락주세요.', 'feel free to reach out.')
+  ],
+  email: 'hadevyi@gmail.com',
+  notes: [
+    text(
+      '가장 빠르게 확인하는 연락 채널은 Email입니다.',
+      'Email is the fastest way to reach me.'
+    ),
+    text(
+      '작업 기록과 글은 GitHub와 Blog에 차곡차곡 남기고 있습니다.',
+      'GitHub and Blog are where I keep my work logs and writing.'
+    )
+  ]
 } as const;
 
-const socialSection = {
-  eyebrow: text('다른 채널', 'Other Channels'),
-  title: text(
-    '다른 채널에서도 당현아를 확인할 수 있습니다.',
-    'You can also find Dang Hyeona on other channels.'
-  )
-} as const;
+const contactLinks = [
+  {
+    href: `mailto:${contactSection.email}`,
+    external: false,
+    icon: 'email',
+    label: text('Email', 'Email'),
+    description: text('메일로 연락', 'Contact by email')
+  },
+  {
+    href: 'https://github.com/hadevyi',
+    external: true,
+    icon: 'github',
+    label: text('GitHub', 'GitHub'),
+    description: text('작업 기록과 저장소', 'Work logs and repositories')
+  },
+  {
+    href: 'https://www.linkedin.com/in/hadevyi/',
+    external: true,
+    icon: 'linkedin',
+    label: text('LinkedIn', 'LinkedIn'),
+    description: text('커리어 프로필', 'Career profile')
+  },
+  {
+    href: '/blog/',
+    external: false,
+    icon: 'blog',
+    label: text('Blog', 'Blog'),
+    description: text('글과 기술 메모', 'Writing and technical notes')
+  }
+] as const;
 ---
 
 <BaseLayout showHeader={false} mainClass="!max-w-none !px-0 !pb-0">
@@ -638,59 +669,112 @@ const socialSection = {
       </div>
     </section>
 
-
     <section class="py-16 [background-color:var(--theme-section-cta)] sm:py-20 lg:py-24">
-      <div class="mx-auto w-full max-w-3xl px-5 text-center sm:px-10 md:px-12">
-        <div class="space-y-5 rounded-[1.5rem] border px-5 py-8 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:var(--theme-shadow)] sm:rounded-[2rem] sm:px-10 sm:py-10">
-          <p
-            class="type-small font-medium [color:var(--theme-ink-muted)]"
-            {...i18nText(ctaSection.body.ko, ctaSection.body.en)}
-          >
-            {ctaSection.body.ko}
-          </p>
-          <h2
-            class="type-section-title [color:var(--theme-ink)]"
-            {...i18nText(ctaSection.title.ko, ctaSection.title.en)}
-          >
-            {ctaSection.title.ko}
-          </h2>
-          <div class="flex flex-col justify-center gap-3 pt-2 sm:flex-row sm:flex-wrap">
-            <a href="/blog/" class="button-primary type-small px-5 py-3 transition-colors duration-200">
-              <span {...i18nText(ctaSection.primary.ko, ctaSection.primary.en)}>
-                {ctaSection.primary.ko}
-              </span>
-            </a>
-            <a
-              href="https://github.com/hadevyi"
-              target="_blank"
-              rel="noreferrer"
-              class="button-secondary type-small px-5 py-3 transition-colors duration-200"
-            >
-              <span {...i18nText(ctaSection.secondary.ko, ctaSection.secondary.en)}>
-                {ctaSection.secondary.ko}
-              </span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+      <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
+        <div class="rounded-[2rem] border px-5 py-8 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_86%,transparent)] sm:px-8 sm:py-10 md:rounded-[2.25rem] lg:px-12">
+          <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(17rem,0.72fr)] md:items-stretch md:gap-10">
+            <div class="space-y-6">
+              <p class="type-label-wide uppercase [color:var(--theme-accent)]">
+                {contactSection.eyebrow}
+              </p>
+              <h2 class="type-section-title max-w-2xl [word-break:keep-all] [color:var(--theme-ink)]">
+                {
+                  contactSection.titleLines.map((line, index) => (
+                    <>
+                      <span class="block lg:inline" {...i18nText(line.ko, line.en)}>
+                        {line.ko}
+                      </span>
+                      {index < contactSection.titleLines.length - 1 && (
+                        <span class="hidden lg:inline" aria-hidden="true">
+                          {' '}
+                        </span>
+                      )}
+                    </>
+                  ))
+                }
+              </h2>
+              <ul class="type-small max-w-xl space-y-2.5 [word-break:keep-all] [color:var(--theme-ink-muted)]">
+                {
+                  contactSection.notes.map((note) => (
+                    <li class="flex gap-3">
+                      <span class="mt-[0.75em] size-1.5 shrink-0 rounded-full [background-color:var(--theme-accent)]" aria-hidden="true"></span>
+                      <span {...i18nText(note.ko, note.en)}>{note.ko}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
 
-    <section class="pb-16 sm:pb-20 lg:pb-24">
-      <div class="mx-auto w-full max-w-5xl px-5 sm:px-10 md:px-12 lg:px-24">
-        <div class="flex flex-col items-center gap-5 text-center">
-          <p
-            class="type-label uppercase [color:var(--theme-ink-faint)]"
-            {...i18nText(socialSection.eyebrow.ko, socialSection.eyebrow.en)}
-          >
-            {socialSection.eyebrow.ko}
-          </p>
-          <h2
-            class="type-subsection-title [color:var(--theme-ink)]"
-            {...i18nText(socialSection.title.ko, socialSection.title.en)}
-          >
-            {socialSection.title.ko}
-          </h2>
-          <SocialIconLinks links={socialLinks} />
+            <div class="pt-2 md:pl-6 md:pt-0 lg:pl-8">
+              <p class="type-caption mb-3 uppercase tracking-[var(--type-label-tracking)] [color:var(--theme-ink-faint)]">
+                CHANNELS
+              </p>
+              <div class="divide-y [--tw-divide-color:var(--theme-border)]">
+                {
+                  contactLinks.map((link) => (
+                    <a
+                      href={link.href}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noreferrer' : undefined}
+                      class="group flex items-center gap-4 py-4 no-underline"
+                    >
+                      <span class="flex size-10 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)]">
+                        {
+                          link.icon === 'email' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                              <path d="M4 6.5h16v11H4v-11Z" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="m4.5 7 7.5 6 7.5-6" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                          )
+                        }
+                        {
+                          link.icon === 'github' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-current">
+                              <path d="M12 2A10 10 0 0 0 8.84 21.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.19-3.37-1.19-.45-1.15-1.11-1.46-1.11-1.46-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.93 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0 1 12 7c.84 0 1.69.11 2.49.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.83-2.34 4.67-4.57 4.92.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+                            </svg>
+                          )
+                        }
+                        {
+                          link.icon === 'linkedin' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-current">
+                              <path d="M5.15 8.77H2.3V21h2.85V8.77ZM5.4 4.93A1.65 1.65 0 1 0 2.1 4.9a1.65 1.65 0 0 0 3.3.03ZM21.9 14.3c0-3.7-1.98-5.42-4.62-5.42-2.13 0-3.08 1.17-3.62 1.99v-2.1h-2.85c.04.9 0 12.23 0 12.23h2.85v-6.83c0-.36.03-.73.14-.99.29-.73.96-1.49 2.08-1.49 1.47 0 2.05 1.12 2.05 2.76V21h3.97v-6.7Z" />
+                            </svg>
+                          )
+                        }
+                        {
+                          link.icon === 'blog' && (
+                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                              <path d="M7 4h10v16H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                              <path d="M10 8h4" stroke-linecap="round" />
+                              <path d="M10 12h4" stroke-linecap="round" />
+                              <path d="M10 16h2.5" stroke-linecap="round" />
+                            </svg>
+                          )
+                        }
+                      </span>
+                      <span class="min-w-0 flex-1">
+                        <span
+                          class="type-small block font-semibold [color:var(--theme-ink)]"
+                          {...i18nText(link.label.ko, link.label.en)}
+                        >
+                          {link.label.ko}
+                        </span>
+                        <span
+                          class="type-caption block [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                          {...i18nText(link.description.ko, link.description.en)}
+                        >
+                          {link.description.ko}
+                        </span>
+                      </span>
+                      <span class="transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
+                        ↗
+                      </span>
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
