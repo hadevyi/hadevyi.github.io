@@ -451,49 +451,58 @@ html[data-theme='dark'] {
     @apply relative inline-flex items-center justify-center overflow-hidden rounded-full border font-semibold no-underline backdrop-blur-xl transition-all duration-300;
     font-size: var(--type-small-size);
     line-height: var(--type-small-leading);
-    width: 2.875rem;
-    height: 2.875rem;
-    border-color: var(--theme-border);
-    background-color: var(--theme-surface-strong);
-    color: var(--theme-ink-soft);
-    box-shadow: 0 10px 30px rgba(21, 18, 34, 0.12);
+    width: 2.625rem;
+    height: 2.625rem;
+    border-color: color-mix(in srgb, var(--theme-accent) 18%, var(--theme-border));
+    background-color: color-mix(in srgb, var(--theme-surface-strong) 88%, transparent);
+    color: var(--theme-accent);
+    box-shadow: 0 8px 24px rgba(49, 43, 72, 0.08);
   }
 
   .floating-control-chip:hover {
-    border-color: var(--theme-border-strong);
-    background-color: var(--theme-toggle-hover);
+    border-color: color-mix(in srgb, var(--theme-accent) 36%, var(--theme-border));
+    background-color: color-mix(in srgb, var(--theme-accent) 8%, var(--theme-surface-strong));
     color: var(--theme-ink);
     transform: translateY(-1px);
   }
 
   .floating-control-primary {
-    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full text-white transition-all duration-300;
-    width: 3.25rem;
-    height: 3.25rem;
-    background-image:
-      linear-gradient(
-        135deg,
-        var(--theme-brand-gradient-start) 0%,
-        var(--theme-brand-gradient-mid) 50%,
-        var(--theme-brand-gradient-end) 100%
-      );
-    box-shadow: 0 12px 38px rgba(88, 78, 130, 0.28);
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full border backdrop-blur-xl transition-all duration-300;
+    width: 3rem;
+    height: 3rem;
+    border-color: color-mix(in srgb, var(--theme-accent) 46%, var(--theme-border));
+    background-color: color-mix(in srgb, var(--theme-accent) 14%, var(--theme-surface-strong));
+    color: color-mix(in srgb, var(--theme-accent) 72%, var(--theme-ink));
+    box-shadow:
+      0 14px 34px rgba(49, 43, 72, 0.14),
+      inset 0 1px 0 rgba(255, 255, 255, 0.26);
   }
 
   .floating-control-primary:hover {
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 16px 46px rgba(88, 78, 130, 0.34);
+    border-color: color-mix(in srgb, var(--theme-accent) 58%, var(--theme-border));
+    background-color: color-mix(in srgb, var(--theme-accent) 18%, var(--theme-surface-strong));
+    color: var(--theme-ink);
+    transform: translateY(-1px);
+    box-shadow:
+      0 16px 38px rgba(49, 43, 72, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .floating-control-primary[aria-expanded='true'] {
+    border-color: color-mix(in srgb, var(--theme-accent) 62%, var(--theme-border));
+    background-color: color-mix(in srgb, var(--theme-accent) 22%, var(--theme-surface-strong));
+    color: var(--theme-ink);
   }
 
   @media (min-width: 640px) {
     .floating-control-chip {
-      width: 3rem;
-      height: 3rem;
+      width: 2.75rem;
+      height: 2.75rem;
     }
 
     .floating-control-primary {
-      width: 3.5rem;
-      height: 3.5rem;
+      width: 3.125rem;
+      height: 3.125rem;
     }
   }
 

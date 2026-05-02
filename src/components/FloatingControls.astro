@@ -23,8 +23,13 @@
       aria-label="테마 전환"
       title="테마 전환"
     >
-      <span aria-hidden="true" class="type-body leading-none" data-theme-icon="light">☀</span>
-      <span aria-hidden="true" class="type-body hidden leading-none" data-theme-icon="dark">☾</span>
+      <svg aria-hidden="true" data-theme-icon="light" viewBox="0 0 24 24" class="size-4 fill-none stroke-current stroke-[1.8]">
+        <circle cx="12" cy="12" r="3.5" />
+        <path d="M12 3.5v2M12 18.5v2M3.5 12h2M18.5 12h2M6 6l1.4 1.4M16.6 16.6 18 18M18 6l-1.4 1.4M7.4 16.6 6 18" stroke-linecap="round" />
+      </svg>
+      <svg aria-hidden="true" data-theme-icon="dark" viewBox="0 0 24 24" class="hidden size-4 fill-none stroke-current stroke-[1.8]">
+        <path d="M17.8 15.4A6.8 6.8 0 0 1 8.6 6.2 7.1 7.1 0 1 0 17.8 15.4Z" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
     </button>
   </div>
 
@@ -36,8 +41,14 @@
     aria-expanded="false"
     title="설정"
   >
-    <span aria-hidden="true" class="type-subsection-title leading-none" data-toggle-icon="closed">⚙</span>
-    <span aria-hidden="true" class="type-subsection-title hidden leading-none" data-toggle-icon="open">✕</span>
+    <svg aria-hidden="true" data-toggle-icon="closed" viewBox="0 0 24 24" class="size-4 fill-none stroke-current stroke-[1.8]">
+      <path d="M5 7h14M5 17h14" stroke-linecap="round" />
+      <circle cx="9" cy="7" r="2" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="17" r="2" fill="currentColor" stroke="none" />
+    </svg>
+    <svg aria-hidden="true" data-toggle-icon="open" viewBox="0 0 24 24" class="hidden size-4 fill-none stroke-current stroke-[1.8]">
+      <path d="M7 7l10 10M17 7 7 17" stroke-linecap="round" />
+    </svg>
   </button>
 </div>
 
