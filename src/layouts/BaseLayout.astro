@@ -24,7 +24,7 @@ const {
 } = Astro.props;
 const pageTitle = title ? `${title} | ${siteMeta.title}` : siteMeta.title;
 const canonicalUrl = new URL(Astro.url.pathname, siteMeta.siteUrl).toString();
-const faviconSvg = `${siteMeta.rootPath}favicon.svg`;
+const faviconSvg = `${siteMeta.rootPath}favicon.svg?v=hadevyi-mark-a1`;
 const faviconIco = `${siteMeta.rootPath}favicon.ico`;
 const gaId = import.meta.env.PUBLIC_GA_ID;
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
@@ -50,8 +50,8 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap"
     />
-    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
     <link rel="icon" href={faviconIco} />
+    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
