@@ -42,8 +42,21 @@ const brandLabel = {
   en: 'Dang Hyeona Official Website'
 } as const;
 const usageNotice = {
-  ko: '정상적인 검색 엔진의 공개 페이지 색인은 허용하지만, 별도 허가 없는 대량 크롤링, 무단 수집, 복제, 재배포, 재사용은 금합니다.',
-  en: 'Public indexing by standard search engines is allowed, but bulk crawling, unauthorized collection, duplication, redistribution, and reuse without permission are prohibited.'
+  ko: '본 사이트는 정상적인 검색 엔진의 공개 페이지 색인을 허용합니다.\n다만 별도 허가 없는 대량 크롤링, 무단 수집, 복제, 재배포, 재사용, 사칭 및 허위 사용은 금합니다.\n위반 시 민형사상 법적 조치를 진행할 수 있습니다.',
+  en: 'This site allows public indexing by standard search engines.\nHowever, bulk crawling, unauthorized collection, copying, redistribution, reuse, impersonation, or false use without permission is prohibited.\nViolations may result in civil or criminal legal action.'
+} as const;
+const analyticsNotice = {
+  ko: '본 사이트는 서비스 개선과 방문 통계 확인을 위해 Google Analytics를 사용합니다.\nGoogle Analytics는 방문 페이지, 접속 환경, 대략적인 지역 정보 등 비식별 분석 데이터를 수집할 수 있습니다.\n수집된 데이터는 사이트 이용 현황을 파악하고 콘텐츠와 사용성을 개선하는 목적으로만 활용됩니다.',
+  en: 'This site uses Google Analytics to improve the service and review visit statistics.\nGoogle Analytics may collect non-identifying analytics data such as visited pages, access environment, and approximate location information.\nCollected data is used only to understand site usage and improve content and usability.'
+} as const;
+const copyrightNotice = '© 2026 Dang Hyeona. All rights reserved.';
+const usageNoticeLabel = {
+  ko: '이용 및 저작권 안내',
+  en: 'Usage and copyright notice'
+} as const;
+const analyticsNoticeLabel = {
+  ko: '분석 도구 안내',
+  en: 'Analytics notice'
 } as const;
 ---
 
@@ -76,11 +89,52 @@ const usageNotice = {
       </nav>
     </div>
 
-    <p
-      class="type-micro border-t border-ink/10 pt-2 text-ink/36"
-      {...i18nText(usageNotice.ko, usageNotice.en)}
-    >
-      {usageNotice.ko}
-    </p>
+    <div class="footer-legal type-micro border-t border-ink/10 pt-2 text-ink/36">
+      <p>{copyrightNotice}</p>
+      <div class="footer-legal-notices">
+        <details class="footer-legal-notice">
+          <summary {...i18nText(usageNoticeLabel.ko, usageNoticeLabel.en)}>
+            {usageNoticeLabel.ko}
+          </summary>
+          <p {...i18nText(usageNotice.ko, usageNotice.en)}>
+            {usageNotice.ko}
+          </p>
+        </details>
+        <span class="footer-legal-separator" aria-hidden="true">|</span>
+        <details class="footer-legal-notice">
+          <summary {...i18nText(analyticsNoticeLabel.ko, analyticsNoticeLabel.en)}>
+            {analyticsNoticeLabel.ko}
+          </summary>
+          <p {...i18nText(analyticsNotice.ko, analyticsNotice.en)}>
+            {analyticsNotice.ko}
+          </p>
+        </details>
+      </div>
+    </div>
   </div>
 </footer>
+
+<script>
+  document.querySelectorAll('.footer-legal-notices').forEach((group) => {
+    group.querySelectorAll('details').forEach((details) => {
+      details.addEventListener('toggle', () => {
+        if (!details.open) return;
+
+        group.querySelectorAll('details').forEach((item) => {
+          if (item !== details) item.removeAttribute('open');
+        });
+
+        requestAnimationFrame(() => {
+          const target = details.querySelector('p') ?? details;
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+          target.scrollIntoView({
+            block: 'end',
+            inline: 'nearest',
+            behavior: prefersReducedMotion ? 'auto' : 'smooth'
+          });
+        });
+      });
+    });
+  });
+</script>
