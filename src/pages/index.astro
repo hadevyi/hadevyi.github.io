@@ -126,28 +126,53 @@ const pathwayItems = [
     href: '/resume/',
     icon: 'resume',
     label: text('이력서', 'Resume'),
-    description: text('경력과 현재 집중 영역', 'Career summary and current focus')
+    description: text('경력과 현재 집중 영역', 'Career summary and current focus'),
+    disabled: false,
+    status: undefined
   },
   {
     number: '02',
     href: '/portfolio/',
     icon: 'portfolio',
     label: text('포트폴리오', 'Portfolio'),
-    description: text('프로젝트와 선택의 과정', 'Projects and the choices behind them')
+    description: text('프로젝트와 선택의 과정', 'Projects and the choices behind them'),
+    disabled: true,
+    status: text('준비 중', 'Coming soon')
   },
   {
     number: '03',
     href: '/experience/',
     icon: 'experience',
     label: text('경험정리', 'Experience'),
-    description: text('성장 흐름과 경험의 기록', 'Growth path and experience notes')
+    description: text('성장 흐름과 경험의 기록', 'Growth path and experience notes'),
+    disabled: false,
+    status: undefined
   },
   {
     number: '04',
     href: '/blog/',
     icon: 'blog',
     label: text('블로그', 'Blog'),
-    description: text('생각과 기술 메모', 'Thoughts and technical notes')
+    description: text('생각과 기술 메모', 'Thoughts and technical notes'),
+    disabled: false,
+    status: undefined
+  }
+] as const;
+
+const resumeOptions = [
+  {
+    role: text('개발자', 'Developer'),
+    options: [
+      { href: '/resume/ko/', label: text('국문', 'KO') },
+      { href: '/resume/en/', label: text('영문', 'EN') }
+    ]
+  },
+  {
+    role: text('강사', 'Instructor'),
+    options: [
+      { href: '/resume/instructor/ko/', label: text('국문', 'KO') },
+      { href: '/resume/instructor/en/', label: text('영문', 'EN') }
+    ]
   }
 ] as const;
 
@@ -511,7 +536,17 @@ const contactLinks = [
               <div class="relative grid grid-cols-4 gap-8">
                 {
                   pathwayItems.map((item) => (
-                    <a href={item.href} class="group relative flex flex-col items-center text-center no-underline">
+                    <a
+                      href={item.disabled ? undefined : item.href}
+                      class:list={[
+                        'group relative flex flex-col items-center text-center no-underline',
+                        item.disabled && 'cursor-default opacity-[0.58]'
+                      ]}
+                      data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
+                      aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
+                      aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
+                      aria-disabled={item.disabled ? 'true' : undefined}
+                    >
                       <span class="relative z-10 flex size-16 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_10px_30px_rgba(49,43,72,0.08),0_0_0_8px_var(--theme-surface-strong)] [color:var(--theme-accent)] transition-transform duration-200 group-hover:-translate-y-1">
                         {
                           item.icon === 'resume' && (
@@ -555,6 +590,16 @@ const contactLinks = [
                         >
                           {item.label.ko}
                         </span>
+                        {
+                          item.disabled && item.status && (
+                            <span
+                              class="mx-auto mt-2 inline-flex rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold [border-color:var(--theme-border)] [color:var(--theme-ink-faint)]"
+                              {...i18nText(item.status.ko, item.status.en)}
+                            >
+                              {item.status.ko}
+                            </span>
+                          )
+                        }
                         <span
                           class="type-small block [word-break:keep-all] [color:var(--theme-ink-muted)]"
                           {...i18nText(item.description.ko, item.description.en)}
@@ -590,7 +635,17 @@ const contactLinks = [
             <div class="absolute bottom-24 left-7 top-7 w-px [background-color:color-mix(in_srgb,var(--theme-accent)_42%,transparent)]"></div>
             {
               pathwayItems.map((item) => (
-                <a href={item.href} class="group relative flex items-center gap-5 no-underline">
+                <a
+                  href={item.disabled ? undefined : item.href}
+                  class:list={[
+                    'group relative flex items-center gap-5 no-underline',
+                    item.disabled && 'cursor-default opacity-[0.58]'
+                  ]}
+                  data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
+                  aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
+                  aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
+                  aria-disabled={item.disabled ? 'true' : undefined}
+                >
                   <span class="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_0_0_7px_var(--theme-surface-strong)] [color:var(--theme-accent)]">
                     {
                       item.icon === 'resume' && (
@@ -636,6 +691,16 @@ const contactLinks = [
                         >
                           {item.label.ko}
                         </span>
+                        {
+                          item.disabled && item.status && (
+                            <span
+                              class="mt-1.5 inline-flex rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold [border-color:var(--theme-border)] [color:var(--theme-ink-faint)]"
+                              {...i18nText(item.status.ko, item.status.en)}
+                            >
+                              {item.status.ko}
+                            </span>
+                          )
+                        }
                         <span
                           class="type-small mt-1 block [word-break:keep-all] [color:var(--theme-ink-muted)]"
                           {...i18nText(item.description.ko, item.description.en)}
@@ -643,9 +708,17 @@ const contactLinks = [
                           {item.description.ko}
                         </span>
                       </span>
-                      <span class="text-lg transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
-                        ↗
-                      </span>
+                      {
+                        item.disabled ? (
+                          <span class="type-caption font-semibold [color:var(--theme-ink-faint)]">
+                            SOON
+                          </span>
+                        ) : (
+                          <span class="text-lg transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
+                            ↗
+                          </span>
+                        )
+                      }
                     </span>
                   </span>
                 </a>
@@ -778,4 +851,155 @@ const contactLinks = [
       </div>
     </section>
   </div>
+
+  <div
+    id="resume-choice-modal"
+    class="fixed inset-0 z-[80] hidden items-center justify-center px-5 py-8"
+    data-resume-modal
+    aria-hidden="true"
+  >
+    <button
+      type="button"
+      class="absolute inset-0 [background-color:color-mix(in_srgb,var(--theme-ink)_22%,transparent)] backdrop-blur-[6px]"
+      data-resume-modal-close
+      {...i18nAttr('aria-label', '이력서 선택 창 닫기', 'Close resume chooser')}
+    ></button>
+
+    <section
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="resume-choice-title"
+      aria-describedby="resume-choice-description"
+      class="relative w-full max-w-[25rem] rounded-[1.25rem] border p-5 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_20px_64px_rgba(17,16,26,0.22)]"
+    >
+      <div class="flex items-start justify-between gap-5 border-b pb-4 [border-color:var(--theme-border)]">
+        <div class="min-w-0">
+          <h2
+            id="resume-choice-title"
+            class="type-card-title [color:var(--theme-ink)]"
+            {...i18nText('이력서 선택', 'Choose Resume')}
+          >
+            이력서 선택
+          </h2>
+          <p
+            id="resume-choice-description"
+            class="type-caption mt-1.5 [word-break:keep-all] [color:var(--theme-ink-muted)]"
+            {...i18nText(
+              '확인할 이력서와 언어를 선택해주세요.',
+              'Select a resume type and language.'
+            )}
+          >
+            확인할 이력서와 언어를 선택해주세요.
+          </p>
+        </div>
+        <button
+          type="button"
+          class="flex size-9 shrink-0 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface)_82%,transparent)] [color:var(--theme-ink-muted)] transition-colors duration-200 hover:[color:var(--theme-accent)]"
+          data-resume-modal-close
+          {...i18nAttr('aria-label', '이력서 선택 창 닫기', 'Close resume chooser')}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+            <path d="m7 7 10 10" stroke-linecap="round" />
+            <path d="M17 7 7 17" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="mt-4 space-y-2.5">
+        {
+          resumeOptions.map((group) => (
+            <div class="grid grid-cols-3 items-center gap-2 rounded-[0.9rem] border px-3 py-2.5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface)_60%,transparent)]">
+              <span
+                class="type-small text-center font-semibold [color:var(--theme-ink)]"
+                {...i18nText(group.role.ko, group.role.en)}
+              >
+                {group.role.ko}
+              </span>
+              <>
+                {group.options.map((option) => (
+                  <a
+                    href={option.href}
+                    class="rounded-full border px-3 py-2 text-center text-sm font-semibold no-underline transition-colors duration-200 [border-color:var(--theme-border)] [color:var(--theme-accent)] hover:[border-color:color-mix(in_srgb,var(--theme-accent)_48%,var(--theme-border))] hover:[background-color:color-mix(in_srgb,var(--theme-accent)_8%,transparent)]"
+                    {...i18nText(option.label.ko, option.label.en)}
+                  >
+                    {option.label.ko}
+                  </a>
+                ))}
+              </>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const modal = document.querySelector('[data-resume-modal]');
+      if (!modal) return;
+
+      const triggers = document.querySelectorAll('[data-resume-modal-trigger]');
+      const closeControls = modal.querySelectorAll('[data-resume-modal-close]');
+      const firstCloseControl = closeControls[closeControls.length - 1];
+      let previousFocus = null;
+
+      const getFocusableItems = () => Array.from(
+        modal.querySelectorAll('a[href], button:not([disabled])')
+      );
+
+      const openModal = (event) => {
+        event.preventDefault();
+        previousFocus = document.activeElement;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        firstCloseControl?.focus();
+      };
+
+      const closeModal = () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+
+        if (previousFocus instanceof HTMLElement) {
+          previousFocus.focus();
+        }
+      };
+
+      triggers.forEach((trigger) => {
+        trigger.addEventListener('click', openModal);
+      });
+
+      closeControls.forEach((control) => {
+        control.addEventListener('click', closeModal);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (modal.getAttribute('aria-hidden') === 'true') return;
+
+        if (event.key === 'Escape') {
+          closeModal();
+          return;
+        }
+
+        if (event.key !== 'Tab') return;
+
+        const focusableItems = getFocusableItems();
+        const firstItem = focusableItems[0];
+        const lastItem = focusableItems[focusableItems.length - 1];
+
+        if (!firstItem || !lastItem) return;
+
+        if (event.shiftKey && document.activeElement === firstItem) {
+          event.preventDefault();
+          lastItem.focus();
+        } else if (!event.shiftKey && document.activeElement === lastItem) {
+          event.preventDefault();
+          firstItem.focus();
+        }
+      });
+    })();
+  </script>
 </BaseLayout>
