@@ -161,17 +161,19 @@ const pathwayItems = [
 
 const resumeOptions = [
   {
+    type: 'developer',
     role: text('개발자', 'Developer'),
     options: [
-      { href: '/resume/ko/', label: text('국문', 'KO') },
-      { href: '/resume/en/', label: text('영문', 'EN') }
+      { href: '/resume/ko/', language: 'ko', label: text('국문', 'KO') },
+      { href: '/resume/en/', language: 'en', label: text('영문', 'EN') }
     ]
   },
   {
+    type: 'instructor',
     role: text('강사', 'Instructor'),
     options: [
-      { href: '/resume/instructor/ko/', label: text('국문', 'KO') },
-      { href: '/resume/instructor/en/', label: text('영문', 'EN') }
+      { href: '/resume/instructor/ko/', language: 'ko', label: text('국문', 'KO') },
+      { href: '/resume/instructor/en/', language: 'en', label: text('영문', 'EN') }
     ]
   }
 ] as const;
@@ -542,6 +544,7 @@ const contactLinks = [
                         'group relative flex flex-col items-center text-center no-underline',
                         item.disabled && 'cursor-default opacity-[0.58]'
                       ]}
+                      data-hub-pathway-link={item.icon}
                       data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
                       aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
                       aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
@@ -641,6 +644,7 @@ const contactLinks = [
                     'group relative flex items-center gap-5 no-underline',
                     item.disabled && 'cursor-default opacity-[0.58]'
                   ]}
+                  data-hub-pathway-link={item.icon}
                   data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
                   aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
                   aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
@@ -789,6 +793,7 @@ const contactLinks = [
                         index > 0 && 'border-t'
                       ]}
                       style={index > 0 ? 'border-color: color-mix(in srgb, var(--theme-accent) 10%, transparent);' : undefined}
+                      data-hub-contact-link={link.icon}
                     >
                       <span class="flex size-10 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)]">
                         {
@@ -920,6 +925,9 @@ const contactLinks = [
                   <a
                     href={option.href}
                     class="rounded-full border px-3 py-2 text-center text-sm font-semibold no-underline transition-colors duration-200 [border-color:var(--theme-border)] [color:var(--theme-accent)] hover:[border-color:color-mix(in_srgb,var(--theme-accent)_48%,var(--theme-border))] hover:[background-color:color-mix(in_srgb,var(--theme-accent)_8%,transparent)]"
+                    data-resume-option
+                    data-resume-type={group.type}
+                    data-resume-language={option.language}
                     {...i18nText(option.label.ko, option.label.en)}
                   >
                     {option.label.ko}
@@ -942,6 +950,11 @@ const contactLinks = [
       const closeControls = modal.querySelectorAll('[data-resume-modal-close]');
       const firstCloseControl = closeControls[closeControls.length - 1];
       let previousFocus = null;
+      const trackEvent = (eventName, params = {}) => {
+        if (typeof window.hadevyiTrackEvent === 'function') {
+          window.hadevyiTrackEvent(eventName, params);
+        }
+      };
 
       const getFocusableItems = () => Array.from(
         modal.querySelectorAll('a[href], button:not([disabled])')
@@ -954,6 +967,7 @@ const contactLinks = [
         modal.classList.add('flex');
         modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        trackEvent('resume_modal_open', { source: 'main_hub' });
         firstCloseControl?.focus();
       };
 
@@ -974,6 +988,34 @@ const contactLinks = [
 
       closeControls.forEach((control) => {
         control.addEventListener('click', closeModal);
+      });
+
+      modal.querySelectorAll('[data-resume-option]').forEach((link) => {
+        link.addEventListener('click', () => {
+          trackEvent('resume_select', {
+            resume_type: link.getAttribute('data-resume-type') || '',
+            language: link.getAttribute('data-resume-language') || ''
+          });
+        });
+      });
+
+      document.querySelectorAll('[data-hub-pathway-link]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const target = link.getAttribute('data-hub-pathway-link') || '';
+          const isDisabled = link.getAttribute('aria-disabled') === 'true';
+
+          if (!target || target === 'resume' || isDisabled) return;
+
+          trackEvent('hub_navigation_click', { target });
+        });
+      });
+
+      document.querySelectorAll('[data-hub-contact-link]').forEach((link) => {
+        link.addEventListener('click', () => {
+          trackEvent('hub_contact_click', {
+            link_type: link.getAttribute('data-hub-contact-link') || ''
+          });
+        });
       });
 
       document.addEventListener('keydown', (event) => {

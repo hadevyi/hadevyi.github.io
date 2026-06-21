@@ -84,6 +84,16 @@ const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
       )
     }
     <script is:inline>
+      window.hadevyiTrackEvent = function (eventName, params = {}) {
+        if (typeof window.gtag !== 'function') return;
+
+        window.gtag('event', eventName, {
+          site_area: 'hub',
+          ...params
+        });
+      };
+    </script>
+    <script is:inline>
       (() => {
         const themeStorageKey = 'hadevyi-theme';
         const langStorageKey = 'hadevyi-lang';
