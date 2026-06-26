@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /resume/
+Disallow: /portfolio/
 Allow: /
 
 Sitemap: https://hadevyi.github.io/sitemap-index.xml
