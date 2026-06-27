@@ -166,6 +166,26 @@
       }
     });
 
+    const footer = document.querySelector('.site-footer');
+
+    if (footer && 'IntersectionObserver' in window) {
+      const footerObserver = new IntersectionObserver(
+        ([entry]) => {
+          document.body.classList.toggle('is-footer-visible', entry.isIntersecting);
+
+          if (entry.isIntersecting) {
+            setPanelState(false);
+          }
+        },
+        {
+          rootMargin: '0px 0px 96px 0px',
+          threshold: 0.01
+        }
+      );
+
+      footerObserver.observe(footer);
+    }
+
     mediaQuery.addEventListener('change', (event) => {
       const savedTheme = localStorage.getItem(themeStorageKey);
 

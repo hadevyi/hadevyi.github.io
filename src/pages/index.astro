@@ -82,19 +82,6 @@ const brandingReasons = [
   }
 ] as const;
 
-const decisionTraceLabels = [
-  text('맥락', 'Context'),
-  text('판단', 'Decision'),
-  text('근거', 'Rationale')
-] as const;
-
-const sharingTraceLabels = [
-  text('회고', 'Reflection'),
-  text('정리', 'Structure'),
-  text('공유', 'Sharing'),
-  text('확장', 'Expansion')
-] as const;
-
 const pathwaySection = {
   eyebrow: 'EXPLORE',
   title: text(
@@ -235,12 +222,14 @@ const contactLinks = [
 
 <BaseLayout showHeader={false} mainClass="!max-w-none !px-0 !pb-0">
   <div class="w-full">
-    <section class="flex min-h-[100svh] items-center">
-      <div class="mx-auto w-full max-w-6xl px-5 py-8 sm:px-10 sm:py-12 md:px-12 md:py-14 lg:px-20 xl:px-24">
-        <div class="grid items-end gap-8 md:grid-cols-[minmax(0,1.05fr)_minmax(13rem,0.72fr)] md:gap-10 lg:gap-14">
-          <div class="space-y-4 pb-1 sm:space-y-5 md:pb-8">
+    <section class="flex min-h-[88svh] items-center md:min-h-[92svh]">
+      <div class="mx-auto w-full max-w-6xl px-5 py-10 sm:px-10 sm:py-12 md:px-12 md:py-14 lg:px-20 xl:px-24">
+        <div class="border-y [border-color:var(--theme-border)]">
+          <div class="grid items-end gap-7 py-8 md:grid-cols-[minmax(0,1.02fr)_minmax(13rem,0.66fr)] md:gap-10 md:py-10 lg:gap-14">
+          <div class="space-y-4 pb-1 sm:space-y-5 md:pb-6">
+            <div class="h-1 w-16 rounded-full [background-color:var(--theme-accent-mark)]"></div>
             <p
-              class="type-body font-medium [color:var(--theme-accent)]"
+              class="type-body font-medium [color:var(--theme-ink-muted)]"
               {...i18nText(hero.eyebrow.ko, hero.eyebrow.en)}
             >
               {hero.eyebrow.ko}
@@ -251,7 +240,6 @@ const contactLinks = [
             >
               {hero.title.ko}
             </h1>
-            <div class="h-1 w-16 rounded-full [background-image:linear-gradient(90deg,var(--theme-brand-gradient-start),var(--theme-brand-gradient-mid),var(--theme-brand-gradient-end))]"></div>
 
             <div class="type-body max-w-xl space-y-2 pt-1 [word-break:keep-all] [color:var(--theme-ink-muted)] sm:pt-2">
               {
@@ -278,26 +266,36 @@ const contactLinks = [
           </div>
 
           <div
-            class="relative mx-auto flex w-full max-w-[13.5rem] items-end justify-center sm:max-w-[16rem] md:mx-0 md:ml-auto md:max-w-[17.5rem] lg:max-w-[18.5rem]"
+            class="relative mx-auto flex w-full max-w-[13rem] items-end justify-center self-stretch sm:max-w-[15.5rem] md:mx-0 md:ml-auto md:max-w-[17rem] lg:max-w-[18rem]"
           >
-            <div class="absolute inset-x-4 bottom-0 h-[68%] rounded-full [background:radial-gradient(circle,rgba(143,136,184,0.12),transparent_70%)] blur-2xl"></div>
-            <div class="absolute -right-3 bottom-10 hidden h-px w-20 [background-image:linear-gradient(90deg,transparent,var(--theme-brand-gradient-mid))] md:block"></div>
+            <div class="absolute -right-3 bottom-12 hidden h-px w-20 [background-color:color-mix(in_srgb,var(--theme-accent-mark)_36%,var(--theme-border))] md:block"></div>
+            <div class="absolute bottom-0 left-1/2 hidden h-[70%] w-px -translate-x-1/2 [background-color:color-mix(in_srgb,var(--theme-border)_72%,transparent)] md:block"></div>
             <img
               src={profileImage}
               alt="당현아 프로필 사진"
-              class="relative aspect-[5/7] h-auto max-h-[56svh] w-full object-contain drop-shadow-[0_26px_42px_rgba(21,18,34,0.16)]"
+              class="relative aspect-[5/7] h-auto max-h-[54svh] w-full object-contain drop-shadow-[0_18px_28px_rgba(21,18,34,0.1)]"
               loading="eager"
               {...i18nAttr('alt', '당현아 프로필 사진', 'Portrait of Dang Hyeona')}
             />
           </div>
         </div>
 
-        <div class="mt-0 border-t pt-4 [border-color:var(--theme-border)] sm:pt-6">
-          <div class="grid grid-cols-5 gap-1.5 sm:gap-3">
+        <div class="border-t [border-color:var(--theme-border)]">
+          <div class="grid grid-cols-2 sm:grid-cols-5">
             {
-              hero.activities.map((activity) => (
-                <div class="group flex min-h-[4.75rem] flex-col items-center justify-center gap-1.5 rounded-2xl border px-1 py-2.5 text-center [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)] sm:min-h-[7.25rem] sm:gap-3 sm:px-4 sm:py-5">
-                  <span class="flex size-8 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)] transition-colors duration-200 group-hover:[background-color:color-mix(in_srgb,var(--theme-accent)_14%,transparent)] sm:size-11">
+              hero.activities.map((activity, index) => (
+                <div
+                  class:list={[
+                    'group flex min-h-[5.2rem] flex-col justify-between gap-2 border-b px-3 py-3 text-left transition-colors duration-200 [border-color:var(--theme-border)] hover:[background-color:color-mix(in_srgb,var(--theme-surface-strong)_52%,transparent)] sm:min-h-[6.8rem] sm:border-b-0 sm:border-r sm:px-5 sm:py-4',
+                    index === hero.activities.length - 1 && 'sm:border-r-0',
+                    index === hero.activities.length - 1 && 'col-span-2 sm:col-span-1'
+                  ]}
+                >
+                  <span class="flex items-center justify-between gap-2">
+                    <span class="text-[0.68rem] font-semibold tabular-nums [color:color-mix(in_srgb,var(--theme-accent-mark)_62%,var(--theme-ink-faint))] sm:text-[0.75rem]">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <span class="flex size-8 shrink-0 items-center justify-center rounded-md border [border-color:color-mix(in_srgb,var(--theme-border)_88%,transparent)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)] sm:size-9">
                     {
                       activity.icon === 'code' && (
                         <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
@@ -343,9 +341,10 @@ const contactLinks = [
                         </svg>
                       )
                     }
+                    </span>
                   </span>
                   <span
-                    class="text-[0.68rem] leading-tight tracking-[-0.02em] [word-break:keep-all] font-medium [color:var(--theme-ink-soft)] sm:type-small sm:whitespace-nowrap sm:tracking-normal"
+                    class="type-small font-semibold leading-tight [word-break:keep-all] [color:var(--theme-ink-soft)] sm:whitespace-nowrap"
                     {...i18nText(activity.label.ko, activity.label.en)}
                   >
                     {activity.label.ko}
@@ -355,139 +354,56 @@ const contactLinks = [
             }
           </div>
         </div>
+        </div>
       </div>
     </section>
 
-    <section class="border-y py-16 [background-color:var(--theme-section-branding)] [border-color:var(--theme-border)] sm:py-20 lg:py-24">
+    <section class="border-y py-14 [background-color:var(--theme-section-branding)] [border-color:var(--theme-border)] sm:py-18 lg:py-20">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
-        <div class="mb-10 flex items-center gap-4 sm:mb-12">
+        <div class="mb-8 flex items-center gap-4 sm:mb-10">
           <p class="type-label-wide uppercase [color:var(--theme-accent)]">
             BRANDING WHY
           </p>
           <div class="h-px flex-1 [background-color:var(--theme-border)]"></div>
         </div>
 
-        <div class="grid gap-4 md:grid-cols-2 md:gap-5 lg:gap-6">
-          <article class="min-h-[19rem] rounded-[1.75rem] border p-6 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_72%,transparent)] sm:p-8 lg:p-9">
-            <p class="type-label-wide mb-8 [color:var(--theme-accent)]">
-              {brandingReasons[0].number}
-            </p>
-            <h2
-              class="type-section-title max-w-lg whitespace-pre-line [color:var(--theme-ink)]"
-              {...i18nText(brandingReasons[0].title.ko, brandingReasons[0].title.en)}
-            >
-              {brandingReasons[0].title.ko}
-            </h2>
-            <div class="type-body mt-7 space-y-3 [color:var(--theme-ink-muted)]">
-              {
-                brandingReasons[0].paragraphs.map((paragraph) => (
-                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
-                ))
-              }
-            </div>
-          </article>
-
-          <div class="relative min-h-[19rem] overflow-hidden rounded-[1.75rem] border p-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-accent)_5%,var(--theme-surface-strong))] sm:p-6 lg:p-7">
-            <div class="absolute right-7 top-7 h-20 w-20 rounded-full [background:radial-gradient(circle,rgba(143,136,184,0.18),transparent_68%)]"></div>
-            <div class="relative mx-auto flex h-full max-w-md flex-col justify-center">
-              <div class="rounded-[0.9rem] border p-6 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)]">
-                <div class="mb-6 flex items-center justify-between gap-4 border-b pb-4 [border-color:var(--theme-border)]">
-                  <p
-                    class="type-label [color:var(--theme-ink-faint)]"
-                    {...i18nText('판단의 기록', 'Decision Record')}
-                  >
-                    판단의 기록
-                  </p>
-                  <span class="h-px w-12 [background-color:var(--theme-accent)]"></span>
-                </div>
-                <div class="space-y-3.5">
-                  <div class="h-px w-9/12 [background-color:var(--theme-border-strong)]"></div>
-                  <div class="h-px w-11/12 [background-color:var(--theme-border)]"></div>
-                  <div class="h-px w-7/12 [background-color:var(--theme-border)]"></div>
-                </div>
-                <div class="mt-7 grid grid-cols-3 gap-px border-y [border-color:var(--theme-border)] [background-color:var(--theme-border)]">
-                  {decisionTraceLabels.map((label) => (
-                    <span
-                      class="type-micro px-2 py-3 text-center font-medium tracking-[0.06em] [background-color:var(--theme-surface-strong)] [color:var(--theme-ink-muted)]"
-                      {...i18nText(label.ko, label.en)}
-                    >
-                      {label.ko}
-                    </span>
+        <div class="grid gap-8 border-t pt-8 [border-color:var(--theme-border)] md:grid-cols-12 md:gap-x-6 md:gap-y-10">
+          {
+            brandingReasons.map((reason) => (
+              <article
+                class:list={[
+                  'border-l pl-5 [border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] sm:pl-6',
+                  reason.number === '01'
+                    ? 'md:col-span-7'
+                    : 'md:col-span-7 md:col-start-6 md:-mt-2'
+                ]}
+              >
+                <p class="type-label-wide m-0 [color:var(--theme-accent-mark)]">
+                  {reason.number}
+                </p>
+                <h3
+                  class="type-section-title mt-5 max-w-2xl whitespace-pre-line [word-break:keep-all] [color:var(--theme-ink)]"
+                  {...i18nText(reason.title.ko, reason.title.en)}
+                >
+                  {reason.title.ko}
+                </h3>
+                <div class="type-body mt-6 grid gap-3 [color:var(--theme-ink-muted)]">
+                  {reason.paragraphs.map((paragraph) => (
+                    <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
                   ))}
                 </div>
-              </div>
-              <div class="ml-auto mt-5 w-8/12 border-t px-1 pt-4 [border-color:var(--theme-border)]">
-                <div class="h-px w-8/12 [background-color:var(--theme-border-strong)]"></div>
-                <div class="mt-3 h-px w-5/12 [background-color:var(--theme-border)]"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="relative order-4 min-h-[19rem] overflow-hidden rounded-[1.75rem] border p-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_82%,transparent)] sm:p-6 md:order-none lg:p-7">
-            <div class="absolute inset-x-8 top-1/2 h-px [background-image:linear-gradient(90deg,transparent,var(--theme-brand-gradient-mid),transparent)]"></div>
-            <div class="relative flex h-full flex-col justify-center gap-4">
-              <div class="w-10/12 rounded-[0.9rem] border p-5 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)]">
-                <div class="flex items-center gap-3">
-                  <span class="flex size-8 items-center justify-center border [border-color:var(--theme-border)] [color:var(--theme-accent)]">
-                    <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
-                      <path d="M8.5 8.5 15.5 12l-7 3.5" stroke-linecap="round" stroke-linejoin="round" />
-                      <circle cx="6.5" cy="7.5" r="2.2" />
-                      <circle cx="17.5" cy="12" r="2.2" />
-                      <circle cx="6.5" cy="16.5" r="2.2" />
-                    </svg>
-                  </span>
-                  <div class="flex-1">
-                    <p
-                      class="type-caption font-semibold [color:var(--theme-ink-soft)]"
-                      {...i18nText('기록의 흐름', 'Record Flow')}
-                    >
-                      기록의 흐름
-                    </p>
-                    <div class="mt-3 h-px w-8/12 [background-color:var(--theme-border)]"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="ml-auto w-10/12 border p-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-accent)_5%,var(--theme-surface-strong))]">
-                <div class="grid grid-cols-2 gap-px [background-color:var(--theme-border)]">
-                  {sharingTraceLabels.map((label) => (
-                    <span
-                      class="type-micro px-3 py-4 text-center font-medium tracking-[0.06em] [background-color:var(--theme-surface-strong)] [color:var(--theme-ink-muted)]"
-                      {...i18nText(label.ko, label.en)}
-                    >
-                      {label.ko}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <article class="order-3 min-h-[19rem] rounded-[1.75rem] border p-6 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_72%,transparent)] sm:p-8 md:order-none lg:p-9">
-            <p class="type-label-wide mb-8 [color:var(--theme-accent)]">
-              {brandingReasons[1].number}
-            </p>
-            <h2
-              class="type-section-title max-w-lg whitespace-pre-line [color:var(--theme-ink)]"
-              {...i18nText(brandingReasons[1].title.ko, brandingReasons[1].title.en)}
-            >
-              {brandingReasons[1].title.ko}
-            </h2>
-            <div class="type-body mt-7 space-y-3 [color:var(--theme-ink-muted)]">
-              {
-                brandingReasons[1].paragraphs.map((paragraph) => (
-                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
-                ))
-              }
-            </div>
-          </article>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
 
-    <section class="py-16 [background-color:var(--theme-section-sites)] sm:py-20 lg:py-24">
+    <section class="py-14 [background-color:var(--theme-section-sites)] sm:py-18 lg:py-20">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
-        <div class="rounded-[2rem] border px-5 py-12 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_82%,transparent)] [box-shadow:var(--theme-shadow)] sm:px-8 sm:py-14 md:rounded-[2.25rem] lg:px-12">
-          <div class="mx-auto max-w-3xl text-center">
+        <div class="border-y py-10 [border-color:var(--theme-border)] sm:py-12">
+          <div class="grid gap-5 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)] md:items-end">
+            <div>
             <p class="type-label-wide uppercase [color:var(--theme-accent)]">
               {pathwaySection.eyebrow}
             </p>
@@ -509,8 +425,9 @@ const contactLinks = [
                 ))
               }
             </h2>
+            </div>
             <p
-              class="type-small mx-auto mt-4 max-w-2xl [word-break:keep-all] [color:var(--theme-ink-muted)]"
+              class="type-small max-w-xl [word-break:keep-all] [color:var(--theme-ink-muted)] md:justify-self-end"
             >
               {
                 pathwaySection.descriptionLines.map((line, index) => (
@@ -530,19 +447,29 @@ const contactLinks = [
           </div>
 
           <div class="mt-12 hidden md:block">
-            <div class="relative mx-auto max-w-5xl pb-32">
-              <div class="absolute left-0 right-14 top-8 h-px [background-color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]"></div>
-              <div class="absolute left-0 top-[1.84rem] size-2 rounded-full [background-color:var(--theme-accent)]"></div>
-              <div class="absolute right-0 top-8 h-[9.5rem] w-14 rounded-tr-[2.4rem] border-r border-t [border-color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]"></div>
+            <div class="relative mx-auto max-w-5xl">
+              <div class="relative border-y py-9 [border-color:var(--theme-border)]">
+                <div
+                  class="pointer-events-none absolute left-8 right-8 top-[3.85rem] h-px [background-color:color-mix(in_srgb,var(--theme-accent-mark)_30%,var(--theme-border))]"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="pointer-events-none absolute left-0 top-[3.7rem] size-1.5 rounded-full [background-color:var(--theme-accent-mark)]"
+                  aria-hidden="true"
+                ></div>
+                <div
+                  class="pointer-events-none absolute right-0 top-[3.7rem] h-16 w-12 rounded-br-lg border-b border-r [border-color:color-mix(in_srgb,var(--theme-accent-mark)_30%,var(--theme-border))]"
+                  aria-hidden="true"
+                ></div>
 
-              <div class="relative grid grid-cols-4 gap-8">
+                <div class="relative grid grid-cols-4">
                 {
                   pathwayItems.map((item) => (
                     <a
                       href={item.disabled ? undefined : item.href}
                       class:list={[
-                        'group relative flex flex-col items-center text-center no-underline',
-                        item.disabled && 'cursor-default opacity-[0.58]'
+                        'group relative flex min-h-[13.25rem] flex-col items-center px-4 text-center no-underline transition-colors duration-200',
+                        item.disabled && 'cursor-default opacity-[0.78]'
                       ]}
                       data-hub-pathway-link={item.icon}
                       data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
@@ -550,45 +477,49 @@ const contactLinks = [
                       aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
                       aria-disabled={item.disabled ? 'true' : undefined}
                     >
-                      <span class="relative z-10 flex size-16 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_10px_30px_rgba(49,43,72,0.08),0_0_0_8px_var(--theme-surface-strong)] [color:var(--theme-accent)] transition-transform duration-200 group-hover:-translate-y-1">
-                        {
-                          item.icon === 'resume' && (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
-                              <path d="M7 4h7l3 3v13H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
-                              <path d="M14 4v4h4" stroke-linecap="round" stroke-linejoin="round" />
-                              <path d="M10 12h4" stroke-linecap="round" />
-                              <path d="M10 16h5" stroke-linecap="round" />
-                            </svg>
-                          )
-                        }
-                        {
-                          item.icon === 'portfolio' && (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
-                              <path d="M6 8h12v11H6V8Z" stroke-linecap="round" stroke-linejoin="round" />
-                              <path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8" stroke-linecap="round" />
-                              <path d="M9 13h6" stroke-linecap="round" />
-                            </svg>
-                          )
-                        }
-                        {
-                          item.icon === 'experience' && (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
-                              <path d="M7 4h10v16l-5-3-5 3V4Z" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                          )
-                        }
-                        {
-                          item.icon === 'blog' && (
-                            <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 fill-none stroke-current stroke-[1.7]">
-                              <path d="M15.5 5.5 18.5 8.5 10 17l-4 1 1-4 8.5-8.5Z" stroke-linecap="round" stroke-linejoin="round" />
-                              <path d="m14 7 3 3" stroke-linecap="round" />
-                            </svg>
-                          )
-                        }
-                      </span>
-                      <span class="mt-7 space-y-2">
+                      <span class="relative z-10 flex size-14 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-section-sites)] [box-shadow:0_0_0_10px_var(--theme-section-sites)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_44%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]">
+                          {
+                            item.icon === 'resume' && (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                                <path d="M7 4h7l3 3v13H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M14 4v4h4" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M10 12h4" stroke-linecap="round" />
+                                <path d="M10 16h5" stroke-linecap="round" />
+                              </svg>
+                            )
+                          }
+                          {
+                            item.icon === 'portfolio' && (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                                <path d="M6 8h12v11H6V8Z" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M9 8V6.5A2.5 2.5 0 0 1 11.5 4h1A2.5 2.5 0 0 1 15 6.5V8" stroke-linecap="round" />
+                                <path d="M9 13h6" stroke-linecap="round" />
+                              </svg>
+                            )
+                          }
+                          {
+                            item.icon === 'experience' && (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                                <path d="M7 4h10v16l-5-3-5 3V4Z" stroke-linecap="round" stroke-linejoin="round" />
+                              </svg>
+                            )
+                          }
+                          {
+                            item.icon === 'blog' && (
+                              <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
+                                <path d="M15.5 5.5 18.5 8.5 10 17l-4 1 1-4 8.5-8.5Z" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="m14 7 3 3" stroke-linecap="round" />
+                              </svg>
+                            )
+                          }
+                        </span>
+
+                      <span class="type-caption mt-8 font-semibold tabular-nums [color:var(--theme-ink-faint)]">
+                          {item.disabled ? 'SOON' : item.number}
+                        </span>
+                      <span class="mt-3 space-y-2">
                         <span
-                          class="type-card-title block [color:var(--theme-ink)]"
+                          class="type-card-title block [word-break:keep-all] [color:var(--theme-ink)]"
                           {...i18nText(item.label.ko, item.label.en)}
                         >
                           {item.label.ko}
@@ -596,7 +527,7 @@ const contactLinks = [
                         {
                           item.disabled && item.status && (
                             <span
-                              class="mx-auto mt-2 inline-flex rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold [border-color:var(--theme-border)] [color:var(--theme-ink-faint)]"
+                              class="mt-2 inline-flex rounded border px-2 py-0.5 text-[0.68rem] font-semibold [border-color:var(--theme-border)] [color:var(--theme-ink-faint)]"
                               {...i18nText(item.status.ko, item.status.en)}
                             >
                               {item.status.ko}
@@ -604,45 +535,46 @@ const contactLinks = [
                           )
                         }
                         <span
-                          class="type-small block [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                          class="type-small mx-auto block max-w-[11.5rem] [word-break:keep-all] [color:var(--theme-ink-muted)]"
                           {...i18nText(item.description.ko, item.description.en)}
                         >
                           {item.description.ko}
                         </span>
                       </span>
+                      {!item.disabled && (
+                        <span class="absolute bottom-1 right-8 text-lg opacity-0 transition-opacity duration-200 [color:var(--theme-accent-mark)] group-hover:opacity-100" aria-hidden="true">
+                          ↗
+                        </span>
+                      )}
                     </a>
                   ))
                 }
+                </div>
               </div>
 
-              <div class="absolute bottom-0 left-12 right-12 rounded-[1.25rem] border px-8 py-6 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)]">
+              <div class="mt-7 border px-6 py-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_58%,transparent)]">
                 <div class="flex items-center gap-5">
-                  <span class="font-display text-4xl leading-none [color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]">
-                    “
-                  </span>
+                  <span class="h-px w-10 shrink-0 [background-color:var(--theme-accent-mark)]" aria-hidden="true"></span>
                   <p
                     class="type-small flex-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
                     {...i18nText(pathwaySection.note.ko, pathwaySection.note.en)}
                   >
                     {pathwaySection.note.ko}
                   </p>
-                  <span class="text-2xl [color:var(--theme-accent)]" aria-hidden="true">
-                    ✦
-                  </span>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="relative mt-10 space-y-7 md:hidden">
-            <div class="absolute bottom-24 left-7 top-7 w-px [background-color:color-mix(in_srgb,var(--theme-accent)_42%,transparent)]"></div>
+            <div class="absolute bottom-24 left-7 top-7 w-px [background-color:color-mix(in_srgb,var(--theme-accent-mark)_32%,transparent)]"></div>
             {
               pathwayItems.map((item) => (
                 <a
                   href={item.disabled ? undefined : item.href}
                   class:list={[
                     'group relative flex items-center gap-5 no-underline',
-                    item.disabled && 'cursor-default opacity-[0.58]'
+                    item.disabled && 'cursor-default opacity-[0.86]'
                   ]}
                   data-hub-pathway-link={item.icon}
                   data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
@@ -650,7 +582,7 @@ const contactLinks = [
                   aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
                   aria-disabled={item.disabled ? 'true' : undefined}
                 >
-                  <span class="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_0_0_7px_var(--theme-surface-strong)] [color:var(--theme-accent)]">
+                  <span class="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_0_0_7px_var(--theme-surface-strong)] [color:var(--theme-ink-muted)] group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]">
                     {
                       item.icon === 'resume' && (
                         <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
@@ -695,16 +627,6 @@ const contactLinks = [
                         >
                           {item.label.ko}
                         </span>
-                        {
-                          item.disabled && item.status && (
-                            <span
-                              class="mt-1.5 inline-flex rounded-full border px-2.5 py-1 text-[0.68rem] font-semibold [border-color:var(--theme-border)] [color:var(--theme-ink-faint)]"
-                              {...i18nText(item.status.ko, item.status.en)}
-                            >
-                              {item.status.ko}
-                            </span>
-                          )
-                        }
                         <span
                           class="type-small mt-1 block [word-break:keep-all] [color:var(--theme-ink-muted)]"
                           {...i18nText(item.description.ko, item.description.en)}
@@ -718,7 +640,7 @@ const contactLinks = [
                             SOON
                           </span>
                         ) : (
-                          <span class="text-lg transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
+                          <span class="text-lg transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent-mark)]">
                             ↗
                           </span>
                         )
@@ -728,11 +650,9 @@ const contactLinks = [
                 </a>
               ))
             }
-            <div class="rounded-[1.15rem] border px-5 py-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_78%,transparent)]">
+            <div class="border-t px-0 py-5 [border-color:var(--theme-border)]">
               <div class="flex gap-4">
-                <span class="font-display text-3xl leading-none [color:color-mix(in_srgb,var(--theme-accent)_48%,transparent)]">
-                  “
-                </span>
+                <span class="mt-2 h-px w-8 shrink-0 [background-color:var(--theme-accent-mark)]" aria-hidden="true"></span>
                 <p
                   class="type-small flex-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
                   {...i18nText(pathwaySection.note.ko, pathwaySection.note.en)}
@@ -748,9 +668,9 @@ const contactLinks = [
 
     <section class="py-16 [background-color:var(--theme-section-cta)] sm:py-20 lg:py-24">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
-        <div class="rounded-[2rem] border px-5 py-8 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_86%,transparent)] sm:px-8 sm:py-10 md:rounded-[2.25rem] lg:px-12">
-          <div class="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(17rem,0.72fr)] md:items-stretch md:gap-10">
-            <div class="space-y-6">
+        <div class="border-y py-10 [border-color:var(--theme-border)]">
+          <div class="grid gap-8 md:grid-cols-[minmax(0,0.86fr)_minmax(18rem,0.72fr)] md:items-start md:gap-10">
+            <div class="space-y-5">
               <p class="type-label-wide uppercase [color:var(--theme-accent)]">
                 {contactSection.eyebrow}
               </p>
@@ -769,7 +689,7 @@ const contactLinks = [
                 {
                   contactSection.notes.map((note) => (
                     <li class="flex gap-3">
-                      <span class="mt-[0.75em] size-1.5 shrink-0 rounded-full [background-color:var(--theme-accent)]" aria-hidden="true"></span>
+                      <span class="mt-[0.78em] h-px w-5 shrink-0 [background-color:var(--theme-accent-mark)]" aria-hidden="true"></span>
                       <span {...i18nText(note.ko, note.en)}>{note.ko}</span>
                     </li>
                   ))
@@ -777,11 +697,11 @@ const contactLinks = [
               </ul>
             </div>
 
-            <div class="pt-2 md:pl-6 md:pt-0 lg:pl-8">
-              <p class="type-caption mb-3 uppercase tracking-[var(--type-label-tracking)] [color:var(--theme-ink-faint)]">
+            <div class="pt-2 md:pt-0">
+              <p class="type-caption mb-2 uppercase tracking-[var(--type-label-tracking)] [color:var(--theme-ink-faint)]">
                 CHANNELS
               </p>
-              <div>
+              <div class="border-y [border-color:var(--theme-border)]">
                 {
                   contactLinks.map((link, index) => (
                     <a
@@ -792,10 +712,10 @@ const contactLinks = [
                         'group flex items-center gap-4 py-4 no-underline',
                         index > 0 && 'border-t'
                       ]}
-                      style={index > 0 ? 'border-color: color-mix(in srgb, var(--theme-accent) 10%, transparent);' : undefined}
+                      style={index > 0 ? 'border-color: var(--theme-border);' : undefined}
                       data-hub-contact-link={link.icon}
                     >
-                      <span class="flex size-10 shrink-0 items-center justify-center rounded-full [background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] [color:var(--theme-accent)]">
+                      <span class="flex size-9 shrink-0 items-center justify-center rounded-md border [border-color:var(--theme-border)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]">
                         {
                           link.icon === 'email' && (
                             <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
@@ -843,7 +763,7 @@ const contactLinks = [
                           {link.description.ko}
                         </span>
                       </span>
-                      <span class="transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent)]">
+                      <span class="transition-colors duration-200 [color:var(--theme-ink-faint)] group-hover:[color:var(--theme-accent-mark)]">
                         ↗
                       </span>
                     </a>
