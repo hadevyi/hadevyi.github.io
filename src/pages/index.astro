@@ -101,10 +101,16 @@ const pathwaySection = {
     text('이력서, 포트폴리오, 경험정리, 블로그를', 'experience archive, and blog'),
     text('살펴볼 수 있습니다.', 'depending on the context you need.')
   ],
-  note: text(
-    '저의 경험과 기록은 서로 연결되어 있습니다. 관심 있는 주제부터 자유롭게 살펴보세요.',
-    'My experiences and records are connected. Feel free to start with the topic you are most interested in.'
-  )
+  noteLines: [
+    text(
+      '저의 경험과 기록은 서로 연결되어 있습니다. 관심 있는 주제부터 자유롭게 살펴보세요.',
+      'My experiences and records are connected. Feel free to start with the topic you are most interested in.'
+    ),
+    text(
+      '상세 경력기술서는 공개하지 않고 비공개 문서로 별도 관리하며, 필요 시 제출합니다.',
+      'The detailed career description is kept as a private document and can be shared when needed.'
+    )
+  ]
 } as const;
 
 const pathwayItems = [
@@ -281,24 +287,20 @@ const contactLinks = [
         </div>
 
         <div class="border-t [border-color:var(--theme-border)]">
-          <div class="grid grid-cols-2 sm:grid-cols-5">
+          <ul class="m-0 grid list-none grid-cols-2 p-0 sm:grid-cols-5">
             {
               hero.activities.map((activity, index) => (
-                <div
+                <li
                   class:list={[
-                    'group flex min-h-[5.2rem] flex-col justify-between gap-2 border-b px-3 py-3 text-left transition-colors duration-200 [border-color:var(--theme-border)] hover:[background-color:color-mix(in_srgb,var(--theme-surface-strong)_52%,transparent)] sm:min-h-[6.8rem] sm:border-b-0 sm:border-r sm:px-5 sm:py-4',
+                    'flex min-h-[5.2rem] items-center gap-3 border-b px-3 py-4 text-left [border-color:var(--theme-border)] sm:min-h-[6.4rem] sm:flex-col sm:items-start sm:justify-center sm:gap-3 sm:border-b-0 sm:border-r sm:px-5 sm:py-4',
                     index === hero.activities.length - 1 && 'sm:border-r-0',
                     index === hero.activities.length - 1 && 'col-span-2 sm:col-span-1'
                   ]}
                 >
-                  <span class="flex items-center justify-between gap-2">
-                    <span class="text-[0.68rem] font-semibold tabular-nums [color:color-mix(in_srgb,var(--theme-accent-mark)_62%,var(--theme-ink-faint))] sm:text-[0.75rem]">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span class="flex size-8 shrink-0 items-center justify-center rounded-md border [border-color:color-mix(in_srgb,var(--theme-border)_88%,transparent)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)] sm:size-9">
+                  <span class="flex size-9 shrink-0 items-center justify-center rounded-sm [background-color:color-mix(in_srgb,var(--theme-surface-strong)_54%,transparent)] [color:color-mix(in_srgb,var(--theme-ink-muted)_88%,var(--theme-accent-mark))] sm:size-10">
                     {
                       activity.icon === 'code' && (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.8]">
                           <path d="m10 8-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" />
                           <path d="m14 8 4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
                           <path d="m13 6-2 12" stroke-linecap="round" />
@@ -307,7 +309,7 @@ const contactLinks = [
                     }
                     {
                       activity.icon === 'book' && (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.8]">
                           <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3H19v15H8.5A3.5 3.5 0 0 0 5 21V6.5Z" stroke-linecap="round" stroke-linejoin="round" />
                           <path d="M5 6.5A3.5 3.5 0 0 1 8.5 3" stroke-linecap="round" />
                           <path d="M9 7h6" stroke-linecap="round" />
@@ -316,7 +318,7 @@ const contactLinks = [
                     }
                     {
                       activity.icon === 'note' && (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.8]">
                           <path d="M7 4h7l3 3v13H7V4Z" stroke-linecap="round" stroke-linejoin="round" />
                           <path d="M14 4v4h4" stroke-linecap="round" stroke-linejoin="round" />
                           <path d="M10 12h5" stroke-linecap="round" />
@@ -326,7 +328,7 @@ const contactLinks = [
                     }
                     {
                       activity.icon === 'nodes' && (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.8]">
                           <path d="M8.5 8.5 15.5 12l-7 3.5" stroke-linecap="round" stroke-linejoin="round" />
                           <circle cx="6.5" cy="7.5" r="2.2" />
                           <circle cx="17.5" cy="12" r="2.2" />
@@ -336,12 +338,11 @@ const contactLinks = [
                     }
                     {
                       activity.icon === 'heart' && (
-                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.8]">
                           <path d="M12 19s-6.5-3.8-6.5-8.2A3.7 3.7 0 0 1 12 8.3a3.7 3.7 0 0 1 6.5 2.5C18.5 15.2 12 19 12 19Z" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                       )
                     }
-                    </span>
                   </span>
                   <span
                     class="type-small font-semibold leading-tight [word-break:keep-all] [color:var(--theme-ink-soft)] sm:whitespace-nowrap"
@@ -349,10 +350,10 @@ const contactLinks = [
                   >
                     {activity.label.ko}
                   </span>
-                </div>
+                </li>
               ))
             }
-          </div>
+          </ul>
         </div>
         </div>
       </div>
@@ -468,16 +469,21 @@ const contactLinks = [
                     <a
                       href={item.disabled ? undefined : item.href}
                       class:list={[
-                        'group relative flex min-h-[13.25rem] flex-col items-center px-4 text-center no-underline transition-colors duration-200',
+                        'relative flex min-h-[13.25rem] flex-col items-center px-4 text-center no-underline transition-colors duration-200',
+                        !item.disabled && 'group',
                         item.disabled && 'cursor-default opacity-[0.78]'
                       ]}
                       data-hub-pathway-link={item.icon}
-                      data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
+                      data-resume-popover-trigger={item.icon === 'resume' ? '' : undefined}
                       aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
-                      aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
+                      aria-controls={item.icon === 'resume' ? 'resume-choice-popover' : undefined}
+                      aria-expanded={item.icon === 'resume' ? 'false' : undefined}
                       aria-disabled={item.disabled ? 'true' : undefined}
                     >
-                      <span class="relative z-10 flex size-14 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-section-sites)] [box-shadow:0_0_0_10px_var(--theme-section-sites)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_44%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]">
+                      <span
+                        class="relative z-10 flex size-14 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-section-sites)] [box-shadow:0_0_0_10px_var(--theme-section-sites)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_44%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]"
+                        data-resume-popover-anchor={item.icon === 'resume' ? '' : undefined}
+                      >
                           {
                             item.icon === 'resume' && (
                               <svg viewBox="0 0 24 24" aria-hidden="true" class="size-5 fill-none stroke-current stroke-[1.7]">
@@ -555,11 +561,14 @@ const contactLinks = [
               <div class="mt-7 border px-6 py-5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface-strong)_58%,transparent)]">
                 <div class="flex items-center gap-5">
                   <span class="h-px w-10 shrink-0 [background-color:var(--theme-accent-mark)]" aria-hidden="true"></span>
-                  <p
-                    class="type-small flex-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
-                    {...i18nText(pathwaySection.note.ko, pathwaySection.note.en)}
-                  >
-                    {pathwaySection.note.ko}
+                  <p class="type-small flex-1 space-y-1 [word-break:keep-all] [color:var(--theme-ink-muted)]">
+                    {
+                      pathwaySection.noteLines.map((line) => (
+                        <span class="block" {...i18nText(line.ko, line.en)}>
+                          {line.ko}
+                        </span>
+                      ))
+                    }
                   </p>
                 </div>
               </div>
@@ -573,13 +582,15 @@ const contactLinks = [
                 <a
                   href={item.disabled ? undefined : item.href}
                   class:list={[
-                    'group relative flex items-center gap-5 no-underline',
+                    'relative flex items-center gap-5 no-underline',
+                    !item.disabled && 'group',
                     item.disabled && 'cursor-default opacity-[0.86]'
                   ]}
                   data-hub-pathway-link={item.icon}
-                  data-resume-modal-trigger={item.icon === 'resume' ? '' : undefined}
+                  data-resume-popover-trigger={item.icon === 'resume' ? '' : undefined}
                   aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
-                  aria-controls={item.icon === 'resume' ? 'resume-choice-modal' : undefined}
+                  aria-controls={item.icon === 'resume' ? 'resume-choice-popover' : undefined}
+                  aria-expanded={item.icon === 'resume' ? 'false' : undefined}
                   aria-disabled={item.disabled ? 'true' : undefined}
                 >
                   <span class="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_0_0_7px_var(--theme-surface-strong)] [color:var(--theme-ink-muted)] group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]">
@@ -653,11 +664,14 @@ const contactLinks = [
             <div class="border-t px-0 py-5 [border-color:var(--theme-border)]">
               <div class="flex gap-4">
                 <span class="mt-2 h-px w-8 shrink-0 [background-color:var(--theme-accent-mark)]" aria-hidden="true"></span>
-                <p
-                  class="type-small flex-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
-                  {...i18nText(pathwaySection.note.ko, pathwaySection.note.en)}
-                >
-                  {pathwaySection.note.ko}
+                <p class="type-small flex-1 space-y-1 [word-break:keep-all] [color:var(--theme-ink-muted)]">
+                  {
+                    pathwaySection.noteLines.map((line) => (
+                      <span class="block" {...i18nText(line.ko, line.en)}>
+                        {line.ko}
+                      </span>
+                    ))
+                  }
                 </p>
               </div>
             </div>
@@ -778,49 +792,49 @@ const contactLinks = [
   </div>
 
   <div
-    id="resume-choice-modal"
-    class="fixed inset-0 z-[80] hidden items-center justify-center px-5 py-8"
-    data-resume-modal
+    id="resume-choice-popover"
+    class="pointer-events-none fixed z-[80] hidden w-[min(21.5rem,calc(100vw-2rem))] translate-y-1 opacity-0 transition-[opacity,transform] duration-150 ease-out motion-reduce:transition-none"
+    data-resume-popover
     aria-hidden="true"
+    style="left: 1rem; top: 1rem; --resume-popover-arrow-left: 50%;"
   >
-    <button
-      type="button"
-      class="absolute inset-0 [background-color:color-mix(in_srgb,var(--theme-ink)_22%,transparent)] backdrop-blur-[6px]"
-      data-resume-modal-close
-      {...i18nAttr('aria-label', '이력서 선택 창 닫기', 'Close resume chooser')}
-    ></button>
-
     <section
       role="dialog"
-      aria-modal="true"
+      aria-modal="false"
       aria-labelledby="resume-choice-title"
       aria-describedby="resume-choice-description"
-      class="relative w-full max-w-[25rem] rounded-[1.25rem] border p-5 [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_20px_64px_rgba(17,16,26,0.22)]"
+      class="relative rounded-lg border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_18px_44px_rgba(17,16,26,0.16)]"
+      data-resume-popover-panel
     >
-      <div class="flex items-start justify-between gap-5 border-b pb-4 [border-color:var(--theme-border)]">
+      <span
+        class="pointer-events-none absolute -top-[6.5px] left-[var(--resume-popover-arrow-left)] size-3 -translate-x-1/2 rotate-45 border-l border-t [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)]"
+        data-resume-popover-arrow
+        aria-hidden="true"
+      ></span>
+      <div class="flex items-start justify-between gap-4 border-b px-4 py-3.5 [border-color:var(--theme-border)]">
         <div class="min-w-0">
           <h2
             id="resume-choice-title"
-            class="type-card-title [color:var(--theme-ink)]"
-            {...i18nText('이력서 선택', 'Choose Resume')}
+            class="type-small font-semibold [color:var(--theme-ink)]"
+            {...i18nText('볼 이력서 선택', 'Choose a resume')}
           >
-            이력서 선택
+            볼 이력서 선택
           </h2>
           <p
             id="resume-choice-description"
-            class="type-caption mt-1.5 [word-break:keep-all] [color:var(--theme-ink-muted)]"
+            class="type-caption mt-1 [word-break:keep-all] [color:var(--theme-ink-muted)]"
             {...i18nText(
-              '확인할 이력서와 언어를 선택해주세요.',
-              'Select a resume type and language.'
+              '역할을 고른 뒤 언어를 선택하세요.',
+              'Pick a role, then choose a language.'
             )}
           >
-            확인할 이력서와 언어를 선택해주세요.
+            역할을 고른 뒤 언어를 선택하세요.
           </p>
         </div>
         <button
           type="button"
-          class="flex size-9 shrink-0 items-center justify-center rounded-full border [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface)_82%,transparent)] [color:var(--theme-ink-muted)] transition-colors duration-200 hover:[color:var(--theme-accent)]"
-          data-resume-modal-close
+          class="flex size-8 shrink-0 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface)_82%,transparent)] [color:var(--theme-ink-muted)] transition-colors duration-200 hover:[color:var(--theme-accent)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:[outline-color:var(--theme-accent-mark)]"
+          data-resume-popover-close
           {...i18nAttr('aria-label', '이력서 선택 창 닫기', 'Close resume chooser')}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true" class="size-4 fill-none stroke-current stroke-[1.8]">
@@ -830,87 +844,186 @@ const contactLinks = [
         </button>
       </div>
 
-      <div class="mt-4 space-y-2.5">
-        {
-          resumeOptions.map((group) => (
-            <div class="grid grid-cols-3 items-center gap-2 rounded-[0.9rem] border px-3 py-2.5 [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface)_60%,transparent)]">
-              <span
-                class="type-small text-center font-semibold [color:var(--theme-ink)]"
-                {...i18nText(group.role.ko, group.role.en)}
+      <div class="space-y-2.5 p-2.5">
+          {
+            resumeOptions.map((group) => (
+              <div
+                class="overflow-hidden rounded-md border [border-color:var(--theme-border)] [background-color:color-mix(in_srgb,var(--theme-surface)_46%,transparent)]"
               >
-                {group.role.ko}
-              </span>
-              <>
-                {group.options.map((option) => (
-                  <a
-                    href={option.href}
-                    class="rounded-full border px-3 py-2 text-center text-sm font-semibold no-underline transition-colors duration-200 [border-color:var(--theme-border)] [color:var(--theme-accent)] hover:[border-color:color-mix(in_srgb,var(--theme-accent)_48%,var(--theme-border))] hover:[background-color:color-mix(in_srgb,var(--theme-accent)_8%,transparent)]"
-                    data-resume-option
-                    data-resume-type={group.type}
-                    data-resume-language={option.language}
-                    {...i18nText(option.label.ko, option.label.en)}
+                <div class="relative flex items-center gap-3 px-3 py-2.5">
+                  <span
+                    class="absolute bottom-2 left-0 top-2 w-px [background-color:color-mix(in_srgb,var(--theme-accent-mark)_68%,var(--theme-border))]"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="inline-flex items-center gap-2 text-sm font-semibold leading-tight [color:var(--theme-ink)]"
                   >
-                    {option.label.ko}
-                  </a>
-                ))}
-              </>
-            </div>
-          ))
-        }
+                    <span class="flex size-4 shrink-0 items-center justify-center [color:color-mix(in_srgb,var(--theme-ink-muted)_84%,var(--theme-accent-mark))]" aria-hidden="true">
+                      {
+                        group.type === 'developer' ? (
+                          <svg viewBox="0 0 24 24" class="size-4 fill-none stroke-current stroke-[1.9]">
+                            <path d="m9 8-4 4 4 4" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="m15 8 4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        ) : (
+                          <svg viewBox="0 0 24 24" class="size-4 fill-none stroke-current stroke-[1.9]">
+                            <path d="M6 5h12v11H6V5Z" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M8 19h8" stroke-linecap="round" />
+                            <path d="M12 16v3" stroke-linecap="round" />
+                            <path d="M9 9h6" stroke-linecap="round" />
+                            <path d="M9 12h4" stroke-linecap="round" />
+                          </svg>
+                        )
+                      }
+                    </span>
+                    <span {...i18nText(group.role.ko, group.role.en)}>{group.role.ko}</span>
+                  </span>
+                </div>
+                <div class="grid grid-cols-2 border-t [border-color:var(--theme-border)]">
+                  {
+                    group.options.map((option, optionIndex) => (
+                      <a
+                        href={option.href}
+                        class:list={[
+                          'group relative flex min-h-12 items-center justify-center gap-2 px-3 text-center text-sm font-semibold no-underline transition-[background-color,color,transform] duration-200 [color:var(--theme-ink-muted)] hover:-translate-y-px hover:[background-color:color-mix(in_srgb,var(--theme-accent)_9%,transparent)] hover:[color:var(--theme-accent)] active:translate-y-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:[outline-color:var(--theme-accent-mark)]',
+                          optionIndex > 0 && 'border-l'
+                        ]}
+                        style={optionIndex > 0 ? 'border-color: var(--theme-border);' : undefined}
+                        data-resume-option
+                        data-resume-type={group.type}
+                        data-resume-language={option.language}
+                      >
+                        <span
+                          class="leading-tight"
+                          {...i18nText(option.label.ko, option.label.en)}
+                        >
+                          {option.label.ko}
+                        </span>
+                        <span
+                          class="text-[0.72rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100 [color:var(--theme-accent-mark)]"
+                          aria-hidden="true"
+                        >
+                          ↗
+                        </span>
+                      </a>
+                    ))
+                  }
+                </div>
+              </div>
+            ))
+          }
       </div>
     </section>
   </div>
 
   <script is:inline>
     (() => {
-      const modal = document.querySelector('[data-resume-modal]');
-      if (!modal) return;
+      const popover = document.querySelector('[data-resume-popover]');
+      if (!popover) return;
 
-      const triggers = document.querySelectorAll('[data-resume-modal-trigger]');
-      const closeControls = modal.querySelectorAll('[data-resume-modal-close]');
-      const firstCloseControl = closeControls[closeControls.length - 1];
-      let previousFocus = null;
+      const triggers = document.querySelectorAll('[data-resume-popover-trigger]');
+      const closeControls = popover.querySelectorAll('[data-resume-popover-close]');
+      let activeTrigger = null;
+      let closeTimer = 0;
       const trackEvent = (eventName, params = {}) => {
         if (typeof window.hadevyiTrackEvent === 'function') {
           window.hadevyiTrackEvent(eventName, params);
         }
       };
 
-      const getFocusableItems = () => Array.from(
-        modal.querySelectorAll('a[href], button:not([disabled])')
-      );
-
-      const openModal = (event) => {
-        event.preventDefault();
-        previousFocus = document.activeElement;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        trackEvent('resume_modal_open', { source: 'main_hub' });
-        firstCloseControl?.focus();
+      const setTriggerState = (trigger, isOpen) => {
+        trigger?.setAttribute('aria-expanded', String(isOpen));
       };
 
-      const closeModal = () => {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
+      const getFirstOption = () => popover.querySelector('[data-resume-option]');
 
-        if (previousFocus instanceof HTMLElement) {
-          previousFocus.focus();
+      const positionPopover = () => {
+        if (!activeTrigger || popover.classList.contains('hidden')) return;
+
+        const margin = 16;
+        const gap = 12;
+        const anchor = activeTrigger.querySelector('[data-resume-popover-anchor]') || activeTrigger;
+        const triggerRect = anchor.getBoundingClientRect();
+        const popoverWidth = popover.offsetWidth;
+        const popoverHeight = popover.offsetHeight;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        let left = triggerRect.left + triggerRect.width / 2 - popoverWidth / 2;
+        left = Math.max(margin, Math.min(left, viewportWidth - popoverWidth - margin));
+
+        let top = triggerRect.bottom + gap;
+        const hasRoomBelow = top + popoverHeight + margin <= viewportHeight;
+        if (!hasRoomBelow) {
+          top = Math.max(margin, triggerRect.top - popoverHeight - gap);
         }
+
+        const arrowLeft = triggerRect.left + triggerRect.width / 2 - left;
+
+        popover.style.left = `${left}px`;
+        popover.style.top = `${top}px`;
+        popover.style.setProperty(
+          '--resume-popover-arrow-left',
+          `${Math.max(18, Math.min(arrowLeft, popoverWidth - 18))}px`
+        );
+      };
+
+      const openPopover = (event, trigger) => {
+        event.preventDefault();
+
+        if (activeTrigger === trigger && popover.getAttribute('aria-hidden') === 'false') {
+          closePopover({ restoreFocus: true });
+          return;
+        }
+
+        window.clearTimeout(closeTimer);
+        setTriggerState(activeTrigger, false);
+        activeTrigger = trigger;
+        setTriggerState(activeTrigger, true);
+        const shouldMoveFocus = event.detail === 0;
+
+        popover.classList.remove('hidden');
+        popover.style.visibility = 'hidden';
+        positionPopover();
+        popover.setAttribute('aria-hidden', 'false');
+        trackEvent('resume_modal_open', { source: 'main_hub' });
+
+        window.requestAnimationFrame(() => {
+          popover.style.visibility = '';
+          popover.classList.remove('pointer-events-none', 'translate-y-1', 'opacity-0');
+          if (shouldMoveFocus) {
+            getFirstOption()?.focus();
+          }
+        });
       };
 
       triggers.forEach((trigger) => {
-        trigger.addEventListener('click', openModal);
+        trigger.addEventListener('click', (event) => openPopover(event, trigger));
       });
+
+      function closePopover({ restoreFocus = false } = {}) {
+        if (popover.getAttribute('aria-hidden') === 'true') return;
+
+        popover.classList.add('pointer-events-none', 'translate-y-1', 'opacity-0');
+        popover.setAttribute('aria-hidden', 'true');
+        setTriggerState(activeTrigger, false);
+
+        const triggerToFocus = activeTrigger;
+        activeTrigger = null;
+        closeTimer = window.setTimeout(() => {
+          popover.classList.add('hidden');
+        }, 150);
+
+        if (restoreFocus && triggerToFocus instanceof HTMLElement) {
+          triggerToFocus.focus();
+        }
+      }
 
       closeControls.forEach((control) => {
-        control.addEventListener('click', closeModal);
+        control.addEventListener('click', () => closePopover({ restoreFocus: true }));
       });
 
-      modal.querySelectorAll('[data-resume-option]').forEach((link) => {
+      popover.querySelectorAll('[data-resume-option]').forEach((link) => {
         link.addEventListener('click', () => {
           trackEvent('resume_select', {
             resume_type: link.getAttribute('data-resume-type') || '',
@@ -938,30 +1051,28 @@ const contactLinks = [
         });
       });
 
-      document.addEventListener('keydown', (event) => {
-        if (modal.getAttribute('aria-hidden') === 'true') return;
+      document.addEventListener('pointerdown', (event) => {
+        if (popover.getAttribute('aria-hidden') === 'true') return;
 
-        if (event.key === 'Escape') {
-          closeModal();
-          return;
-        }
+        const target = event.target;
+        const clickedPopover = target instanceof Node && popover.contains(target);
+        const clickedTrigger = target instanceof Node && Array.from(triggers).some((trigger) => trigger.contains(target));
 
-        if (event.key !== 'Tab') return;
-
-        const focusableItems = getFocusableItems();
-        const firstItem = focusableItems[0];
-        const lastItem = focusableItems[focusableItems.length - 1];
-
-        if (!firstItem || !lastItem) return;
-
-        if (event.shiftKey && document.activeElement === firstItem) {
-          event.preventDefault();
-          lastItem.focus();
-        } else if (!event.shiftKey && document.activeElement === lastItem) {
-          event.preventDefault();
-          firstItem.focus();
+        if (!clickedPopover && !clickedTrigger) {
+          closePopover();
         }
       });
+
+      document.addEventListener('keydown', (event) => {
+        if (popover.getAttribute('aria-hidden') === 'true') return;
+
+        if (event.key === 'Escape') {
+          closePopover({ restoreFocus: true });
+        }
+      });
+
+      window.addEventListener('resize', positionPopover);
+      window.addEventListener('scroll', positionPopover, true);
     })();
   </script>
 </BaseLayout>
