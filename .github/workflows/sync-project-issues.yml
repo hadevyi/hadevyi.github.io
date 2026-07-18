@@ -1,0 +1,68 @@
+name: Project 이슈 상태 동기화
+
+on:
+  issues:
+    types: [opened, reopened]
+  issue_comment:
+    types: [created]
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Project에 동기화할 현재 저장소 이슈 번호
+        required: true
+        type: string
+      mode:
+        description: 적용할 상태 전환
+        required: true
+        default: opened
+        type: choice
+        options: [opened, reopened, comment]
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  on-issue:
+    if: github.event_name == 'issues'
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    with:
+      project_id: ${{ vars.PROJECT_ID }}
+      mode: ${{ github.event.action }}
+      issue_number: ${{ github.event.issue.number }}
+    secrets:
+      projects_token: ${{ secrets.PROJECTS_TOKEN }}
+
+  on-comment:
+    if: github.event_name == 'issue_comment' && github.event.issue.pull_request == null
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    with:
+      project_id: ${{ vars.PROJECT_ID }}
+      mode: comment
+      issue_number: ${{ github.event.issue.number }}
+      is_pull_request: false
+    secrets:
+      projects_token: ${{ secrets.PROJECTS_TOKEN }}
+
+  on-push:
+    if: github.event_name == 'push'
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    with:
+      project_id: ${{ vars.PROJECT_ID }}
+      mode: push
+      commit_messages: ${{ toJSON(github.event.commits) }}
+    secrets:
+      projects_token: ${{ secrets.PROJECTS_TOKEN }}
+
+  on-manual:
+    if: github.event_name == 'workflow_dispatch'
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    with:
+      project_id: ${{ vars.PROJECT_ID }}
+      mode: ${{ inputs.mode }}
+      issue_number: ${{ inputs.issue_number }}
+      is_pull_request: false
+    secrets:
+      projects_token: ${{ secrets.PROJECTS_TOKEN }}
