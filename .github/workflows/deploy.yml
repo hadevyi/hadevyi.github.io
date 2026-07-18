@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Astro site to GitHub Pages
 
 on:
   push:
@@ -10,33 +10,9 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      PUBLIC_GA_ID: ${{ vars.PUBLIC_GA_ID }}
-      PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Install, build, and upload site
-        uses: withastro/action@v6
-        with:
-          path: .
-          node-version: 24
-
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+    uses: hadevyi/.github/.github/workflows/reusable-astro-pages.yml@main
+    with:
+      public-ga-id: ${{ vars.PUBLIC_GA_ID }}
+      public-google-site-verification: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}
