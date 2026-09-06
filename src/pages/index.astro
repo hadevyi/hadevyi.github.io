@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const profileImage = '/images/dang-hyeona-profile.png';
+const brandingProcessImage = '/images/branding/recording-process.png';
+const brandingConnectionImage = '/images/branding/sharing-connection.png';
 
 const text = (ko: string, en: string) => ({ ko, en });
 const i18nText = (ko: string, en: string) => ({
@@ -113,7 +115,15 @@ const pathwaySection = {
   ]
 } as const;
 
-const pathwayItems = [
+const pathwayItems: ReadonlyArray<{
+  number: string;
+  href: string;
+  icon: string;
+  label: { ko: string; en: string };
+  description: { ko: string; en: string };
+  disabled: boolean;
+  status?: { ko: string; en: string };
+}> = [
   {
     number: '01',
     href: '/resume/',
@@ -129,8 +139,8 @@ const pathwayItems = [
     icon: 'portfolio',
     label: text('포트폴리오', 'Portfolio'),
     description: text('프로젝트와 선택의 과정', 'Projects and the choices behind them'),
-    disabled: true,
-    status: text('준비 중', 'Coming soon')
+    disabled: false,
+    status: undefined
   },
   {
     number: '03',
@@ -359,7 +369,7 @@ const contactLinks = [
       </div>
     </section>
 
-    <section class="border-y py-14 [background-color:var(--theme-section-branding)] [border-color:var(--theme-border)] sm:py-18 lg:py-20">
+    <section class="hub-branding border-y py-14 [background-color:var(--theme-section-branding)] [border-color:var(--theme-border)] sm:py-18 lg:py-20">
       <div class="mx-auto w-full max-w-6xl px-5 sm:px-10 md:px-12 lg:px-20 xl:px-24">
         <div class="mb-8 flex items-center gap-4 sm:mb-10">
           <p class="type-label-wide uppercase [color:var(--theme-accent)]">
@@ -368,34 +378,56 @@ const contactLinks = [
           <div class="h-px flex-1 [background-color:var(--theme-border)]"></div>
         </div>
 
-        <div class="grid gap-8 border-t pt-8 [border-color:var(--theme-border)] md:grid-cols-12 md:gap-x-6 md:gap-y-10">
-          {
-            brandingReasons.map((reason) => (
-              <article
-                class:list={[
-                  'border-l pl-5 [border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] sm:pl-6',
-                  reason.number === '01'
-                    ? 'md:col-span-7'
-                    : 'md:col-span-7 md:col-start-6 md:-mt-2'
-                ]}
+        <div class="hub-branding-grid border-t pt-8 [border-color:var(--theme-border)]">
+          <article class="hub-branding-reason hub-branding-reason-first">
+            <p class="sr-only">{brandingReasons[0].number}</p>
+            <div class="hub-branding-text">
+              <h3
+                class="hub-branding-title type-section-title whitespace-pre-line [word-break:keep-all] [color:var(--theme-ink)]"
+                {...i18nText(brandingReasons[0].title.ko, brandingReasons[0].title.en)}
               >
-                <p class="type-label-wide m-0 [color:var(--theme-accent-mark)]">
-                  {reason.number}
-                </p>
-                <h3
-                  class="type-section-title mt-5 max-w-2xl whitespace-pre-line [word-break:keep-all] [color:var(--theme-ink)]"
-                  {...i18nText(reason.title.ko, reason.title.en)}
-                >
-                  {reason.title.ko}
-                </h3>
-                <div class="type-body mt-6 grid gap-3 [color:var(--theme-ink-muted)]">
-                  {reason.paragraphs.map((paragraph) => (
-                    <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
-                  ))}
-                </div>
-              </article>
-            ))
-          }
+                {brandingReasons[0].title.ko}
+              </h3>
+              <div class="hub-branding-copy type-body [color:var(--theme-ink-muted)]">
+                {brandingReasons[0].paragraphs.map((paragraph) => (
+                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
+                ))}
+              </div>
+            </div>
+            <figure class="hub-branding-graphic hub-branding-graphic-first">
+              <img
+                src={brandingProcessImage}
+                alt="생각과 기록이 하나의 흐름으로 정리되는 추상 그래픽"
+                loading="lazy"
+                {...i18nAttr('alt', '생각과 기록이 하나의 흐름으로 정리되는 추상 그래픽', 'Abstract graphic of thoughts and records being organized into a single flow')}
+              />
+            </figure>
+          </article>
+
+          <article class="hub-branding-reason hub-branding-reason-second">
+            <p class="sr-only">{brandingReasons[1].number}</p>
+            <div class="hub-branding-text">
+              <h3
+                class="hub-branding-title type-section-title whitespace-pre-line [word-break:keep-all] [color:var(--theme-ink)]"
+                {...i18nText(brandingReasons[1].title.ko, brandingReasons[1].title.en)}
+              >
+                {brandingReasons[1].title.ko}
+              </h3>
+              <div class="hub-branding-copy type-body [color:var(--theme-ink-muted)]">
+                {brandingReasons[1].paragraphs.map((paragraph) => (
+                  <p {...i18nText(paragraph.ko, paragraph.en)}>{paragraph.ko}</p>
+                ))}
+              </div>
+            </div>
+            <figure class="hub-branding-graphic hub-branding-graphic-second">
+              <img
+                src={brandingConnectionImage}
+                alt="두 개의 기록 흐름이 이어지며 연결을 만드는 추상 그래픽"
+                loading="lazy"
+                {...i18nAttr('alt', '두 개의 기록 흐름이 이어지며 연결을 만드는 추상 그래픽', 'Abstract graphic of two record flows connecting with each other')}
+              />
+            </figure>
+          </article>
         </div>
       </div>
     </section>
@@ -449,20 +481,7 @@ const contactLinks = [
 
           <div class="mt-12 hidden md:block">
             <div class="relative mx-auto max-w-5xl">
-              <div class="relative border-y py-9 [border-color:var(--theme-border)]">
-                <div
-                  class="pointer-events-none absolute left-8 right-8 top-[3.85rem] h-px [background-color:color-mix(in_srgb,var(--theme-accent-mark)_30%,var(--theme-border))]"
-                  aria-hidden="true"
-                ></div>
-                <div
-                  class="pointer-events-none absolute left-0 top-[3.7rem] size-1.5 rounded-full [background-color:var(--theme-accent-mark)]"
-                  aria-hidden="true"
-                ></div>
-                <div
-                  class="pointer-events-none absolute right-0 top-[3.7rem] h-16 w-12 rounded-br-lg border-b border-r [border-color:color-mix(in_srgb,var(--theme-accent-mark)_30%,var(--theme-border))]"
-                  aria-hidden="true"
-                ></div>
-
+              <div class="border-y py-9 [border-color:var(--theme-border)]">
                 <div class="relative grid grid-cols-4">
                 {
                   pathwayItems.map((item) => (
@@ -474,15 +493,14 @@ const contactLinks = [
                         item.disabled && 'cursor-default opacity-[0.78]'
                       ]}
                       data-hub-pathway-link={item.icon}
-                      data-resume-popover-trigger={item.icon === 'resume' ? '' : undefined}
-                      aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
-                      aria-controls={item.icon === 'resume' ? 'resume-choice-popover' : undefined}
-                      aria-expanded={item.icon === 'resume' ? 'false' : undefined}
+                      data-resume-popover-trigger={['resume', 'portfolio'].includes(item.icon) ? item.icon : undefined}
+                      aria-haspopup={['resume', 'portfolio'].includes(item.icon) ? 'dialog' : undefined}
+                      aria-controls={['resume', 'portfolio'].includes(item.icon) ? 'resume-choice-popover' : undefined}
+                      aria-expanded={['resume', 'portfolio'].includes(item.icon) ? 'false' : undefined}
                       aria-disabled={item.disabled ? 'true' : undefined}
                     >
                       <span
-                        class="relative z-10 flex size-14 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-section-sites)] [box-shadow:0_0_0_10px_var(--theme-section-sites)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_44%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]"
-                        data-resume-popover-anchor={item.icon === 'resume' ? '' : undefined}
+                        class="flex size-14 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-section-sites)] [color:var(--theme-ink-muted)] transition-colors duration-200 group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_44%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]"
                       >
                           {
                             item.icon === 'resume' && (
@@ -542,16 +560,12 @@ const contactLinks = [
                         }
                         <span
                           class="type-small mx-auto block max-w-[11.5rem] [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                          data-resume-popover-anchor={['resume', 'portfolio'].includes(item.icon) ? '' : undefined}
                           {...i18nText(item.description.ko, item.description.en)}
                         >
                           {item.description.ko}
                         </span>
                       </span>
-                      {!item.disabled && (
-                        <span class="absolute bottom-1 right-8 text-lg opacity-0 transition-opacity duration-200 [color:var(--theme-accent-mark)] group-hover:opacity-100" aria-hidden="true">
-                          ↗
-                        </span>
-                      )}
                     </a>
                   ))
                 }
@@ -587,10 +601,10 @@ const contactLinks = [
                     item.disabled && 'cursor-default opacity-[0.86]'
                   ]}
                   data-hub-pathway-link={item.icon}
-                  data-resume-popover-trigger={item.icon === 'resume' ? '' : undefined}
-                  aria-haspopup={item.icon === 'resume' ? 'dialog' : undefined}
-                  aria-controls={item.icon === 'resume' ? 'resume-choice-popover' : undefined}
-                  aria-expanded={item.icon === 'resume' ? 'false' : undefined}
+                  data-resume-popover-trigger={['resume', 'portfolio'].includes(item.icon) ? item.icon : undefined}
+                  aria-haspopup={['resume', 'portfolio'].includes(item.icon) ? 'dialog' : undefined}
+                  aria-controls={['resume', 'portfolio'].includes(item.icon) ? 'resume-choice-popover' : undefined}
+                  aria-expanded={['resume', 'portfolio'].includes(item.icon) ? 'false' : undefined}
                   aria-disabled={item.disabled ? 'true' : undefined}
                 >
                   <span class="relative z-10 flex size-14 shrink-0 items-center justify-center rounded-md border [border-color:var(--theme-border)] [background-color:var(--theme-surface-strong)] [box-shadow:0_0_0_7px_var(--theme-surface-strong)] [color:var(--theme-ink-muted)] group-hover:[border-color:color-mix(in_srgb,var(--theme-accent-mark)_42%,var(--theme-border))] group-hover:[color:var(--theme-accent-mark)]">
@@ -640,6 +654,7 @@ const contactLinks = [
                         </span>
                         <span
                           class="type-small mt-1 block [word-break:keep-all] [color:var(--theme-ink-muted)]"
+                          data-resume-popover-anchor={['resume', 'portfolio'].includes(item.icon) ? '' : undefined}
                           {...i18nText(item.description.ko, item.description.en)}
                         >
                           {item.description.ko}
@@ -924,6 +939,7 @@ const contactLinks = [
       const triggers = document.querySelectorAll('[data-resume-popover-trigger]');
       const closeControls = popover.querySelectorAll('[data-resume-popover-close]');
       let activeTrigger = null;
+      let activeDocument = 'resume';
       let closeTimer = 0;
       const trackEvent = (eventName, params = {}) => {
         if (typeof window.hadevyiTrackEvent === 'function') {
@@ -979,6 +995,26 @@ const contactLinks = [
         window.clearTimeout(closeTimer);
         setTriggerState(activeTrigger, false);
         activeTrigger = trigger;
+        activeDocument = trigger.getAttribute('data-resume-popover-trigger') || 'resume';
+        const isPortfolio = activeDocument === 'portfolio';
+        const title = popover.querySelector('#resume-choice-title');
+        const titleKo = isPortfolio ? '볼 포트폴리오 선택' : '볼 이력서 선택';
+        const titleEn = isPortfolio ? 'Choose a portfolio' : 'Choose a resume';
+        title.setAttribute('data-i18n-ko', titleKo);
+        title.setAttribute('data-i18n-en', titleEn);
+        title.textContent = document.documentElement.lang === 'en' ? titleEn : titleKo;
+        closeControls.forEach((control) => {
+          const ko = isPortfolio ? '포트폴리오 선택 창 닫기' : '이력서 선택 창 닫기';
+          const en = isPortfolio ? 'Close portfolio chooser' : 'Close resume chooser';
+          control.setAttribute('data-i18n-ko', ko);
+          control.setAttribute('data-i18n-en', en);
+          control.setAttribute('aria-label', document.documentElement.lang === 'en' ? en : ko);
+        });
+        popover.querySelectorAll('[data-resume-option]').forEach((link) => {
+          const role = link.getAttribute('data-resume-type');
+          const language = link.getAttribute('data-resume-language');
+          link.setAttribute('href', `/${activeDocument}/${role === 'instructor' ? 'instructor/' : ''}${language}/`);
+        });
         setTriggerState(activeTrigger, true);
         const shouldMoveFocus = event.detail === 0;
 
@@ -986,7 +1022,7 @@ const contactLinks = [
         popover.style.visibility = 'hidden';
         positionPopover();
         popover.setAttribute('aria-hidden', 'false');
-        trackEvent('resume_modal_open', { source: 'main_hub' });
+        trackEvent(`${activeDocument}_modal_open`, { source: 'main_hub' });
 
         window.requestAnimationFrame(() => {
           popover.style.visibility = '';
@@ -1025,8 +1061,8 @@ const contactLinks = [
 
       popover.querySelectorAll('[data-resume-option]').forEach((link) => {
         link.addEventListener('click', () => {
-          trackEvent('resume_select', {
-            resume_type: link.getAttribute('data-resume-type') || '',
+          trackEvent(`${activeDocument}_select`, {
+            [`${activeDocument}_type`]: link.getAttribute('data-resume-type') || '',
             language: link.getAttribute('data-resume-language') || ''
           });
         });
