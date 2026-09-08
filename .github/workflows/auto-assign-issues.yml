@@ -1,12 +1,12 @@
-name: Auto assign issues
-
-on:
+---
+name: Issue 담당자 자동 지정
+'on':
   issues:
-    types: [opened]
-
+    types:
+    - opened
 permissions:
+  contents: read
   issues: write
-
 jobs:
   assign:
-    uses: hadevyi/.github/.github/workflows/reusable-auto-assign.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-issue-auto-assign.yml@d96d2e5a4211d4eaacf576db094f354adff87aef

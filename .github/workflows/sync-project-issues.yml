@@ -27,7 +27,7 @@ permissions:
 jobs:
   on-issue:
     if: github.event_name == 'issues'
-    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
     with:
       project_id: ${{ vars.PROJECT_ID }}
       mode: ${{ github.event.action }}
@@ -37,7 +37,7 @@ jobs:
 
   on-comment:
     if: github.event_name == 'issue_comment' && github.event.issue.pull_request == null
-    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
     with:
       project_id: ${{ vars.PROJECT_ID }}
       mode: comment
@@ -48,7 +48,7 @@ jobs:
 
   on-push:
     if: github.event_name == 'push'
-    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
     with:
       project_id: ${{ vars.PROJECT_ID }}
       mode: push
@@ -58,7 +58,7 @@ jobs:
 
   on-manual:
     if: github.event_name == 'workflow_dispatch'
-    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-project-issue-sync.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
     with:
       project_id: ${{ vars.PROJECT_ID }}
       mode: ${{ inputs.mode }}

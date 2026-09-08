@@ -1,0 +1,14 @@
+---
+name: Dependabot 조건부 자동 병합
+'on':
+  pull_request:
+    types:
+    - opened
+    - reopened
+    - synchronize
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  merge:
+    uses: hadevyi/.github/.github/workflows/reusable-dependabot-auto-merge.yml@d96d2e5a4211d4eaacf576db094f354adff87aef

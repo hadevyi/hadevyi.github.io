@@ -1,0 +1,44 @@
+name: 배포 작업
+description: 배포 대상, 검증과 복구 방법을 기록합니다.
+title: "[배포] "
+labels:
+- type:배포
+body:
+- type: markdown
+  attributes:
+    value: 같은 목적의 열린 Issue를 먼저 확인하고 저장소 정책에 맞는 추가 라벨을 지정해 주세요.
+- type: textarea
+  id: environment
+  attributes:
+    description: 환경에 관한 내용을 구체적으로 적어 주세요.
+    label: 환경
+  validations:
+    required: true
+- type: textarea
+  id: version
+  attributes:
+    description: 버전에 관한 내용을 구체적으로 적어 주세요.
+    label: 버전
+  validations:
+    required: true
+- type: textarea
+  id: verification
+  attributes:
+    description: 검증에 관한 내용을 구체적으로 적어 주세요.
+    label: 검증
+  validations:
+    required: true
+- type: textarea
+  id: rollback
+  attributes:
+    description: 복구에 관한 내용을 구체적으로 적어 주세요.
+    label: 복구
+  validations:
+    required: true
+- type: textarea
+  id: references
+  attributes:
+    description: 참고 자료에 관한 내용을 구체적으로 적어 주세요.
+    label: 참고 자료
+  validations:
+    required: false

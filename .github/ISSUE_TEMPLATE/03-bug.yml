@@ -1,0 +1,44 @@
+name: 버그 보고
+description: 재현 가능한 오류와 기대 동작을 기록합니다.
+title: "[버그] "
+labels:
+- type:버그
+body:
+- type: markdown
+  attributes:
+    value: 같은 목적의 열린 Issue를 먼저 확인하고 저장소 정책에 맞는 추가 라벨을 지정해 주세요.
+- type: textarea
+  id: current-behavior
+  attributes:
+    description: 현재 동작에 관한 내용을 구체적으로 적어 주세요.
+    label: 현재 동작
+  validations:
+    required: true
+- type: textarea
+  id: expected-behavior
+  attributes:
+    description: 기대 동작에 관한 내용을 구체적으로 적어 주세요.
+    label: 기대 동작
+  validations:
+    required: true
+- type: textarea
+  id: reproduction
+  attributes:
+    description: 재현 방법에 관한 내용을 구체적으로 적어 주세요.
+    label: 재현 방법
+  validations:
+    required: true
+- type: textarea
+  id: environment
+  attributes:
+    description: 환경에 관한 내용을 구체적으로 적어 주세요.
+    label: 환경
+  validations:
+    required: true
+- type: textarea
+  id: references
+  attributes:
+    description: 참고 자료에 관한 내용을 구체적으로 적어 주세요.
+    label: 참고 자료
+  validations:
+    required: false

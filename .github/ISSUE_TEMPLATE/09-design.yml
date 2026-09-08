@@ -1,0 +1,30 @@
+name: 디자인 작업
+description: UI·UX와 시각 요소의 요구사항을 기록합니다.
+title: "[디자인] "
+labels:
+- type:디자인
+body:
+- type: markdown
+  attributes:
+    value: 같은 목적의 열린 Issue를 먼저 확인하고 저장소 정책에 맞는 추가 라벨을 지정해 주세요.
+- type: textarea
+  id: screen
+  attributes:
+    description: 대상 화면에 관한 내용을 구체적으로 적어 주세요.
+    label: 대상 화면
+  validations:
+    required: true
+- type: textarea
+  id: requirements
+  attributes:
+    description: 요구사항에 관한 내용을 구체적으로 적어 주세요.
+    label: 요구사항
+  validations:
+    required: true
+- type: textarea
+  id: references
+  attributes:
+    description: 참고 자료에 관한 내용을 구체적으로 적어 주세요.
+    label: 참고 자료
+  validations:
+    required: false
