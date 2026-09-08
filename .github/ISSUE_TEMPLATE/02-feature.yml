@@ -1,0 +1,44 @@
+name: 기능 요청
+description: 새로운 기능의 문제, 범위와 완료 조건을 기록합니다.
+title: "[기능] "
+labels:
+- type:기능
+body:
+- type: markdown
+  attributes:
+    value: 같은 목적의 열린 Issue를 먼저 확인하고 저장소 정책에 맞는 추가 라벨을 지정해 주세요.
+- type: textarea
+  id: problem
+  attributes:
+    description: 문제에 관한 내용을 구체적으로 적어 주세요.
+    label: 문제
+  validations:
+    required: true
+- type: textarea
+  id: goal
+  attributes:
+    description: 목표에 관한 내용을 구체적으로 적어 주세요.
+    label: 목표
+  validations:
+    required: true
+- type: textarea
+  id: scope
+  attributes:
+    description: 범위에 관한 내용을 구체적으로 적어 주세요.
+    label: 범위
+  validations:
+    required: true
+- type: textarea
+  id: completion-criteria
+  attributes:
+    description: 완료 조건에 관한 내용을 구체적으로 적어 주세요.
+    label: 완료 조건
+  validations:
+    required: true
+- type: textarea
+  id: references
+  attributes:
+    description: 참고 자료에 관한 내용을 구체적으로 적어 주세요.
+    label: 참고 자료
+  validations:
+    required: false

@@ -1,0 +1,47 @@
+---
+version: 2
+updates:
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: monday
+    time: '09:00'
+    timezone: Asia/Seoul
+  open-pull-requests-limit: 5
+  labels:
+  - type:의존성
+  groups:
+    minor-and-patch:
+      applies-to: version-updates
+      patterns:
+      - "*"
+      update-types:
+      - minor
+      - patch
+    security-updates:
+      applies-to: security-updates
+      patterns:
+      - "*"
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: monday
+    time: '09:00'
+    timezone: Asia/Seoul
+  open-pull-requests-limit: 5
+  labels:
+  - type:의존성
+  groups:
+    minor-and-patch:
+      applies-to: version-updates
+      patterns:
+      - "*"
+      update-types:
+      - minor
+      - patch
+    security-updates:
+      applies-to: security-updates
+      patterns:
+      - "*"

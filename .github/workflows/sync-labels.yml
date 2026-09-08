@@ -1,16 +1,27 @@
+---
 name: Sync shared labels
-
-on:
+'on':
   workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options:
+        - preview
+        - apply
+        default: preview
+      issue_number:
+        type: string
+        required: false
   schedule:
-    - cron: "8 9 13 * *"
-      timezone: "Asia/Seoul"
-
+  - cron: 8 9 13 * *
+    timezone: Asia/Seoul
 permissions:
   issues: write
-
 jobs:
   sync:
-    uses: hadevyi/.github/.github/workflows/reusable-sync-labels.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-sync-labels.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
     with:
-      profile: branding
+      profile: branding-site
+      mode: "${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'preview'
+        }}"
+      issue_number: "${{ inputs.issue_number || '' }}"

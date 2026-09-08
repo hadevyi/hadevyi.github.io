@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   deploy:
-    uses: hadevyi/.github/.github/workflows/reusable-astro-pages.yml@main
+    uses: hadevyi/.github/.github/workflows/reusable-astro-pages.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
     with:
       public-ga-id: ${{ vars.PUBLIC_GA_ID }}
       public-google-site-verification: ${{ vars.PUBLIC_GOOGLE_SITE_VERIFICATION }}

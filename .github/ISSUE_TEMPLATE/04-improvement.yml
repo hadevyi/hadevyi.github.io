@@ -1,0 +1,37 @@
+name: 개선 제안
+description: 기존 기능이나 사용성의 개선 방향을 기록합니다.
+title: "[개선] "
+labels:
+- type:개선
+body:
+- type: markdown
+  attributes:
+    value: 같은 목적의 열린 Issue를 먼저 확인하고 저장소 정책에 맞는 추가 라벨을 지정해 주세요.
+- type: textarea
+  id: current-problem
+  attributes:
+    description: 현재 문제에 관한 내용을 구체적으로 적어 주세요.
+    label: 현재 문제
+  validations:
+    required: true
+- type: textarea
+  id: direction
+  attributes:
+    description: 개선 방향에 관한 내용을 구체적으로 적어 주세요.
+    label: 개선 방향
+  validations:
+    required: true
+- type: textarea
+  id: expected-effect
+  attributes:
+    description: 기대 효과에 관한 내용을 구체적으로 적어 주세요.
+    label: 기대 효과
+  validations:
+    required: true
+- type: textarea
+  id: references
+  attributes:
+    description: 참고 자료에 관한 내용을 구체적으로 적어 주세요.
+    label: 참고 자료
+  validations:
+    required: false

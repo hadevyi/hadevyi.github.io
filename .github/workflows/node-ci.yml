@@ -1,0 +1,10 @@
+---
+name: Node.js CI
+'on':
+  pull_request: 
+  workflow_dispatch: 
+permissions:
+  contents: read
+jobs:
+  verify:
+    uses: hadevyi/.github/.github/workflows/reusable-node-ci.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
