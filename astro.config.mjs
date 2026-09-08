@@ -9,6 +9,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://hadevyi.github.io',
   output: 'static',
+  compressHTML: true,
   vite: {
     plugins: [tailwindcss()]
   },
