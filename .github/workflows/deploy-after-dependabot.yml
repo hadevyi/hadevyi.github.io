@@ -1,0 +1,17 @@
+name: Dependabot 병합 후 배포
+
+on:
+  workflow_run:
+    workflows:
+      - Node.js CI
+      - Dependabot 조건부 자동 병합
+    types: [completed]
+
+permissions:
+  contents: read
+  pull-requests: read
+  actions: write
+
+jobs:
+  deploy:
+    uses: hadevyi/.github/.github/workflows/reusable-deploy-after-dependabot.yml@89bfe77b28f1fa8c32671a9ba8c44761f334e8a4
