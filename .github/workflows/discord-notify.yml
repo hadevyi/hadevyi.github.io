@@ -4,14 +4,9 @@ name: Discord GitHub 알림
   issues:
     types:
     - opened
-  issue_comment:
-    types:
-    - created
   pull_request:
     types:
     - opened
-    - reopened
-    - synchronize
   workflow_run:
     workflows:
     - Dependabot 병합 후 배포
@@ -28,8 +23,9 @@ permissions:
   contents: read
 jobs:
   notify:
-    uses: hadevyi/.github/.github/workflows/reusable-discord-notify.yml@d96d2e5a4211d4eaacf576db094f354adff87aef
+    uses: hadevyi/.github/.github/workflows/reusable-discord-notify.yml@4678ec5ffadaeda894ce67f580b76af898c8d729
     with:
       bot-name: Spark Bot
+      success-workflows: Deploy Astro site to GitHub Pages
     secrets:
       DISCORD_WEBHOOK_URL: "${{ secrets.DISCORD_WEBHOOK_URL }}"
